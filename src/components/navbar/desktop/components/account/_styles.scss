@@ -1,0 +1,104 @@
+.navbar-account-component {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 15px;
+  cursor: pointer;
+  position: relative;
+
+  .account-icon {
+    width: 18px;
+    height: 18px;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' height='var(--myaccount-icon-height)' width='var(--myaccount-icon-width)'%3E%3Cpath d='M14 6a4 4 0 10-8 0 4 4 0 008 0zm2 0A6 6 0 114 6a6 6 0 0112 0zm-6 9c-3.068 0-5.67 1.223-7.035 3h14.07c-1.365-1.777-3.967-3-7.035-3zm10 5H0c.553-4.006 4.819-7 10-7s9.447 2.994 10 7z' fill='%23fff'/%3E%3C/svg%3E");
+  }
+
+  .account-options-container {
+    position: absolute;
+    width: 320px;
+    height: 0px;
+    top: 64px;
+    right: -110px;
+    background-color: #fff;
+    transition-delay: 0.25s;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    z-index: 5;
+
+    .account-options-header {
+      padding-left: 1rem;
+      background-color: #ddd;
+      display: flex;
+      width: 100%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        padding: 0 15px;
+        svg {
+          width: 16px;
+          height: 16x;
+        }
+      }
+
+      .account-header-links-container {
+        display: flex;
+        a {
+          color: #666;
+          font-size: 0.8rem;
+          font-weight: 500;
+          line-height: 2.14;
+          letter-spacing: 0.4px;
+          text-decoration: underline;
+        }
+
+        a:hover {
+          color: #0770cf;
+        }
+
+        span {
+          color: #666;
+          font-weight: 300;
+        }
+      }
+    }
+
+    .account-options-body {
+      width: 100%;
+
+      .options-body-each-option {
+        display: flex;
+        align-items: center;
+        padding: 15px 15px;
+        padding-left: 11px;
+        color: #2d2d2d;
+        font-size: 0.85rem;
+        fill: #2d2d2d;
+        stroke: #2d2d2d;
+
+        svg {
+          width: 18px;
+          height: 18px;
+          margin-right: 10px;
+        }
+      }
+
+      .options-body-each-option:hover {
+        color: #0770cf;
+        fill: #0770cf;
+        stroke: #0770cf;
+      }
+    }
+  }
+}
+
+.navbar-account-component:hover {
+  .account-options-container {
+    height: 255px;
+
+    border: 1px solid #ddd;
+    //box-shadow: -2px 2px 4px 0 rgba(25, 25, 25, 5%);
+  }
+}

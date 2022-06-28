@@ -1,0 +1,1 @@
+export {default as TopWearsSection} from "./new-styles/TopWears"

@@ -1,0 +1,1 @@
+export { default as FooterDesktopScreen} from "./desktop/Desktop"

@@ -1,0 +1,33 @@
+.navbar-search-component-container {
+  width: 100%;
+  border-radius: 19px/50%;
+  height: 38px;
+  display: flex;
+  background-color: #fff;
+  overflow: hidden;
+
+  input {
+    height: 100%;
+    width: calc(100% - 38px);
+    background-color: transparent;
+    border: none;
+    padding: 5px 15px;
+    color: #2d2d2d;
+    font-size: 0.9rem;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  span {
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}

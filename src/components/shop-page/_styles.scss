@@ -1,0 +1,314 @@
+.shop-page-component-container {
+  width: 100%;
+  margin-bottom: 25px;
+
+  .shop-page-component-promo-container {
+    width: 100%;
+    height: 175px;
+    background-image: url("../../assets/images/promo-bg.avif");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 45px;
+
+    .promo-inner-container {
+      max-width: 1388px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #000000;
+      padding: 12px;
+
+      h1 {
+        font-size: 33px;
+        line-height: 32px;
+        letter-spacing: 2.8px;
+        font-weight: 900;
+        font-style: italic;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 19px;
+        line-height: 24px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      small {
+        font-size: 10px;
+        line-height: 12px;
+      }
+    }
+  }
+
+  .asos-hero-design-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 45px;
+
+    .asos-hero-design-inner-container {
+      height: auto;
+      width: auto;
+      position: relative;
+
+      img {
+        display: block;
+      }
+
+      .asos-hero-design-text-content-container {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-items: flex-end;
+
+        section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 60px;
+
+          .hero-text-container {
+            background-color: #ffffff;
+            padding: 10px;
+            margin-bottom: 40px;
+
+            h1 {
+              font-size: 50px;
+              line-height: 63px;
+              font-weight: 700;
+              letter-spacing: 2.2px;
+            }
+          }
+
+          .hero-button-container {
+            color: #000000;
+            border-color: #ffffff;
+            border-style: solid;
+            border-width: 2px;
+            background: #ffffff;
+            display: inline-block;
+            font-size: 16px;
+            line-height: 22px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            padding: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+          }
+
+          .hero-button-container:hover {
+            background-color: #000000;
+            color: #ffffff;
+            border-color: #000000;
+          }
+        }
+      }
+    }
+  }
+
+  .asos-features-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5rem;
+
+    .asos-features-inner-container {
+      width: 1322px;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: calc((100% - 60px) / 4);
+
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+          margin-bottom: 15px;
+        }
+
+        h3 {
+          line-height: 28px;
+          font-size: 18px;
+          font-weight: 700;
+          letter-spacing: 0.8px;
+          padding: 3px;
+          text-transform: uppercase;
+        }
+
+        span {
+          font-size: 15px;
+          font-weight: 300;
+          line-height: 24px;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+  }
+
+  .asos-top-two-brands-contaier {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5rem;
+
+    .asos-top-two-brands-inner-container {
+      width: 1322px;
+      padding: 0 32px;
+      display: flex;
+      justify-content: center;
+
+      .each-brand-container {
+        width: 500px;
+        margin-right: 44px;
+
+        .brand-image-container {
+          width: 500px;
+          img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        .brand-details-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          h1 {
+            font-size: 28px;
+            line-height: 36px;
+            letter-spacing: 1.2px;
+            color: #000000;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 14px;
+          }
+
+          p {
+            font-size: 14px;
+            line-height: 26px;
+            letter-spacing: 0.6px;
+            display: inline;
+            margin-top: 12px;
+          }
+
+          .shop-brand-button-container {
+            min-height: 44px;
+            min-width: 184px;
+            border: 2px solid #2d2d2d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            line-height: 39px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 9px 14px;
+            cursor: pointer;
+            color: #000000;
+            background-color: #ffffff;
+            transition: all 0.3s ease-in-out;
+            margin-top: 14px;
+            text-transform: uppercase;
+          }
+
+          .shop-brand-button-container:hover {
+            background-color: #000000;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+
+  .asos-hero-link-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5rem;
+
+    .asos-hero-link-inner-container {
+      width: 1322px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .asos-trending-brands-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5rem;
+
+    .asos-trending-brands-inner-container {
+      width: 1322px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .asos-trending-brands-header-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 32px;
+
+        h1 {
+          text-transform: uppercase;
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 30px;
+          letter-spacing: 1.2px;
+          color: #000000;
+        }
+      }
+
+      .trending-brands-brands-container {
+        width: 1258px;
+        display: flex;
+        justify-content: space-between;
+        .each-trending-brand-container {
+          width: calc((100% - 100px) / 6);
+          img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@import "./sections/new-styles/styles";

@@ -1,0 +1,127 @@
+.footer-desktop-screen-container {
+  width: 100%;
+  // min-height: 500px;
+  background-color: #fff;
+
+  .socials-and-payments-container {
+    width: 100%;
+    min-height: 60px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #eee;
+
+    .socials-and-payments-inner-container {
+      min-height: 60px;
+      width: 1400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .socials-section {
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-left: 50px;
+        }
+      }
+
+      .payment-cards-section {
+        display: flex;
+        align-items: center;
+        margin-left: 50px;
+        padding-left: 50px;
+        border-left: 1px solid #999;
+        img {
+          margin-right: 40px;
+          height: 20px;
+          width: auto;
+          display: block;
+        }
+      }
+    }
+  }
+
+  .footer-links-container {
+    width: 100%;
+    min-height: 200px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+
+    .footer-links-inner-container {
+      width: 1366px;
+      padding: 32px;
+      display: flex;
+
+      section {
+        width: calc(33.33333% - 26.66667px);
+
+        h1 {
+          font-size: 0.84rem;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          font-weight: 600;
+          display: block;
+          padding-bottom: 10px;
+          color: #666;
+        }
+
+        div {
+          display: flex;
+          flex-direction: column;
+
+          span {
+            color: #666;
+            line-height: 30px;
+            font-size: 0.78rem;
+            letter-spacing: 0.4px;
+            cursor: pointer;
+          }
+
+          span:hover {
+            color: #0770cf;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom-container {
+    width: 100%;
+    height: 50px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+
+    .footer-bottom-inner-container {
+      height: 100%;
+      width: 1366px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        color: #2d2d2d;
+        font-size: 0.7rem;
+        cursor: pointer;
+      }
+
+      section {
+        span:hover {
+          color: #0770cf;
+        }
+        span:nth-child(2) {
+          margin: 10px;
+          padding: 0 10px;
+          border-left: 1px solid #2d2d2d;
+          border-right: 1px solid #2d2d2d;
+          line-height: 50px;
+        }
+      }
+    }
+  }
+}
