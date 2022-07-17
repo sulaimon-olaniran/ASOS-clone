@@ -1,5 +1,23 @@
 import {useState} from "react";
 
+import {
+  AccessoriesOption,
+  BrandsOption,
+  ClothingOptionType,
+  DressesOption,
+  FaceBodyOption,
+  MarketPlaceOption,
+  NewInOption,
+  OutletOption,
+  SaleOption,
+  ShoesOption,
+  SportsWearOption,
+  SummerOption,
+  TopManOption,
+  TopShopOption,
+  TrendingNowOption,
+} from "./options";
+
 interface linksObject {
   title: string;
   link: string;
@@ -8,24 +26,21 @@ interface linksObject {
 type linksType = linksObject[];
 
 const ShopLinksNavbarComponent = () => {
-  const [showNavOptions, setShowNavOptions] = useState(false);
   const [optionType, setOptionType] = useState("");
 
   const handleShowNavOptions = (option: string): void => {
     setOptionType(option);
-    setTimeout(() => {
-      setShowNavOptions(true);
-    }, 500);
-  };
-
-  const handleHideNavOptions = (): void => {
-    setShowNavOptions(false);
   };
 
   const links: linksType = [
     {
       title: "Sale",
       link: "/men/sale",
+    },
+
+    {
+      title: "New in",
+      link: "/New/in",
     },
 
     {
@@ -53,7 +68,7 @@ const ShopLinksNavbarComponent = () => {
       link: "/men/clothing",
     },
     {
-      title: "Top man",
+      title: "Topman",
       link: "/men/clothing",
     },
     {
@@ -76,26 +91,45 @@ const ShopLinksNavbarComponent = () => {
 
   return (
     <nav className="shopping-links-navbar-component">
-      <div className="shooping-links-navbar-component-inner-container">
+      <div className="shoping-links-navbar-component-inner-container">
         {links.map(link => (
           <div
             key={link.title}
             className={`shopping-link-button ${
-              link.title === "Sale" ? "add-red-background" : ""
+              link.title === "Sale" ? "add-red-background" : null
             }
-            ${link.title === "Outlet" ? "add-red-background" : ""}
-             `}
-            // onMouseEnter={() => handleShowNavOptions(link.title)}
-            // onMouseLeave={handleHideNavOptions}
+            ${link.title === "Outlet" ? "add-red-background" : null}
+            ${optionType === link.title ? "link-button-is-active" : null}
+             
+            `}
+            onMouseOver={() => handleShowNavOptions(link.title)}
           >
             <p>{link.title}</p>
           </div>
         ))}
-        <div
-          className={`shopping-links-navbar-options-container ${
-            showNavOptions && "show-nav-options"
-          }`}
-        ></div>
+        <div className="shopping-links-navbar-options-container">
+          <div className="navbar-options-inner-container">
+            {optionType.toLowerCase() === "sale" && <SaleOption />}
+            {optionType.toLowerCase() === "new in" && <NewInOption />}
+            {optionType.toLowerCase() === "clothing" && <ClothingOptionType />}
+            {optionType.toLowerCase() === "shoes" && <ShoesOption />}
+            {optionType.toLowerCase() === "sportswear" && <SportsWearOption />}
+            {optionType.toLowerCase() === "accessories" && (
+              <AccessoriesOption />
+            )}
+            {optionType.toLowerCase() === "summer" && <SummerOption />}
+            {optionType.toLowerCase() === "trending now" && (
+              <TrendingNowOption />
+            )}
+            {optionType.toLowerCase() === "topman" && <TopShopOption />}
+            {optionType.toLowerCase() === "face + body" && <FaceBodyOption />}
+            {optionType.toLowerCase() === "brands" && <DressesOption />}
+            {optionType.toLowerCase() === "outlet" && <OutletOption />}
+            {optionType.toLowerCase() === "marketplace" && (
+              <MarketPlaceOption />
+            )}
+          </div>
+        </div>
       </div>
     </nav>
   );

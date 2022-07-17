@@ -1,0 +1,92 @@
+.image-links-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .links-content-column {
+    flex-direction: column;
+
+    .image-link-each-content {
+      margin-bottom: 15px;
+    }
+  }
+
+  .links-content-row {
+    flex-direction: row;
+  }
+
+  .image-links-contents {
+    display: flex;
+    justify-content: space-between;
+
+    .image-link-each-content {
+      cursor: pointer;
+      width: 281px;
+      padding: 2px;
+      background-color: #eee;
+      border: 1px solid #ddd;
+
+      .content-image-container {
+        width: 100%;
+        position: relative;
+
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+
+        .content-image-overlay {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          z-index: 1;
+          background-image: linear-gradient(
+            180deg,
+            hsla(0, 0%, 100%, 0),
+            hsla(0, 0%, 97.3%, 0.8)
+          );
+
+          background-repeat: no-repeat;
+          background-size: 100% 70%;
+          background-position: bottom;
+        }
+
+        .content-image-title-container {
+          width: 100%;
+          position: absolute;
+          height: 3.375em;
+          top: auto;
+          bottom: 0.625em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2;
+          span {
+            text-align: center;
+            padding: 0 32px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            vertical-align: middle;
+            top: 0;
+            left: 0;
+            line-height: 1.13em;
+            font-size: 1rem;
+            font-family: futura-pt, sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 900;
+          }
+        }
+      }
+    }
+
+    .image-link-each-content:hover {
+      border-color: #0770cf;
+    }
+  }
+}

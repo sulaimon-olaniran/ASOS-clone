@@ -24,6 +24,26 @@ import men_asos_design_crochet from "./men_asos_design_crotchet.avif"
 import men_asos_design_neutrals from "./men_asos_design_neutrals.avif"
 import men_top_two_brands_one from "./men_top_two_brands_one.avif"
 import men_top_two_brands_two from "./men_top_two_brands_two.avif"
+import women_hero_bg from "./women_hero_bg.avif"
+import women_party_looks from "./women_party_looks.avif"
+import women_mainstage_fits from "./women_mainstage_fits.avif"
+import women_swim_stuff from "./women_swim_stuff.avif"
+import women_revolution from "./women_revolution.avif"
+import women_dresses from "./women_dresses.webp"
+import women_tops from "./women_tops.webp"
+import women_shoes from "./women_shoes.webp"
+import women_short_and_trousers from "./women_short_and_trousers.webp"
+import women_accessories from "./women_accessories.webp"
+import women_sport_brands from "./women_sport_brands.webp"
+import women_swimwear from "./women_swimwear.webp"
+import women_top_two_brands_one from "./women_top_two_brands_one.jpeg"
+import women_top_two_brands_two from "./women_top_two_brands_two.avif"
+import monkl_logo from "./monkl_logo.webp"
+import never_fully_dressed_logo from "./never_fully_dressed_logo.avif"
+import collution_logo from "./collution_logo.webp"
+import reclaimed_vintage_logo from "./reclaimed_vintage_logo.avif"
+import topshop_logo from "./topshop_logo.avif"
+import weekday_logo from "./weekday_logo.webp"
 
 export {
   american_express_image,
@@ -52,7 +72,26 @@ export {
   men_asos_design_neutrals,
   men_top_two_brands_one,
   men_top_two_brands_two,
-
+  women_hero_bg,
+  women_party_looks,
+  women_mainstage_fits,
+  women_swim_stuff,
+  women_revolution,
+  women_dresses,
+  women_tops,
+  women_shoes,
+  women_short_and_trousers,
+  women_accessories,
+  women_sport_brands,
+  women_swimwear,
+  women_top_two_brands_one,
+  women_top_two_brands_two,
+  monkl_logo,
+  never_fully_dressed_logo,
+  collution_logo,
+  reclaimed_vintage_logo,
+  topshop_logo,
+  weekday_logo
 }
 
 

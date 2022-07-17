@@ -1,0 +1,26 @@
+.sportswear-option-type-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+
+  .sportswear-shop-by-product-container,
+  .sportswear-shop-by-activity-container,
+  .sportswear-shop-by-brand-container,
+  .sportswear-image-links-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5.5px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 0 20px;
+    flex: 1;
+    border-right: 1px solid #ddd;
+  }
+
+  .sportswear-image-links-container {
+    border: none;
+  }
+}

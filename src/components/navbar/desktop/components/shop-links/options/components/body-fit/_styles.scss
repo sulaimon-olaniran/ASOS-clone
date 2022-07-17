@@ -1,0 +1,94 @@
+.body-fit-component-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .body-fit-component-header-container {
+    width: 100%;
+    margin-bottom: 12px;
+    padding-bottom: 5.5px;
+
+    h4 {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      font-family: futura-pt, sans-serif;
+      text-transform: uppercase;
+      font-weight: 900;
+
+      span {
+        border-bottom: 1px solid #2d2d2d;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .body-fit-component-contents-container {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 5px;
+
+    .each-body-fit-content-container {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      cursor: pointer;
+
+      span {
+        line-height: 1.5;
+        display: list-item;
+        max-width: 80%;
+        text-align: center;
+        list-style-type: none;
+        color: #666;
+        text-decoration: none;
+        font-size: 0.75rem;
+        font-family: futura-pt, sans-serif;
+        letter-spacing: 0.4px;
+        vertical-align: baseline;
+        margin-bottom: 5px;
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+      }
+
+      .content-image-container {
+        border-radius: 50%;
+        width: 86px;
+        height: 86px;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5px;
+        border: 1px solid #ddd;
+        transition: border-color 0.2s ease-in-out;
+
+        img {
+          width: 80px;
+          height: auto;
+          border-radius: 50%;
+          display: block;
+          object-fit: contain;
+        }
+      }
+    }
+
+    .each-body-fit-content-container:hover {
+      .content-image-container {
+        border-color: #0770cf;
+      }
+
+      span {
+        color: #0770cf;
+      }
+    }
+  }
+}

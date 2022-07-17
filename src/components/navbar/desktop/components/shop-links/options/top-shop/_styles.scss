@@ -1,0 +1,33 @@
+.top-shop-option-type-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+
+  .top-shop-shop-by-product-container,
+  .top-shop-image-links-one,
+  .top-shop-image-links-two {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5.5px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 0 20px;
+    border-right: 1px solid #ddd;
+  }
+
+  .top-shop-shop-by-product-container {
+    flex: 2;
+  }
+
+  .top-shop-image-links-one {
+    flex: 1;
+  }
+
+  .top-shop-image-links-two {
+    border: none;
+    flex: 1;
+  }
+}

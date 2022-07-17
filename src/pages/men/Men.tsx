@@ -69,7 +69,7 @@ const pageData = {
     },
   ],
 
-  hero_bg: men_hero_bg,
+  hero_section: {image: men_hero_bg, text: "Riptide Vibes"},
 
   features: [
     {

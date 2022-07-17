@@ -1,0 +1,30 @@
+.outlet-option-type-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+
+  .outlet-shop-by-brand-container,
+  .outlet-shop-by-product-container,
+  .outlet-image-links-container,
+  .outlet-shop-by-body-fit-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5.5px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 0 20px;
+    flex: 1;
+    border-right: 1px solid #ddd;
+  }
+
+  .outlet-shop-by-product-container {
+    flex: 2;
+  }
+
+  .outlet-image-links-container {
+    border: none;
+  }
+}

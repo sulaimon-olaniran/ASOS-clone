@@ -8,15 +8,6 @@ import {
   tommy_hilfiger_logo,
 } from "../../assets/images";
 import {TopWearsSection} from "./sections";
-const features = [1, 2, 3, 4];
-const trendingBrands = [
-  tommy_hilfiger_logo,
-  north_face_logo,
-  nike_logo,
-  carhartt_logo,
-  ellesse_log,
-  dr_martens_logo,
-];
 
 interface componentProps {
   data: {
@@ -25,7 +16,7 @@ interface componentProps {
       image: string;
       title: string;
     }[];
-    hero_bg: string;
+    hero_section: {image: string; text: string};
     features: {
       image: string;
       title: string;
@@ -46,12 +37,12 @@ const ShopPageComponent = ({data}: componentProps) => {
 
       <section className="asos-hero-design-container">
         <div className="asos-hero-design-inner-container">
-          <img src={data.hero_bg} alt="hero" />
+          <img src={data.hero_section.image} alt="" />
 
           <div className="asos-hero-design-text-content-container">
             <section>
               <div className="hero-text-container">
-                <h1>Riptide Vibes</h1>
+                <h1>{data.hero_section.text}</h1>
               </div>
 
               <div className="hero-button-container">
@@ -100,7 +91,7 @@ const ShopPageComponent = ({data}: componentProps) => {
             return (
               <div className="each-brand-container" key={index}>
                 <div className="brand-image-container">
-                  <img src={brand.image} />
+                  <img src={brand.image} alt="" />
                 </div>
                 <div className="brand-details-container">
                   <h1>{brand.title}</h1>

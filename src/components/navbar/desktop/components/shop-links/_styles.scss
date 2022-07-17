@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
 
-  .shooping-links-navbar-component-inner-container {
+  .shoping-links-navbar-component-inner-container {
     height: 100%;
     width: 1366px;
     position: relative;
@@ -19,12 +19,20 @@
       left: 0;
       top: 50px;
       width: 100%;
-      min-height: 400px;
-      background-color: #ffffff;
-      z-index: 5;
-      border: 1px solid rgb(215, 215, 215);
-      border-top: none;
-      display: none;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .navbar-options-inner-container {
+        width: 100%;
+        min-height: 200px;
+        background-color: #eee;
+        z-index: 5;
+        border: 1px solid #d7d7d7;
+        border-top: none;
+        padding: 24px 10px 10px 10px;
+      }
     }
 
     .show-nav-options {
@@ -54,7 +62,7 @@
     }
 
     .shopping-link-button:hover {
-      background-color: #fff;
+      background-color: #eee;
       color: #525050;
       cursor: pointer;
       transform: skew(0);
@@ -63,5 +71,18 @@
         transform: skew(0);
       }
     }
+
+    .link-button-is-active {
+      background-color: #eee;
+      color: #525050;
+    }
+  }
+
+  .shoping-links-navbar-component-inner-container:hover {
+    .shopping-links-navbar-options-container {
+      display: flex;
+    }
   }
 }
+
+@import "./options/index";

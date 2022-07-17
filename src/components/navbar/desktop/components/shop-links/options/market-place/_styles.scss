@@ -1,0 +1,49 @@
+.market-place-option-type-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 15px 10px 24px 10px;
+
+  .each-market-place-link-container {
+    width: calc(25% - 15px);
+    cursor: pointer;
+
+    .market-place-top-section {
+      width: 100%;
+      height: auto;
+      position: relative;
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      h4 {
+        position: absolute;
+        font-size: 1rem;
+        bottom: 0;
+        left: 0;
+        padding: 12px 16px;
+        text-transform: uppercase;
+        font-weight: 700;
+        line-height: 1.22;
+        letter-spacing: 2.5px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1%);
+        color: #fff;
+      }
+    }
+
+    .market-place-bottom-section {
+      width: 100%;
+      font-size: 0.85rem;
+      height: 70px;
+      background-color: #fff;
+      color: #2d2d2d;
+      line-height: 1.57;
+      letter-spacing: 0.4px;
+      padding: 10px 16px 16px;
+    }
+  }
+}

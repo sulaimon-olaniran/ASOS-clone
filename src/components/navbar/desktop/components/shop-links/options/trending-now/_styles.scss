@@ -1,0 +1,26 @@
+.trending-now-option-type-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+
+  .trending-now-most-wanted,
+  .trending-now-new-drops,
+  .trending-now-image-links-one,
+  .trending-now-image-links-two {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5.5px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 0 20px;
+    flex: 1;
+    border-right: 1px solid #ddd;
+  }
+
+  .trending-now-image-links-two {
+    border: none;
+  }
+}

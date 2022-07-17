@@ -1,0 +1,42 @@
+.shoes-option-type-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+
+  .shoes-shop-by-product-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5.5px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 0 20px;
+    flex: 1;
+    border-right: 1px solid #ddd;
+  }
+
+  .shoes-shop-by-brand-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5.5px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 0 20px;
+    flex: 1;
+    border-right: 1px solid #ddd;
+  }
+
+  .shoes-image-links-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5.5px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 0 20px;
+    flex: 2;
+  }
+}

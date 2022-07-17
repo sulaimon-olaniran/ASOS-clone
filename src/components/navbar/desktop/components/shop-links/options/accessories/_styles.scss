@@ -1,0 +1,26 @@
+.accessories-option-type-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+
+  .accessories-shop-by-product-container,
+  .accessories-shop-by-brand-container,
+  .accessories-image-links-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5.5px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 0 20px;
+    flex: 1;
+    border-right: 1px solid #ddd;
+  }
+
+  .accessories-image-links-container {
+    border: none;
+    flex: 2;
+  }
+}

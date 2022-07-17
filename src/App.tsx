@@ -7,6 +7,7 @@ import {FooterDesktopScreen} from "./components/footer";
 import {Homepage, WomenShoppingPage, MenShoppingPage} from "./pages";
 
 function App() {
+  console.log(NavbarComponent);
   return (
     <Router>
       <div className="application-container">
