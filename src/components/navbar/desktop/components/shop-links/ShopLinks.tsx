@@ -136,3 +136,15 @@ const ShopLinksNavbarComponent = () => {
 };
 
 export default ShopLinksNavbarComponent;
+
+{
+  /* <img
+  class="img"
+  data-bind="attr: imageSources().hero, event: { onload: window.asos.performance.markAndMeasure('pdp:gallery_image_'+$index()+'_displayed')}"
+  sizes="(max-width: 720px) 100vw, (min-width: 720px) 513px"
+  alt="London Rebel X quilted sliders in green, 1 of 4"
+  src="https://images.asos-media.com/products/london-rebel-x-quilted-sliders-in-green/201648686-1-green?$n_640w$&amp;wid=513&amp;fit=constrain"
+  srcset="https://images.asos-media.com/products/london-rebel-x-quilted-sliders-in-green/201648686-1-green?$n_640w$&amp;wid=513&amp;fit=constrain 513w,https://images.asos-media.com/products/london-rebel-x-quilted-sliders-in-green/201648686-1-green?$n_750w$&amp;wid=750&amp;fit=constrain 750w,https://images.asos-media.com/products/london-rebel-x-quilted-sliders-in-green/201648686-1-green?$n_960w$&amp;wid=952&amp;fit=constrain 952w,https://images.asos-media.com/products/london-rebel-x-quilted-sliders-in-green/201648686-1-green?$n_1280w$&amp;wid=1125&amp;fit=constrain 1125w,https://images.asos-media.com/products/london-rebel-x-quilted-sliders-in-green/201648686-1-green?$n_1920w$&amp;wid=1926&amp;fit=constrain 1926w"
+  style="visibility: visible; width: 100%; height: 100%;"
+></img>; */
+}

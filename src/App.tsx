@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/styles.scss";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
-import {NavbarComponent} from "./components";
+import {NavbarComponent, ProductsComponent} from "./components";
 import {FooterDesktopScreen} from "./components/footer";
 import {Homepage, WomenShoppingPage, MenShoppingPage} from "./pages";
 
@@ -16,6 +16,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/men" element={<MenShoppingPage />} />
           <Route path="/women" element={<WomenShoppingPage />} />
+          <Route path="/men/new-in" element={<ProductsComponent />} />
         </Routes>
         <FooterDesktopScreen />
       </div>

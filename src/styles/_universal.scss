@@ -11,9 +11,10 @@ body {
   height: 100%;
   font-family: "Poppins", sans-serif;
 
-  //font-family: futura-pt, sans-serif;
-
   a {
     text-decoration: none;
   }
 }
+
+$app-width: 1366px;
+$app-sides-padding: 32px;

@@ -1,12 +1,4 @@
-import {
-  hero_link_image,
-  carhartt_logo,
-  dr_martens_logo,
-  ellesse_log,
-  nike_logo,
-  north_face_logo,
-  tommy_hilfiger_logo,
-} from "../../assets/images";
+import {hero_link_image} from "../../assets/images";
 import {TopWearsSection} from "./sections";
 
 interface componentProps {

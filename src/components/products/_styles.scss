@@ -1,0 +1,237 @@
+.products-component-container {
+  width: 100%;
+  height: auto;
+  padding-bottom: 50px;
+
+  .products-component-nav-links-container {
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .products-component-products-description {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+
+    .products-description-inner-container {
+      width: $app-width;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      h1 {
+        color: #2d2d2d;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 1.7px;
+        line-height: 30px;
+        padding: 0 16px 8px;
+      }
+
+      .products-description-texts {
+        max-width: 1000px;
+
+        .texts-container {
+          font-weight: 400;
+          height: 65px;
+          letter-spacing: 0.4px;
+          line-height: 1.5;
+          margin: 0 auto;
+          max-width: 1000px;
+          overflow: hidden;
+          text-align: center;
+          transition: height 0.3s ease-in-out;
+
+          p {
+            color: #2d2d2d;
+            font-size: 14px;
+            font-weight: 400;
+            height: unset;
+            letter-spacing: 0.4px;
+            line-height: 1.5;
+            margin: 0 auto;
+            max-width: 1000px;
+            overflow: hidden;
+            padding: unset;
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: unset;
+          }
+        }
+
+        .view-more-button-container {
+          width: 100%;
+          height: 65px;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          background: linear-gradient(
+            180deg,
+            hsla(0, 0%, 100%, 0),
+            #f8f8f8 1.38em
+          );
+          position: relative;
+          top: -1.5em;
+
+          span {
+            cursor: pointer;
+          }
+        }
+      }
+
+      .view-more-description {
+        .texts-container {
+          height: 150px;
+        }
+
+        .view-more-button-container {
+          top: 0;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  .products-component-filter-container {
+    width: 100%;
+    height: 116px;
+    background-color: #eee;
+
+    .products-filter-inner-container {
+      width: $app-width;
+    }
+  }
+
+  .products-component-products-listing-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .products-listing-inner-container {
+      width: $app-width;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .products-listing-number-container {
+        width: 100%;
+        height: 50px;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p {
+          color: #666;
+          font-size: 13.5px;
+          letter-spacing: 0.5px;
+          line-height: 20px;
+        }
+      }
+
+      .products-listing-each-product-container {
+        width: 100%;
+        padding: 0 $app-sides-padding;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .products-component-products-progress {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+
+    .products-progress-inner-container {
+      width: $app-width;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p {
+        color: #666;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        line-height: 20px;
+        margin: 0;
+        padding: 0;
+      }
+
+      progress {
+        appearance: none;
+        background: #ddd;
+        border: none;
+        color: #0770cf;
+        display: block;
+        height: 2px;
+        margin: 12px auto 0;
+        width: 200px;
+      }
+
+      // progress {
+      //   border: none;
+      //   background: grey;
+      // }
+
+      progress::-webkit-progress-value {
+        background: #0770cf;
+      }
+
+      progress::-webkit-progress-bar {
+        background: #ddd;
+      }
+
+      progress::-moz-progress-value {
+        background: #0770cf;
+      }
+
+      progress::-moz-progress-bar {
+        background: #ddd;
+      }
+    }
+  }
+
+  .products-component-load-more-button-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .load-more-button {
+      width: 300px;
+      height: 60px;
+      background: none;
+      background-color: #fff;
+      border: 2px solid #ddd;
+      border-radius: 0;
+      box-sizing: border-box;
+      color: #2d2d2d;
+      cursor: pointer;
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      line-height: normal;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@import "./each-product/styles";

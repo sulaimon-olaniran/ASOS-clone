@@ -1,0 +1,258 @@
+.heartsize {
+  height: 38px;
+  width: 38px;
+  padding-right: 0px;
+}
+.animheartsize {
+  height: 5x;
+  width: 5px;
+  padding-right: 0px;
+}
+.animheartsize2 {
+  height: 10px;
+  width: 10px;
+  padding-right: 0px;
+}
+.animheartsize3 {
+  height: 10px;
+  width: 10px;
+  padding-right: 0px;
+}
+.heartbutton {
+  position: relative;
+  display: flex;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: hsla(0, 0%, 100%, 0.8);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+}
+.heart-icon-outline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  opacity: 1;
+}
+.heart-icon-hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  opacity: 0;
+}
+.heart-icon-filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.start-animation-bloom {
+  opacity: 1;
+  animation: animation-bloom-in 1s;
+}
+.start-animation-bloom2 {
+  opacity: 1;
+  animation: animation-bloom2-in 2s;
+}
+.start-animation-bloom3 {
+  opacity: 1;
+  animation: animation-bloom3-in 2.5s;
+}
+.stop-animation-bloom {
+  opacity: 1;
+  animation: animation-bloom-out 1s;
+}
+.heart-icon-animation {
+  position: absolute;
+  top: 20;
+  left: 35;
+  opacity: 0;
+}
+.heart-icon-animation2 {
+  position: absolute;
+  top: 20;
+  left: 27;
+  opacity: 0;
+}
+.heart-icon-animation3 {
+  position: absolute;
+  top: 20;
+  left: 27;
+  opacity: 0;
+  animation-delay: 0.3s;
+}
+.liked {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+@keyframes animation-bloom-in {
+  0% {
+    transform: scale3d(1, 1, 1);
+    opacity: 0;
+    display: block;
+    left: 35;
+  }
+  10% {
+    transform: scale3d(1.2, 1.2, 1);
+    opacity: 0;
+  }
+  20% {
+    transform: scale3d(1.1, 1, 1);
+    opacity: 1;
+  }
+  30% {
+    transform: scale3d(1.5, 1.5, 1);
+    opacity: 1;
+  }
+  40% {
+    transform: scale3d(1.3, 1.3, 1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale3d(1, 1.2, 1);
+    opacity: 1;
+    left: 30;
+  }
+  51% {
+    transform: scale3d(1.5, 1.5, 1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale3d(1, 1);
+    top: -1px;
+    opacity: 0;
+    left: 35;
+  }
+}
+@keyframes animation-bloom2-in {
+  0% {
+    transform: scale3d(1, 1, 1);
+    opacity: 0;
+    display: block;
+    left: 27;
+  }
+  10% {
+    transform: scale3d(1.2, 1.2, 1);
+    opacity: 0;
+  }
+  20% {
+    transform: scale3d(1.1, 1, 1);
+    opacity: 1;
+  }
+  30% {
+    transform: scale3d(1.2, 1.2, 1);
+    opacity: 1;
+  }
+  40% {
+    transform: scale3d(1.3, 1.3, 1);
+    opacity: 1;
+    left: 30;
+  }
+  50% {
+    transform: scale3d(1, 1.2, 1);
+    opacity: 1;
+  }
+  51% {
+    transform: scale3d(1.5, 1.5, 1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+    top: -10px;
+    opacity: 0;
+    left: 36;
+  }
+}
+@keyframes animation-bloom3-in {
+  0% {
+    transform: scale3d(1, 1, 1);
+    opacity: 0;
+    display: block;
+  }
+  10% {
+    transform: scale3d(1.2, 1.2, 1);
+    opacity: 0;
+  }
+  20% {
+    transform: scale3d(1.1, 1, 1);
+    opacity: 1;
+  }
+  30% {
+    transform: scale3d(1.1, 1.1, 1);
+    opacity: 1;
+    left: 18;
+  }
+  40% {
+    transform: scale3d(1.1, 1.13, 1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale3d(1, 1.2, 1);
+    opacity: 1;
+  }
+  51% {
+    transform: scale3d(1.5, 1.5, 1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+    top: -20px;
+    opacity: 0;
+  }
+}
+@keyframes animation-bloom-out {
+  0% {
+    transform: scale3d(1, 1, 1);
+    opacity: 0;
+  }
+  10% {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+  20% {
+    transform: scale3d(1.1, 1.1, 1);
+    opacity: 1;
+  }
+  30% {
+    transform: scale3d(1.12, 1.12, 1);
+    opacity: 1;
+  }
+  80% {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
+
+.heartbutton:hover {
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  .heart-icon-outline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  .heart-icon-filled {
+    opacity: 1;
+  }
+}
+
+// .heartbutton-liked {
+//   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+//     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+//     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+//   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+// }
