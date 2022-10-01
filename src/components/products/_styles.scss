@@ -8,6 +8,45 @@
     height: 50px;
     background-color: #ffffff;
     border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .nav-links-inner-container {
+      width: $app-width;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 $app-sides-padding;
+
+      .each-link-container {
+        display: flex;
+        align-items: center;
+        color: #2d2d2d;
+        text-decoration: none;
+
+        span {
+          display: inline-block;
+          padding: 0 11px 0 14px;
+        }
+
+        p {
+          font-size: 0.75rem;
+          font-weight: 400;
+          display: inline-block;
+          letter-spacing: 0.4px;
+          text-transform: capitalize;
+          cursor: pointer;
+        }
+      }
+
+      .is-last-link {
+        color: #767676;
+        span {
+          display: none;
+        }
+      }
+    }
   }
 
   .products-component-products-description {

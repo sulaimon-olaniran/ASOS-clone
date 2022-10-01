@@ -4,7 +4,12 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import {NavbarComponent, ProductsComponent} from "./components";
 import {FooterDesktopScreen} from "./components/footer";
-import {Homepage, WomenShoppingPage, MenShoppingPage} from "./pages";
+import {
+  Homepage,
+  WomenShoppingPage,
+  MenShoppingPage,
+  ProductPage,
+} from "./pages";
 
 function App() {
   console.log(NavbarComponent);
@@ -17,6 +22,10 @@ function App() {
           <Route path="/men" element={<MenShoppingPage />} />
           <Route path="/women" element={<WomenShoppingPage />} />
           <Route path="/men/new-in" element={<ProductsComponent />} />
+          <Route
+            path="/men/product/:name/:product_id/:category_id"
+            element={<ProductPage />}
+          />
         </Routes>
         <FooterDesktopScreen />
       </div>

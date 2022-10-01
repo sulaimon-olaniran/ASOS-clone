@@ -1,18 +1,15 @@
-import {useState} from "react";
-
 import "./styles.scss";
 
-const LikeButtonComponent = () => {
-  const [isLiked, setIsLiked] = useState(false);
+interface componentProps {
+  buttonAction: () => any;
+  isLiked: boolean;
+}
 
-  const handleToggleIsLiked = () => {
-    setIsLiked(prev => !prev);
-  };
-
+const LikeButtonComponent = ({buttonAction, isLiked}: componentProps) => {
   return (
     <div
       className={`heartbutton ${isLiked && "heartbutton-liked"}`}
-      onClick={handleToggleIsLiked}
+      onClick={buttonAction}
     >
       <svg
         className={`heart-icon-outline heartsize ${isLiked ? "liked" : ""}`}

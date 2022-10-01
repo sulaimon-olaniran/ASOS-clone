@@ -1,27 +1,30 @@
-import {HeartIcon, SavedItemsIcon} from "../../../assets/icons";
-
 import LikeButtonComponent from "../../like-button/Like-Button";
+import {productType} from "../interface";
 
-interface componentProps {
-  product: {
-    id: number;
-    name: string;
-    imageUrl: string;
-    price: {
-      currency: string;
-      current: {
-        value: number;
-        text: string;
-      };
-      previous: {
-        value?: number;
-        text?: string;
-      };
-    };
+import {
+  saveProduct,
+  unsaveProduct,
+} from "../../../state/actions-creator/product";
+import {useAppDispatch, useAppSelector} from "../../../assets/hooks";
+
+type componentType = {
+  product: productType;
+};
+
+const EachProdcut = ({product}: componentType) => {
+  const hasPreviousPrice: boolean = product.price.previous.value !== null;
+
+  const saved_products = useAppSelector(state => state.product.saved);
+  const dispatch = useAppDispatch();
+
+  const toggleSaveProduct = () => {
+    if (saved_products.includes(product.id)) {
+      dispatch(unsaveProduct(product.id));
+    } else {
+      dispatch(saveProduct(product.id));
+    }
   };
-}
 
-const EachProdcut = ({product}: any) => {
   return (
     <div className="each-product-container">
       <div className="product-image-container">
@@ -30,12 +33,22 @@ const EachProdcut = ({product}: any) => {
       <div className="product-name-container">
         <span>{product?.name}</span>
       </div>
-      <div className="product-price-container">
+      <div
+        className={`product-price-container ${
+          hasPreviousPrice && "has-previous-price"
+        }`}
+      >
+        <span className="previous-price">{product.price.previous.text}</span>
         <span>{product.price.current.text}</span>
       </div>
 
+      <div className="each-product-discount-percentage">-13%</div>
+
       <div className="each-product-like-button">
-        <LikeButtonComponent />
+        <LikeButtonComponent
+          buttonAction={toggleSaveProduct}
+          isLiked={saved_products.includes(product.id)}
+        />
       </div>
     </div>
   );

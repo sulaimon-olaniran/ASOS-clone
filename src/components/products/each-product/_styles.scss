@@ -27,6 +27,8 @@
 
   .product-price-container {
     width: 100%;
+    display: flex;
+    align-items: center;
 
     span {
       color: #666;
@@ -35,11 +37,44 @@
       letter-spacing: 0.8px;
       line-height: 20px;
     }
+
+    .previous-price {
+      display: none;
+      font-weight: normal;
+      text-decoration: line-through;
+      margin-right: 4px;
+      letter-spacing: 0.8px;
+      line-height: 20px;
+      font-size: 14px;
+    }
+  }
+
+  .has-previous-price {
+    span {
+      color: #d01345;
+    }
+    .previous-price {
+      display: block;
+      color: #666;
+    }
+  }
+
+  .each-product-discount-percentage {
+    position: absolute;
+    top: 16px;
+    background: hsla(0, 0%, 100%, 0.8);
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    line-height: 16px;
+    padding: 2px 4px;
+    color: #d01345;
   }
 
   .each-product-like-button {
     position: absolute;
     right: 10px;
     bottom: 100px;
+    background-color: hsla(0, 0%, 100%, 0.8);
+    border-radius: 50%;
   }
 }

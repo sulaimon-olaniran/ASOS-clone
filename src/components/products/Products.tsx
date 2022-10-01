@@ -3,6 +3,7 @@ import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import EachProdcut from "./each-product/Each-Product";
+import {productType, categoryType} from "./interface";
 
 const getOptions = (offset: string) => {
   const options = {
@@ -30,9 +31,11 @@ const getOptions = (offset: string) => {
 
 const ProductsComponent = () => {
   const [viewMore, setViewMore] = useState(false);
-  const [category, setCategory]: any = useState({});
-  const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState<categoryType>({});
+  const [products, setProducts] = useState<productType[]>([]);
   const [loadingMore, setLoadingMore] = useState(false);
+
+  const links = ["home", "men", "new in"];
 
   const toggleViewMore = () => {
     setViewMore(prev => !prev);
@@ -73,7 +76,21 @@ const ProductsComponent = () => {
   return (
     <div className="products-component-container">
       <nav className="products-component-nav-links-container">
-        <div className="nav-links-inner-container"></div>
+        <div className="nav-links-inner-container">
+          {links.map((link, index) => {
+            return (
+              <div
+                className={`each-link-container ${
+                  index + 1 === links.length && "is-last-link"
+                }`}
+                key={index}
+              >
+                <p>{link}</p>
+                <span>›</span>
+              </div>
+            );
+          })}
+        </div>
       </nav>
 
       <div className="products-component-products-description">
@@ -126,7 +143,7 @@ const ProductsComponent = () => {
           </div>
           <div className="products-listing-each-product-container">
             {products.length > 0 &&
-              products.map((item: any) => {
+              products.map((item: productType) => {
                 const product = {
                   id: item.id,
                   name: item.name,
@@ -134,7 +151,7 @@ const ProductsComponent = () => {
                   price: {
                     current: item.price.current,
                     previous: item.price.previous,
-                    currency: item.currency,
+                    currency: item.price.currency,
                   },
                 };
                 return <EachProdcut key={item.id} product={product} />;
