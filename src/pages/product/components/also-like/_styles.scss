@@ -1,0 +1,92 @@
+.product-also-like-container {
+  width: 960px;
+  padding: 26px 0;
+  h1 {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.8px;
+    line-height: 24px;
+    color: #2d2d2d;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+  }
+
+  .also-like-products-list-container {
+    width: 100%;
+    display: grid;
+    grid-column-gap: 12px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+    .each-also-like-product {
+      width: 182px;
+      margin-bottom: 25px;
+
+      .product-image-container {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+      }
+
+      .product-price-container {
+        margin-bottom: 10px;
+        .prev-price {
+          display: none;
+          font-size: 14px;
+          letter-spacing: 0.8px;
+          line-height: 20px;
+          color: #2d2d2d;
+          color: #666;
+          font-weight: normal;
+          text-decoration: line-through;
+        }
+
+        .current-price {
+          font-size: 14px;
+          font-weight: bold;
+          letter-spacing: 0.8px;
+          line-height: 20px;
+          color: #2d2d2d;
+          display: flex;
+          align-items: center;
+
+          span {
+            display: none;
+            font-size: 14px;
+            font-weight: normal;
+            letter-spacing: 0.6px;
+            line-height: 20px;
+            margin-left: 4px;
+            color: #d01345;
+          }
+        }
+      }
+
+      .has-prev-price {
+        .prev-price {
+          display: flex;
+        }
+
+        .current-price {
+          color: #d01345;
+          span {
+            display: flex;
+          }
+        }
+      }
+
+      .product-brand-container {
+        font-size: 12px;
+        font-weight: normal;
+        letter-spacing: 0.8px;
+        line-height: 16px;
+        color: #2d2d2d;
+      }
+    }
+  }
+}

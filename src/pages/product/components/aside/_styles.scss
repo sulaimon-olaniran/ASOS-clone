@@ -158,6 +158,30 @@
         line-height: normal;
         color: #2d2d2d;
         cursor: pointer;
+
+        .icon-circle {
+          margin-right: 10px;
+          background-color: #060e89;
+          border-radius: 9px;
+          color: #fff;
+          height: 18px;
+          text-align: center;
+          min-width: 18px;
+          float: left;
+          white-space: nowrap;
+          margin-top: 2px;
+        }
+
+        span {
+          background: url("https://assets.asosservices.com/productpg/pdp.spritesheet-2bc7920f.svg")
+            no-repeat;
+          background-position: -138px -37px;
+          width: 12px;
+          height: 11.5px;
+          display: block;
+          margin-left: 3px;
+          margin-top: 3px;
+        }
       }
     }
 
@@ -198,6 +222,8 @@
       border-radius: 50%;
     }
   }
+
+  //FREE DELIVERY INFO STYLES ...........
 
   .free-delivery-info {
     width: 100%;
@@ -249,7 +275,17 @@
           line-height: normal;
           color: #2d2d2d;
           cursor: pointer;
-          margin-left: 5px;
+          margin-left: 4px;
+
+          .icon-span {
+            display: inline-block;
+            background: url("https://assets.asosservices.com/productpg/pdp.spritesheet-2bc7920f.svg")
+              no-repeat;
+            background-position: -191px -98px;
+            width: 10px;
+            height: 10px;
+            margin-left: 4px;
+          }
         }
       }
     }

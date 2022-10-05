@@ -38,7 +38,12 @@ const ProductAside = () => {
       <div className="product-size-container">
         <div className="size-header-container">
           <h3>Size:</h3>
-          <span>Find your Fit Assistant size</span>
+          <span>
+            <div className="icon-circle">
+              <span></span>
+            </div>
+            Find your Fit Assistant size
+          </span>
         </div>
 
         <select>
@@ -81,7 +86,10 @@ const ProductAside = () => {
 
         <div className="link-container">
           <p>
-            Ts&Cs apply .<span>Learn more</span>
+            Ts&Cs apply .
+            <span>
+              Learn more <span className="icon-span" />
+            </span>
           </p>
         </div>
       </div>

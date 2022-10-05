@@ -5,31 +5,25 @@ import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutl
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
 import {IconButton} from "@mui/material";
 
+import {productMedia} from "../../types";
+
+import {VideoJsPlayer} from "../../../../components/";
+
 interface componentProps {
-  media: {
-    images: string[];
-    catwalk: string[];
-  };
+  media: productMedia;
 }
 
 const ProductGalary = ({media}: componentProps) => {
   const [mediaType, setMediaType] = useState("image");
   const [transform, setTransform] = useState(0);
 
-  const test_medias = [
-    "https://images.asos-media.com/products/asos-design-trainers-in-white/201819256-1-white?$n_640w$&wid=513&fit=constrain",
-    "https://images.asos-media.com/products/asos-design-trainers-in-white/201819256-2?$n_960w$&wid=952&fit=constrain",
-    "https://images.asos-media.com/products/asos-design-trainers-in-white/201819256-3?$n_960w$&wid=952&fit=constrain",
-    "https://images.asos-media.com/products/asos-design-trainers-in-white/201819256-4?$n_960w$&wid=952&fit=constrain",
-  ];
-
   const handleNextImageButton = () => {
-    const imagesLength = test_medias.length;
+    const imagesLength = media?.images.length || 0;
     setTransform(prev => (prev === -100 * (imagesLength - 1) ? 0 : prev - 100));
   };
 
   const handlePrevImageButton = () => {
-    const imagesLength = test_medias.length;
+    const imagesLength = media?.images.length || 0;
     setTransform(prev => (prev === 0 ? -100 * (imagesLength - 1) : prev + 100));
   };
 
@@ -42,29 +36,46 @@ const ProductGalary = ({media}: componentProps) => {
     setMediaType("video");
   };
 
+  const videoOptions = {
+    //fill: true,
+    //fluid: true,
+    autoplay: true,
+    controls: true,
+    muted: true,
+    // preload: "metadata",
+    sources: [
+      {
+        src: `https://${media?.catwalk[0].url}.m3u8`,
+        type: "application/x-mpegURL",
+      },
+    ],
+  };
+
   return (
     <div className="product-gallary-container">
       <div className="gallary-aside-media-container">
         <div className="media-links-container">
-          {test_medias.map((item, index) => {
+          {media?.images.map((image, index) => {
             return (
               <div
                 className="each-media-link"
                 key={index}
                 onClick={() => handleSelectImage(index)}
               >
-                <img src={item} alt="" />
+                <img src={`https://${image.url}`} alt="" />
               </div>
             );
           })}
 
-          <div
-            className="each-media-link is-video"
-            onClick={handlePlayCatwalkVideo}
-          >
-            <PlayArrowOutlinedIcon />
-            <span>VIDEO</span>
-          </div>
+          {media?.catwalk?.length > 0 && (
+            <div
+              className="each-media-link is-video"
+              onClick={handlePlayCatwalkVideo}
+            >
+              <PlayArrowOutlinedIcon />
+              <span>VIDEO</span>
+            </div>
+          )}
         </div>
 
         <div className="product-share-icon-container">
@@ -100,10 +111,10 @@ const ProductGalary = ({media}: componentProps) => {
         </div>
 
         {mediaType === "image" ? (
-          test_medias.map((item, index) => {
+          media?.images.map((image, index) => {
             return (
               <img
-                src={item}
+                src={`https://${image.url}`}
                 alt=""
                 key={index}
                 style={{transform: `translateX(${transform}%)`}}
@@ -112,9 +123,7 @@ const ProductGalary = ({media}: componentProps) => {
             );
           })
         ) : (
-          <video controls autoPlay muted>
-            <source src="https://video.asos-media.com/products/ASOS/_media_/f64/f640f979-cc56-4da3-a99d-dc1a1147d8ce.mp4" />
-          </video>
+          <VideoJsPlayer videoJsOptions={videoOptions} />
         )}
       </div>
     </div>

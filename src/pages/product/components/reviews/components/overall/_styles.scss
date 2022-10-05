@@ -1,0 +1,49 @@
+.reviews-overall-container {
+  width: 100%;
+  margin-bottom: 35px;
+
+  .overall-rating-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    .MuiRating-root {
+      padding: 0;
+      margin: 0;
+
+      span {
+        margin: 0;
+        padding: 0;
+      }
+
+      .MuiRating-icon {
+        margin-right: 8px;
+        svg {
+          height: 18px;
+          width: 18px;
+        }
+      }
+    }
+
+    span {
+      font-size: 13px;
+      line-height: 1.7;
+      letter-spacing: 0.4px;
+      display: inline-block;
+      height: 20px;
+      line-height: 20px;
+      margin-left: 8px;
+      font-weight: 350;
+      color: #2d2d2d;
+    }
+  }
+
+  .overall-text-container {
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.4px;
+    line-height: 22px;
+    color: #2d2d2d;
+  }
+}

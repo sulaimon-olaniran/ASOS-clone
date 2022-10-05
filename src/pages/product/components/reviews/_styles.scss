@@ -1,0 +1,73 @@
+.product-reviews-container {
+  width: 960px;
+  padding: 25px 0;
+  min-height: 50vh;
+
+  .reviews-header-container {
+    width: 100%;
+    margin-bottom: 30px;
+
+    h1 {
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 0.8px;
+      line-height: 24px;
+      color: #2d2d2d;
+      text-transform: uppercase;
+    }
+  }
+
+  .reviews-sections-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    section {
+      width: 375px;
+      height: 25rem;
+      //border: 1px solid #ddd;
+    }
+
+    .reviews-section-header-container {
+      width: 100%;
+      h1 {
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 0.8px;
+        line-height: 20px;
+        color: #2d2d2d;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+    }
+
+    .reviews-section-button-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+
+      button {
+        width: 100%;
+        min-height: 44px;
+        padding: 0 16px;
+        background-color: #fff;
+        border: 2px solid #ddd;
+        font-size: 15px;
+        font-weight: bold;
+        letter-spacing: 0.6px;
+        line-height: 18px;
+        color: #2d2d2d;
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+
+      button:hover {
+        background-color: #f4f4f4;
+      }
+    }
+  }
+}
+
+@import "./components/styles";

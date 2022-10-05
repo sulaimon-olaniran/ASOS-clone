@@ -7,7 +7,7 @@
   justify-content: center;
 
   .product-page-inner-container {
-    width: $app-width;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,12 +17,31 @@
       height: auto;
       display: flex;
       justify-content: space-between;
+      margin-bottom: 25px;
 
       img {
         width: 100%;
         height: auto;
         display: block;
       }
+    }
+
+    .product-information-section {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+
+    .product-also-like-section,
+    .product-reviews-section {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      border-top: 1px solid #eee;
     }
   }
 }
