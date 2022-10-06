@@ -1,0 +1,85 @@
+.reviews-comment-container {
+  width: 100%;
+
+  .reviews-comment-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .comment-rating {
+      //width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+
+      .MuiRating-root {
+        padding: 0;
+        margin: 0;
+
+        span {
+          margin: 0;
+          padding: 0;
+        }
+
+        .MuiRating-icon {
+          margin-right: 8px;
+          svg {
+            height: 18px;
+            width: 18px;
+          }
+        }
+      }
+
+      span {
+        font-size: 13px;
+        line-height: 1.7;
+        letter-spacing: 0.4px;
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        margin-left: 8px;
+        font-weight: 350;
+        color: #2d2d2d;
+      }
+    }
+
+    .comment-time {
+      font-size: 11.5px;
+      font-weight: normal;
+      letter-spacing: 0.8px;
+      line-height: 16px;
+      color: #767676;
+    }
+  }
+
+  h4 {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 16px;
+    color: #2d2d2d;
+    margin: 16px 0 8px 0;
+    width: 100%;
+    text-transform: uppercase;
+    word-wrap: break-word;
+  }
+
+  .comment-text-container {
+    width: 100%;
+    font-family: inherit;
+    overflow: hidden;
+    position: relative;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: left;
+    padding: 0;
+    word-wrap: break-word;
+    font-size: 13.2px;
+    font-weight: normal;
+    letter-spacing: 0.6px;
+    line-height: 20px;
+    color: #2d2d2d;
+  }
+}
