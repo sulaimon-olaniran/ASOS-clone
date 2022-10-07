@@ -1,6 +1,24 @@
-import {ReviewsOverall, CustomerRating, ReviewsComment} from "./components";
+import {useState} from "react";
+
+import {
+  ReviewsOverall,
+  CustomerRating,
+  ReviewsComment,
+  ReviewsDrawer,
+} from "./components";
 
 const ProductReviews = () => {
+  const [openDrawer, setOpenDrawer] = useState(false);
+
+  const handleOpenDrawer = () => {
+    setOpenDrawer(true);
+    console.log("Open Drawer");
+  };
+
+  const handleCloseDrawer = () => {
+    setOpenDrawer(false);
+  };
+
   return (
     <div className="product-reviews-container">
       <div className="reviews-header-container">
@@ -20,7 +38,7 @@ const ProductReviews = () => {
           </div>
 
           <div className="reviews-section-button-container">
-            <button>View All Reviews</button>
+            <button onClick={handleOpenDrawer}>View All Reviews</button>
           </div>
 
           <div className="reviews-disclaimer-container">
@@ -32,6 +50,12 @@ const ProductReviews = () => {
           </div>
         </section>
       </div>
+
+      <ReviewsDrawer
+        openDrawer={openDrawer}
+        handleOpenDrawer={handleOpenDrawer}
+        handleCloseDrawer={handleCloseDrawer}
+      />
     </div>
   );
 };

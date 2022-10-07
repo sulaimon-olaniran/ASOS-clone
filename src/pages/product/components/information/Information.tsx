@@ -23,20 +23,22 @@ const ProductInformation = ({product}: componentProps) => {
       <div className="each-information-container">
         <h1>Product Details</h1>
 
-        <div className="product-details">{parse(product?.description)}</div>
+        <div className="product-details">
+          {parse(product.description ? product.description : "")}
+        </div>
       </div>
 
       <div className="each-information-container">
         <div className="product-code">
           <h1>Product Code</h1>
-          <p>{product.productCode}</p>
+          <p>{product?.productCode}</p>
         </div>
 
         <div>
           <h1>Brand</h1>
 
           <div className="product-brand">
-            <p>{parse(product?.brand?.description)}</p>
+            <p>{parse(product.brand ? product.brand?.description : "")}</p>
           </div>
         </div>
       </div>
@@ -46,7 +48,7 @@ const ProductInformation = ({product}: componentProps) => {
           <div className="size-and-fit">
             <h1>Size and Fit</h1>
 
-            <p>{parse(product?.info?.sizeAndFit)}</p>
+            <p>{parse(product.info ? product.info?.sizeAndFit : "")}</p>
           </div>
         )}
 
@@ -59,7 +61,7 @@ const ProductInformation = ({product}: componentProps) => {
         <div className="about-me">
           <h1>About Me</h1>
 
-          <p>{parse(product?.info?.aboutMe)}</p>
+          <p>{parse(product.info ? product.info?.aboutMe : "")}</p>
         </div>
       </div>
 
