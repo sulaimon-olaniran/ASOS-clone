@@ -1,0 +1,93 @@
+@import "./viewed-item/styles";
+
+.recently-viewd-container {
+  width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 0;
+
+  .recently-viewed-header-container {
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+
+    h1 {
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 0.8px;
+      line-height: 24px;
+      color: #2d2d2d;
+      text-transform: uppercase;
+    }
+
+    button {
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-block;
+      margin-right: 16px;
+      min-height: 32px;
+      padding: 0 16px;
+      background-color: #eee;
+      border: none;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.8px;
+      line-height: 16px;
+      color: #2d2d2d;
+    }
+
+    button:hover {
+      background-color: #dcdcdc;
+    }
+  }
+
+  .recently-viewed-contents-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .contents-slider-button {
+      position: absolute;
+      width: 79px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 38px;
+        height: 38px;
+        fill: #2d2d2d;
+        cursor: pointer;
+      }
+    }
+
+    .left-button {
+      left: 20px;
+    }
+
+    .right-button {
+      right: 20px;
+    }
+
+    .recently-viewed-contents-inner-container {
+      width: 736px;
+      display: flex;
+      flex-shrink: 0;
+      overflow: hidden;
+
+      .grouped-product-container {
+        min-width: 736px;
+        display: flex;
+        justify-content: space-between;
+        transition: all 0.9s ease-in-out;
+        padding: 0 10px;
+      }
+    }
+  }
+}

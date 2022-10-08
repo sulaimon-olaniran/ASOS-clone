@@ -10,6 +10,7 @@ import {
   ProductGallary,
   ProductAlsoLike,
   ProductReviews,
+  RecentlyViewed,
 } from "./components";
 
 const ProductPage = () => {
@@ -62,6 +63,10 @@ const ProductPage = () => {
 
         <section className="product-reviews-section">
           <ProductReviews />
+        </section>
+
+        <section className="product-recently-viewd-section">
+          <RecentlyViewed />
         </section>
       </div>
     </div>

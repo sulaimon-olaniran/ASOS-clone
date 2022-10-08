@@ -1,0 +1,43 @@
+.recently-viewed-item-container {
+  width: 168px;
+  height: inherit;
+  position: relative;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  button {
+    position: absolute;
+    background-color: #ffffff;
+    z-index: 99;
+    left: 7px;
+    top: 7px;
+    width: 34px;
+    height: 34px;
+    display: none;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      fill: black;
+    }
+  }
+
+  .add-to-favorite-button-container {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 99;
+    bottom: 7px;
+    right: 7px;
+  }
+}
+
+.recently-viewed-item-container:hover {
+  button {
+    display: flex;
+  }
+}
