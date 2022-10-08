@@ -7,12 +7,41 @@ import {
   ReviewsDrawer,
 } from "./components";
 
+import reviews from "../../../../assets/data/reviews.json";
+
+const getRandomInt = (min: number, max: number) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const reviewIndex = getRandomInt(0, 49);
+
+type review = {
+  [key: string]: any;
+  id: number;
+  customer_rating: {
+    size: number | null;
+    comfort: number | null;
+    quality: number | null;
+  };
+
+  recommended_by: number;
+  comments: {
+    title: string;
+    comment: string;
+    id: string;
+    time: string;
+    rating: number;
+  }[];
+};
+
 const ProductReviews = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [review, setReview] = useState<review>(reviews[reviewIndex]);
 
   const handleOpenDrawer = () => {
     setOpenDrawer(true);
-    console.log("Open Drawer");
   };
 
   const handleCloseDrawer = () => {
@@ -27,14 +56,14 @@ const ProductReviews = () => {
 
       <div className="reviews-sections-container">
         <section className="reviews-left-section">
-          <ReviewsOverall />
-          <CustomerRating />
+          <ReviewsOverall review={review} />
+          <CustomerRating customer_rating={review?.customer_rating} />
         </section>
         <section className="reviews-right-section">
           <div className="reviews-section-header-container">
             <h1>Most Recent Review</h1>
 
-            <ReviewsComment />
+            <ReviewsComment comment={review?.comments[0]} />
           </div>
 
           <div className="reviews-section-button-container">
@@ -55,6 +84,7 @@ const ProductReviews = () => {
         openDrawer={openDrawer}
         handleOpenDrawer={handleOpenDrawer}
         handleCloseDrawer={handleCloseDrawer}
+        review={review}
       />
     </div>
   );

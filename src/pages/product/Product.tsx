@@ -31,7 +31,7 @@ const ProductPage = () => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
+        //console.log(response.data);
         setProduct(response.data);
       })
       .catch(function (error) {
