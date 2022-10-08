@@ -68,6 +68,7 @@
 
   .comment-text-container {
     width: 100%;
+    max-height: 60px;
     font-family: inherit;
     overflow: hidden;
     position: relative;
@@ -76,10 +77,44 @@
     text-align: left;
     padding: 0;
     word-wrap: break-word;
-    font-size: 13.2px;
+    font-size: 13px;
     font-weight: normal;
     letter-spacing: 0.6px;
     line-height: 20px;
     color: #2d2d2d;
+    //transition: all 0.3s ease-in;
+
+    .read-more-button-container {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 1px;
+
+      span {
+        height: 20px;
+        display: inline-block;
+        width: 30px;
+        background-image: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0),
+          rgb(255, 255, 255)
+        );
+        vertical-align: bottom;
+      }
+
+      .comment-read-more-button {
+        display: inline-block;
+        cursor: pointer;
+        color: inherit;
+        background-color: #fff;
+        border: none;
+        text-align: right;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .expand-comment {
+    max-height: 100%;
   }
 }

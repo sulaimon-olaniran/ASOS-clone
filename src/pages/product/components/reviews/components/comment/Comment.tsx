@@ -1,3 +1,4 @@
+import {useState} from "react";
 import Rating from "@mui/material/Rating";
 import moment from "moment";
 
@@ -11,7 +12,12 @@ interface componentProps {
 }
 
 const ReviewsComment = ({comment}: componentProps) => {
-  const value = 4;
+  const isViweMore = comment?.comment.length > 0 ? true : false;
+  const [viewMore, setViewMore] = useState(isViweMore);
+
+  const handleViewMore = () => {
+    setViewMore(false);
+  };
 
   return (
     <div className="reviews-comment-container">
@@ -25,8 +31,18 @@ const ReviewsComment = ({comment}: componentProps) => {
 
       <h4>{comment?.title}</h4>
 
-      <div className="comment-text-container">
+      <div
+        className={`comment-text-container ${!viewMore && "expand-comment"}`}
+      >
         <p>{comment?.comment}</p>
+        {viewMore && (
+          <span className="read-more-button-container">
+            <span />
+            <div className="comment-read-more-button" onClick={handleViewMore}>
+              Read more
+            </div>
+          </span>
+        )}
       </div>
     </div>
   );
