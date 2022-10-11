@@ -11,7 +11,11 @@ import {
 } from "../../../../state/actions-creator/product";
 import {rapid_api_key} from "../../../../assets/keys";
 
-const ProductAlsoLike = () => {
+interface componentProps {
+  cat_id: string;
+}
+
+const ProductAlsoLike = ({cat_id}: componentProps) => {
   const [products, setProducts] = useState<productType[]>([]);
 
   const saved_products = useAppSelector(state => state.product.saved);
@@ -24,7 +28,7 @@ const ProductAlsoLike = () => {
       params: {
         store: "US",
         offset: "0",
-        categoryId: "27110",
+        categoryId: cat_id,
         limit: "18",
         country: "US",
         currency: "USD",

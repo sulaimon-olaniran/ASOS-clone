@@ -33,7 +33,7 @@ const ProductPage = () => {
     const options = {
       method: "GET",
       url: "https://asos2.p.rapidapi.com/products/v3/detail",
-      params: {id: "203693083", lang: "en-US", store: "US", currency: "USD"},
+      params: {id: product_id, lang: "en-US", store: "US", currency: "USD"},
       headers: {
         "X-RapidAPI-Key": rapid_api_key,
         "X-RapidAPI-Host": "asos2.p.rapidapi.com",
@@ -49,7 +49,7 @@ const ProductPage = () => {
       .catch(function (error) {
         console.error(error);
       });
-  }, []);
+  }, [product_id]);
 
   return (
     <div className="product-page-container">
@@ -64,7 +64,7 @@ const ProductPage = () => {
         </section>
 
         <section className="product-also-like-section">
-          <ProductAlsoLike />
+          <ProductAlsoLike cat_id={category_id || ""} />
         </section>
 
         <section className="product-reviews-section">

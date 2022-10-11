@@ -6,6 +6,7 @@ import {useParams} from "react-router-dom";
 import EachProdcut from "./each-product/Each-Product";
 import {productType, categoryType} from "./interface";
 import {rapid_api_key} from "../../assets/keys";
+import {useAppSelector} from "../../assets/hooks";
 
 const getOptions = (offset: string, category_id: string) => {
   const options = {
@@ -37,9 +38,11 @@ const ProductsComponent = () => {
   const [products, setProducts] = useState<productType[]>([]);
   const [loadingMore, setLoadingMore] = useState(false);
 
-  const {category_id} = useParams();
+  const gender = useAppSelector(state => state.app.gender);
 
-  const links = ["home", "men", "new in"];
+  const {category_id, type} = useParams();
+
+  const links = ["home", gender, type?.replace("-", " ")];
 
   const toggleViewMore = () => {
     setViewMore(prev => !prev);
@@ -58,7 +61,7 @@ const ProductsComponent = () => {
       .catch(function (error) {
         console.error(error);
       });
-  }, []);
+  }, [category_id]);
 
   const handleLoadMoreProducts = () => {
     setLoadingMore(true);
@@ -158,7 +161,13 @@ const ProductsComponent = () => {
                     currency: item.price.currency,
                   },
                 };
-                return <EachProdcut key={item.id} product={product} />;
+                return (
+                  <EachProdcut
+                    key={item.id}
+                    product={product}
+                    category_id={category_id || ""}
+                  />
+                );
               })}
           </div>
         </div>

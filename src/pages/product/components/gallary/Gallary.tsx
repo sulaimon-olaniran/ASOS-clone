@@ -37,6 +37,11 @@ const ProductGalary = ({media}: componentProps) => {
     setMediaType("video");
   };
 
+  const video_link =
+    media && media.catwalk.length > 0
+      ? `https://${media?.catwalk[0].url}.m3u8`
+      : "";
+
   const videoOptions = {
     //fill: true,
     //fluid: true,
@@ -46,7 +51,7 @@ const ProductGalary = ({media}: componentProps) => {
     // preload: "metadata",
     sources: [
       {
-        src: `https://${media?.catwalk[0].url}.m3u8`,
+        src: video_link,
         type: "application/x-mpegURL",
       },
     ],
@@ -123,9 +128,9 @@ const ProductGalary = ({media}: componentProps) => {
               />
             );
           })
-        ) : (
+        ) : media?.catwalk && media.catwalk.length > 0 ? (
           <VideoJsPlayer videoJsOptions={videoOptions} />
-        )}
+        ) : null}
       </div>
     </div>
   );

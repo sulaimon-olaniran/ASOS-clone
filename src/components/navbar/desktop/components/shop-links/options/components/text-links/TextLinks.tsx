@@ -31,7 +31,7 @@ const TextLinksComponent = ({links, title, column, type}: iProps) => {
             ? link.link.replace(" + ", "-")
             : link.link.replace(" ", "-");
 
-          const products_link = `${shop_gender}/${type}/${sub_type}/${link.cat_id}`;
+          const products_link = `/${shop_gender}/category/${type}/${sub_type}/${link.cat_id}`;
           return (
             <Link
               to={products_link}

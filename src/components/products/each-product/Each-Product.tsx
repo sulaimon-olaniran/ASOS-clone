@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 import LikeButtonComponent from "../../like-button/Like-Button";
 import {productType} from "../interface";
 
@@ -9,13 +11,16 @@ import {useAppDispatch, useAppSelector} from "../../../assets/hooks";
 
 type componentType = {
   product: productType;
+  category_id: string;
 };
 
-const EachProdcut = ({product}: componentType) => {
+const EachProdcut = ({product, category_id}: componentType) => {
   const hasPreviousPrice: boolean = product.price.previous.value !== null;
 
-  const saved_products = useAppSelector(state => state.product.saved);
   const dispatch = useAppDispatch();
+
+  const saved_products = useAppSelector(state => state.product.saved);
+  const gender = useAppSelector(state => state.app.gender);
 
   const toggleSaveProduct = () => {
     if (saved_products.includes(product.id)) {
@@ -25,8 +30,17 @@ const EachProdcut = ({product}: componentType) => {
     }
   };
 
+  // path="/men/product/:name/:product_id/:category_id"
+
+  const link_product_name = product.name
+    .replace(" - ", " ")
+    .replace(new RegExp(" ", "g"), "-")
+    .toLocaleLowerCase();
+
+  const link_path = `/${gender}/product/${link_product_name}/${product.id}/${category_id}`;
+
   return (
-    <div className="each-product-container">
+    <Link to={link_path} className="each-product-container">
       <div className="product-image-container">
         <img src={`https://${product.imageUrl}`} alt="product" />
       </div>
@@ -50,7 +64,7 @@ const EachProdcut = ({product}: componentType) => {
           isLiked={saved_products.includes(product.id)}
         />
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -22,11 +22,19 @@ function App() {
           <Route path="/men" element={<MenShoppingPage />} />
           <Route path="/women" element={<WomenShoppingPage />} />
           <Route
-            path="/men/:type/:sub_type/:category_id"
+            path="/men/category/:type/:sub_type/:category_id"
+            element={<ProductsComponent />}
+          />
+          <Route
+            path="/women/category/:type/:sub_type/:category_id"
             element={<ProductsComponent />}
           />
           <Route
             path="/men/product/:name/:product_id/:category_id"
+            element={<ProductPage />}
+          />
+          <Route
+            path="/women/product/:name/:product_id/:category_id"
             element={<ProductPage />}
           />
         </Routes>
