@@ -47,6 +47,7 @@
   .recently-viewed-contents-container {
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -54,16 +55,24 @@
     .contents-slider-button {
       position: absolute;
       width: 79px;
-      height: 100%;
+      height: 215px;
       display: flex;
       align-items: center;
       justify-content: center;
+      top: 0;
 
       svg {
         width: 38px;
         height: 38px;
         fill: #2d2d2d;
         cursor: pointer;
+      }
+    }
+
+    .is-disabled {
+      svg {
+        fill: #d0d0d0;
+        cursor: auto;
       }
     }
 
@@ -83,11 +92,32 @@
 
       .grouped-product-container {
         min-width: 736px;
-        display: flex;
-        justify-content: space-between;
+
+        display: grid;
+        grid-column-gap: 12px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         transition: all 0.9s ease-in-out;
         padding: 0 10px;
       }
+    }
+  }
+
+  .recently-viewed-carousel-buttons {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+
+    div {
+      width: 10px;
+      height: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      background-color: #e3e3e3;
+      margin-right: 10px;
+    }
+
+    .is-current {
+      background-color: #383838;
     }
   }
 }

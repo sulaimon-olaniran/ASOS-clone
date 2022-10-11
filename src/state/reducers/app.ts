@@ -1,12 +1,17 @@
-import {TOGGLE_GENDER} from "../action-types/app";
+import {actionTypes} from "../action-types/app";
+import {stateType} from "../types/app";
 
 const initState = {
-  gender: null,
+  gender: "men" || null,
 };
 
-const appReducer = (state = initState, action: any) => {
+const appReducer = (state: stateType = initState, action: any) => {
   switch (action.type) {
- 
+    case actionTypes.TOGGLE_GENDER:
+      return {
+        ...state,
+        gender: action.payload,
+      };
     default:
       return state;
   }

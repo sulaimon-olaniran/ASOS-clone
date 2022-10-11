@@ -12,7 +12,7 @@ interface componentProps {
 }
 
 const ReviewsComment = ({comment}: componentProps) => {
-  const isViweMore = comment?.comment.length > 0 ? true : false;
+  const isViweMore = comment?.comment.length > 150 ? true : false;
   const [viewMore, setViewMore] = useState(isViweMore);
 
   const handleViewMore = () => {

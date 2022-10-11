@@ -25,11 +25,20 @@
         width: 100%;
         height: auto;
         margin-bottom: 10px;
+        position: relative;
 
         img {
           width: 100%;
           height: auto;
           display: block;
+        }
+        .add-to-favorite-button-container {
+          position: absolute;
+          background-color: #ffffff;
+          border-radius: 50%;
+          z-index: 99;
+          bottom: 7px;
+          right: 7px;
         }
       }
 

@@ -10,7 +10,8 @@ import {productMedia} from "../../types";
 import {VideoJsPlayer} from "../../../../components/";
 
 interface componentProps {
-  media: productMedia;
+  [key: string]: any;
+  media?: productMedia;
 }
 
 const ProductGalary = ({media}: componentProps) => {
@@ -67,7 +68,7 @@ const ProductGalary = ({media}: componentProps) => {
             );
           })}
 
-          {media?.catwalk?.length > 0 && (
+          {media && media?.catwalk?.length > 0 && (
             <div
               className="each-media-link is-video"
               onClick={handlePlayCatwalkVideo}

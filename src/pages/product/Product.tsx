@@ -1,4 +1,4 @@
-import {useState, useEffect, useCallback} from "react";
+import {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 //import ProductGalary from "./components/gallary/Gallary";
@@ -12,11 +12,22 @@ import {
   ProductReviews,
   RecentlyViewed,
 } from "./components";
+import {rapid_api_key} from "../../assets/keys";
+import {useAppDispatch, useAppSelector} from "../../assets/hooks";
+import {addToRecentlyViewed} from "../../state/actions-creator/product";
 
 const ProductPage = () => {
   const [product, setProduct] = useState<productType>({});
 
   const {product_id, category_id} = useParams();
+
+  const dispatch = useAppDispatch();
+
+  const recently_viewed = useAppSelector(
+    state => state.product.recently_viewed
+  );
+
+  const handleAddToRecentlyViewed = () => {};
 
   useEffect(() => {
     const options = {
@@ -24,7 +35,7 @@ const ProductPage = () => {
       url: "https://asos2.p.rapidapi.com/products/v3/detail",
       params: {id: "203693083", lang: "en-US", store: "US", currency: "USD"},
       headers: {
-        "X-RapidAPI-Key": "c504a5222fmshe2a3d13657c6e0ep1018ccjsn4c854ec80138",
+        "X-RapidAPI-Key": rapid_api_key,
         "X-RapidAPI-Host": "asos2.p.rapidapi.com",
       },
     };
@@ -40,17 +51,12 @@ const ProductPage = () => {
       });
   }, []);
 
-  const media = {
-    images: [],
-    catwalk: [],
-  };
-
   return (
     <div className="product-page-container">
       <div className="product-page-inner-container">
         <section className="product-page-top-section">
           <ProductGallary media={product?.media} />
-          <ProductAside />
+          <ProductAside product={product} />
         </section>
 
         <section className="product-information-section">
@@ -65,9 +71,11 @@ const ProductPage = () => {
           <ProductReviews />
         </section>
 
-        <section className="product-recently-viewd-section">
-          <RecentlyViewed />
-        </section>
+        {recently_viewed.length > 0 && (
+          <section className="product-recently-viewd-section">
+            <RecentlyViewed />
+          </section>
+        )}
       </div>
     </div>
   );

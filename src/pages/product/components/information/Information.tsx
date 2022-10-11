@@ -8,6 +8,7 @@ interface componentProps {
 }
 
 const ProductInformation = ({product}: componentProps) => {
+  console.log(product);
   const [showMore, setShowMore] = useState(false);
 
   const handleToggleShowMore = () => {
@@ -55,7 +56,7 @@ const ProductInformation = ({product}: componentProps) => {
         <div className="look-after-me">
           <h1>Look After Me</h1>
 
-          <p>{product?.info?.careInfo}</p>
+          <p>{product.info?.careInfo && product?.info?.careInfo}</p>
         </div>
 
         <div className="about-me">

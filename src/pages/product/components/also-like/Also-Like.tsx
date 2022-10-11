@@ -1,16 +1,21 @@
 import {useState, useEffect, useCallback} from "react";
 import axios from "axios";
 
+import {LikeButton} from "../../../../components";
 import {productType} from "../../types";
 
-type products = {
-  products: {
-    brandName: string;
-  }[];
-};
+import {useAppDispatch, useAppSelector} from "../../../../assets/hooks";
+import {
+  saveProduct,
+  unsaveProduct,
+} from "../../../../state/actions-creator/product";
+import {rapid_api_key} from "../../../../assets/keys";
 
 const ProductAlsoLike = () => {
   const [products, setProducts] = useState<productType[]>([]);
+
+  const saved_products = useAppSelector(state => state.product.saved);
+  const dispatch = useAppDispatch();
 
   const handleGetAlsoLikeProducts = useCallback(() => {
     const options = {
@@ -27,7 +32,7 @@ const ProductAlsoLike = () => {
         lang: "en-US",
       },
       headers: {
-        "X-RapidAPI-Key": "c504a5222fmshe2a3d13657c6e0ep1018ccjsn4c854ec80138",
+        "X-RapidAPI-Key": rapid_api_key,
         "X-RapidAPI-Host": "asos2.p.rapidapi.com",
       },
     };
@@ -35,7 +40,7 @@ const ProductAlsoLike = () => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
+        //console.log(response.data);
         setProducts(response.data.products);
       })
       .catch(function (error) {
@@ -53,11 +58,25 @@ const ProductAlsoLike = () => {
 
       <div className="also-like-products-list-container">
         {products.map((item, index) => {
-          const prevPrice = item?.price.previous.value !== null;
+          const prevPrice = item.price && item.price.previous.value !== null;
+          //console.log(item.id);
+          const toggleSaveProduct = () => {
+            if (saved_products.includes(item.id || 0)) {
+              dispatch(unsaveProduct(item.id || 0));
+            } else {
+              dispatch(saveProduct(item.id || 0));
+            }
+          };
           return (
             <div key={index} className="each-also-like-product">
               <div className="product-image-container">
                 <img src={`https://${item?.imageUrl}`} alt="" />
+                <div className="add-to-favorite-button-container">
+                  <LikeButton
+                    buttonAction={toggleSaveProduct}
+                    isLiked={saved_products.includes(item.id || 0)}
+                  />
+                </div>
               </div>
 
               <div
@@ -66,7 +85,7 @@ const ProductAlsoLike = () => {
                 }`}
               >
                 <span className="current-price">
-                  {item?.price.current.text} <span>(-33%)</span>
+                  {item.price && item?.price.current.text} <span>(-33%)</span>
                 </span>
                 <span className="prev-price">£30.00</span>
               </div>

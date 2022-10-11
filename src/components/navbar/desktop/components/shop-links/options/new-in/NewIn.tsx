@@ -7,9 +7,9 @@ import {
 import {menNewInData, womenNewInData} from "./assets/data";
 
 const NewInOptionType = () => {
-  const page = "women";
+  const page = "men";
 
-  const newInData = womenNewInData;
+  const newInData = menNewInData;
 
   return (
     <div className="new-in-option-type-container">
@@ -18,12 +18,15 @@ const NewInOptionType = () => {
           links={newInData.newProducts}
           title="New Products"
           column={1}
+          type="new-in"
         />
       </section>
 
-      <section className="new-in-body-fit-section">
-        <BodyFitComponent header="Body Fits" fits={newInData.bodyFits} />
-      </section>
+      {page !== "men" && (
+        <section className="new-in-body-fit-section">
+          <BodyFitComponent header="Body Fits" fits={womenNewInData.bodyFits} />
+        </section>
+      )}
 
       <section className={`new-in-new-edits-section ${page}-new-in`}>
         <div className="new-edits-header-container">

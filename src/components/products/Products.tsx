@@ -1,18 +1,20 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
+import {useParams} from "react-router-dom";
 
 import EachProdcut from "./each-product/Each-Product";
 import {productType, categoryType} from "./interface";
+import {rapid_api_key} from "../../assets/keys";
 
-const getOptions = (offset: string) => {
+const getOptions = (offset: string, category_id: string) => {
   const options = {
     method: "GET",
     url: "https://asos2.p.rapidapi.com/products/v2/list",
     params: {
       store: "US",
       offset: offset,
-      categoryId: "27110",
+      categoryId: category_id,
       limit: "48",
       country: "US",
       sort: "freshness",
@@ -21,7 +23,7 @@ const getOptions = (offset: string) => {
       lang: "en-US",
     },
     headers: {
-      "X-RapidAPI-Key": "c504a5222fmshe2a3d13657c6e0ep1018ccjsn4c854ec80138",
+      "X-RapidAPI-Key": rapid_api_key,
       "X-RapidAPI-Host": "asos2.p.rapidapi.com",
     },
   };
@@ -35,6 +37,8 @@ const ProductsComponent = () => {
   const [products, setProducts] = useState<productType[]>([]);
   const [loadingMore, setLoadingMore] = useState(false);
 
+  const {category_id} = useParams();
+
   const links = ["home", "men", "new in"];
 
   const toggleViewMore = () => {
@@ -42,7 +46,7 @@ const ProductsComponent = () => {
   };
 
   useEffect(() => {
-    const options = getOptions("0");
+    const options = getOptions("0", category_id || "");
 
     axios
       .request(options)
@@ -59,7 +63,7 @@ const ProductsComponent = () => {
   const handleLoadMoreProducts = () => {
     setLoadingMore(true);
 
-    const options = getOptions(`${products.length}`);
+    const options = getOptions(`${products.length}`, category_id || "");
 
     axios
       .request(options)

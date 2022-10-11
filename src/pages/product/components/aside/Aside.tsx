@@ -1,38 +1,85 @@
 import Rating from "@mui/material/Rating";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 
-import LikeButtonComponent from "../../../../components/like-button/Like-Button";
+import {LikeButton} from "../../../../components/";
 
-const ProductAside = () => {
-  const hasPrevPrice = true;
+import {useAppDispatch, useAppSelector} from "../../../../assets/hooks";
+import {
+  saveProduct,
+  unsaveProduct,
+} from "../../../../state/actions-creator/product";
+import {getPercentage} from "../../../../assets/functions";
+import {productType} from "../../types";
+
+interface componentProps {
+  product: productType;
+}
+
+const ProductAside = ({product}: componentProps) => {
+  //const hasPrevPrice = true;
   const value = 2;
+
+  const saved_products = useAppSelector(state => state.product.saved);
+  const dispatch = useAppDispatch();
+
+  const blah = 2345;
+
+  const toggleSaveProduct = () => {
+    if (saved_products.includes(blah)) {
+      dispatch(unsaveProduct(blah));
+    } else {
+      dispatch(saveProduct(blah));
+    }
+  };
+
+  const prevPrice = product.price && product.price.previous;
+  const curPrice = product.price && product.price.current;
+
+  const hasPrevPrice = prevPrice?.value && prevPrice?.value !== curPrice?.value;
+
   return (
     <div className="product-aside-container">
       <div className="product-name-container">
-        <h1>ASOS DESIGN trainers in white</h1>
+        <h1>{product.name && product.name}</h1>
       </div>
 
       <div className="product-price-container">
         {hasPrevPrice ? (
           <>
-            <span className="prev-price">£18.00</span>
-            <span className="current-price">£15.00</span>
-            <span className="discount-percentage">(-13%)</span>
+            <span className="prev-price">
+              {product.price && product.price.previous.text}
+            </span>
+            <span className="current-price">
+              {product.price && product.price.current.text}
+            </span>
+            <span className="discount-percentage">
+              ({getPercentage(prevPrice?.value || 0, curPrice?.value || 0)}%)
+            </span>
           </>
         ) : (
-          <span className="product-price">£34.00</span>
+          <span className="product-price">
+            {product.price && product.price.current.text}
+          </span>
         )}
       </div>
 
       <div className="product-rating-container">
-        <Rating defaultValue={value} precision={0.5} readOnly />
-        <span className="rating-ratio">2.4</span>
-        <span className="number-of-rates">(27)</span>
+        <Rating
+          defaultValue={product.rating && product.rating.averageOverallRating}
+          //precision={0.5}
+          readOnly
+        />
+        <span className="rating-ratio">
+          {product.rating && product.rating.averageOverallRating}
+        </span>
+        <span className="number-of-rates">
+          ({product.rating && product.rating.totalReviewCount})
+        </span>
       </div>
 
       <div className="product-colour-container">
         <h1>Colour:</h1>
-        <span>White</span>
+        <span>{product.variants && product.variants[0].colour}</span>
       </div>
 
       <div className="product-size-container">
@@ -48,20 +95,12 @@ const ProductAside = () => {
 
         <select>
           <option value="">Please select</option>
-          <option value="">UK 6</option>
-          <option value="">UK 6 Wide Fit</option>
-          <option value="" disabled={true}>
-            UK 7 - Out of stock
-          </option>
-          <option value="">UK 7 Wide Fit</option>
-          <option value="">UK 8</option>
-          <option value="" disabled={true}>
-            UK 8 Wide Fit - Out of stock
-          </option>
-          <option value="">UK 9</option>
-          <option value="">UK 9 Wide Fit</option>
-          <option value="">UK 10</option>
-          <option value="">UK 10 Wide Fit</option>
+          {product.variants &&
+            product.variants.map((variant, index) => (
+              <option value={variant.brandSize} disabled={!variant.isInStock}>
+                {variant.brandSize}
+              </option>
+            ))}
         </select>
       </div>
 
@@ -71,7 +110,7 @@ const ProductAside = () => {
         </div>
 
         <div className="add-to-favorite-button-container">
-          <LikeButtonComponent
+          <LikeButton
             buttonAction={() => console.log("hello world")}
             isLiked={false}
           />

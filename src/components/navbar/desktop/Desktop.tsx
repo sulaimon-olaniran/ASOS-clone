@@ -1,10 +1,19 @@
-import {ASOSLogo} from "../../../assets/icons";
 import {Link} from "react-router-dom";
+
+import {ASOSLogo} from "../../../assets/icons";
 import NavbarAccountComponent from "./components/account/Account";
 import NavbarSearchComponent from "./components/search/Search";
 import ShopLinksNavbarComponent from "./components/shop-links/ShopLinks";
+import {useAppDispatch} from "../../../assets/hooks";
+import {toggleGender} from "../../../state/actions-creator/app";
 
 const DesktopNavbar = () => {
+  const dispatch = useAppDispatch();
+
+  const handleToggleGender = (gender: string) => {
+    dispatch(toggleGender(gender));
+  };
+
   return (
     <div className="desktop-navbar-container">
       <section className="first-section">
@@ -33,11 +42,19 @@ const DesktopNavbar = () => {
               <ASOSLogo />
             </Link>
 
-            <Link to="/women" className="second-section-button-container">
+            <Link
+              className="second-section-button-container"
+              onClick={() => handleToggleGender("women")}
+              to="/women"
+            >
               <span>Women</span>
             </Link>
 
-            <Link to="/men" className="second-section-button-container">
+            <Link
+              className="second-section-button-container"
+              onClick={() => handleToggleGender("men")}
+              to="/men"
+            >
               <span>Men</span>
             </Link>
           </div>

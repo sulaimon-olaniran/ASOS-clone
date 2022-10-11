@@ -1,11 +1,17 @@
 import {actionTypes} from "../action-types/product";
-import {stateType, actionType} from "../types/products";
+import {stateType, actionType} from "../types/product";
+
+const recents = [
+  203199580, 203203575, 203721848, 202452944, 202499614, 202499617,
+];
 
 const initState = {
   saved: JSON.parse(localStorage.getItem("saved_products") || "[]"),
-  recently_viewed: JSON.parse(
-    localStorage.getItem("recently_viewed_products") || "[]"
-  ),
+  // recently_viewed: JSON.parse(
+  //   localStorage.getItem("recently_viewed_products") || "[]"
+  // ),
+
+  recently_viewed: recents,
 };
 
 const appReducer = (state: stateType = initState, action: actionType) => {
@@ -20,6 +26,26 @@ const appReducer = (state: stateType = initState, action: actionType) => {
       return {
         ...state,
         saved: state.saved.filter(item => item !== action.payload),
+      };
+
+    case actionTypes.ADD_PRODUCT_TO_RECENT:
+      return {
+        ...state,
+        recently_viewed: action.payload,
+      };
+
+    case actionTypes.REMOVE_PRODUCT_FROM_RECENT:
+      return {
+        ...state,
+        recently_viewed: state.recently_viewed.filter(
+          item => item !== action.payload
+        ),
+      };
+
+    case actionTypes.CLEAR_RECENTLY_VIED:
+      return {
+        ...state,
+        recently_viewed: [],
       };
     default:
       return state;
