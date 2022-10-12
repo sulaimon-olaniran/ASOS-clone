@@ -19,82 +19,88 @@
 
     .each-also-like-product {
       width: 182px;
+      height: inherit;
       margin-bottom: 25px;
+      position: relative;
 
-      .product-image-container {
+      .add-to-favorite-button-container {
+        position: absolute;
+        background-color: #ffffff;
+        border-radius: 50%;
+        z-index: 99;
+        bottom: 65px;
+        right: 10px;
+      }
+
+      .each-also-like-product-link {
         width: 100%;
-        height: auto;
-        margin-bottom: 10px;
-        position: relative;
-
-        img {
+        height: inherit;
+        .product-image-container {
           width: 100%;
           height: auto;
-          display: block;
-        }
-        .add-to-favorite-button-container {
-          position: absolute;
-          background-color: #ffffff;
-          border-radius: 50%;
-          z-index: 99;
-          bottom: 7px;
-          right: 7px;
-        }
-      }
+          margin-bottom: 10px;
+          position: relative;
 
-      .product-price-container {
-        margin-bottom: 10px;
-        .prev-price {
-          display: none;
-          font-size: 14px;
-          letter-spacing: 0.8px;
-          line-height: 20px;
-          color: #2d2d2d;
-          color: #666;
-          font-weight: normal;
-          text-decoration: line-through;
+          img {
+            width: 100%;
+            height: auto;
+            display: block;
+          }
         }
-
-        .current-price {
-          font-size: 14px;
-          font-weight: bold;
-          letter-spacing: 0.8px;
-          line-height: 20px;
-          color: #2d2d2d;
-          display: flex;
-          align-items: center;
-
-          span {
+        .product-price-container {
+          margin-bottom: 10px;
+          .prev-price {
             display: none;
             font-size: 14px;
-            font-weight: normal;
-            letter-spacing: 0.6px;
+            letter-spacing: 0.8px;
             line-height: 20px;
-            margin-left: 4px;
-            color: #d01345;
+            color: #2d2d2d;
+            color: #666;
+            font-weight: normal;
+            text-decoration: line-through;
+          }
+
+          .current-price {
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 0.8px;
+            line-height: 20px;
+            color: #2d2d2d;
+            display: flex;
+            align-items: center;
+
+            span {
+              display: none;
+              font-size: 14px;
+              font-weight: normal;
+              letter-spacing: 0.6px;
+              line-height: 20px;
+              margin-left: 4px;
+              color: #d01345;
+            }
           }
         }
-      }
 
-      .has-prev-price {
-        .prev-price {
-          display: flex;
-        }
-
-        .current-price {
-          color: #d01345;
-          span {
+        .has-prev-price {
+          .prev-price {
             display: flex;
           }
-        }
-      }
 
-      .product-brand-container {
-        font-size: 12px;
-        font-weight: normal;
-        letter-spacing: 0.8px;
-        line-height: 16px;
-        color: #2d2d2d;
+          .current-price {
+            color: #d01345;
+            span {
+              display: flex;
+            }
+          }
+        }
+
+        .product-brand-container {
+          font-size: 12px;
+          font-weight: normal;
+          letter-spacing: 0.8px;
+          line-height: 16px;
+          color: #2d2d2d;
+        }
       }
     }
   }

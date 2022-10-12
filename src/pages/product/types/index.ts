@@ -32,19 +32,27 @@ export interface productBrand {
   description: string;
 }
 
+export interface productVariant {
+  [key: string]: any;
+  brandSize?: string;
+  colour?: string;
+  isInStock?: boolean;
+  isLowInStock?: boolean;
+  isAvailable?: boolean;
+}
+
 export type productType = {
   [key: string]: any;
   media?: productMedia;
   id?: number;
   name?: string;
   description?: string;
-  variants?: {
-    brandSize: string;
-    colour: string;
-    isInStock: boolean;
-  }[];
+  variants?: productVariant[];
   info?: productInfo;
   price?: productPrice;
   brand?: productBrand;
-  rating?: productRating;
+  rating?: productRating | null;
+  isInStock?: boolean;
+  isNoSize?: boolean;
+  isOneSize?: boolean;
 };

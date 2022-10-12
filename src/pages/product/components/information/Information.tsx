@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useRef} from "react";
 import parse from "html-react-parser";
 
 import {productType} from "../../types";
@@ -15,13 +15,20 @@ const ProductInformation = ({product}: componentProps) => {
     setShowMore(prev => !prev);
   };
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const height = containerRef.current?.clientHeight;
+
   return (
     <div
       className={`product-information-container ${
         showMore && "show-more-product-information"
       }`}
+      style={
+        showMore ? {height: `${height && height + 180}px`} : {height: "280px"}
+      }
     >
-      <div className="each-information-container">
+      <div className="each-information-container" ref={containerRef}>
         <h1>Product Details</h1>
 
         <div className="product-details">
@@ -39,7 +46,11 @@ const ProductInformation = ({product}: componentProps) => {
           <h1>Brand</h1>
 
           <div className="product-brand">
-            <p>{parse(product.brand ? product.brand?.description : "")}</p>
+            {product.brand && product.brand.description !== null ? (
+              <p>{parse(product.brand ? product.brand?.description : "")}</p>
+            ) : (
+              <p>No Brand Description</p>
+            )}
           </div>
         </div>
       </div>

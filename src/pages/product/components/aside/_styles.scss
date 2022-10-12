@@ -190,6 +190,44 @@
       height: 40px;
       padding: 10px;
     }
+
+    .size-is-low-in-stock {
+      width: 100%;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.7;
+      letter-spacing: 0.4px;
+      letter-spacing: 1.4px;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+
+      span {
+        width: 18px;
+        height: 18px;
+        display: block;
+        float: left;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        border: solid 2px #2d2d2d;
+        position: relative;
+        margin-right: 7px;
+        margin-top: 2px;
+      }
+      span::after {
+        position: absolute;
+        width: 3px;
+        height: 4px;
+        border: solid 2px #2d2d2d;
+        border-top: 0;
+        border-right: 0;
+        content: "";
+        top: 2px;
+        left: 6px;
+      }
+    }
   }
 
   .product-actions-container {

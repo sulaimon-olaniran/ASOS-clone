@@ -3,31 +3,30 @@ import {Dispatch} from "redux";
 import {actionTypes} from "../action-types/product";
 import {actionType} from "../types/product";
 import {AppStateType} from "../reducers/_root";
+import {recentlyViewed, savedItem} from "../../assets/types";
 
-export const saveProduct = (id: number) => {
+export const saveProduct = (product: savedItem) => {
   return (dispatch: Dispatch<actionType>) => {
     const saved_products = JSON.parse(
       localStorage.getItem("saved_products") || "[]"
     );
 
-    const new_saved_products = [...saved_products, id];
+    const new_saved_products = [...saved_products, product];
 
     localStorage.setItem("saved_products", JSON.stringify(new_saved_products));
 
     dispatch({
       type: actionTypes.SAVE_PRODUCT,
-      payload: id,
+      payload: product,
     });
   };
 };
 
 export const unsaveProduct = (id: number) => {
-  return (dispatch: Dispatch<actionType>) => {
-    const saved_products: number[] = JSON.parse(
-      localStorage.getItem("saved_products") || "[]"
-    );
+  return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
+    const saved_products = getState().product.saved;
 
-    const new_saved_products = saved_products.filter(item => item !== id);
+    const new_saved_products = saved_products.filter(item => item.id !== id);
 
     localStorage.setItem("saved_products", JSON.stringify(new_saved_products));
 
@@ -38,16 +37,18 @@ export const unsaveProduct = (id: number) => {
   };
 };
 
-export const addToRecentlyViewed = (id: number) => {
+export const addToRecentlyViewed = (data: recentlyViewed) => {
   return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
     const recently_viewed = getState().product.recently_viewed;
 
-    if (recently_viewed.includes(id)) {
+    const isPresent = recently_viewed.some(item => item.id === data.id);
+
+    if (isPresent) {
       //IF ID ALREADY EXISTS, REMOVE IT
-      const removed_id = recently_viewed.filter(item => item !== id);
+      const removed_item = recently_viewed.filter(item => item.id !== data.id);
 
       //REPLACE IT AS NEWLY RECENTLY VIEWED ID
-      const new_recently_viewed = [...removed_id, id];
+      const new_recently_viewed = [...removed_item, data];
       localStorage.setItem(
         "recently_viewed",
         JSON.stringify(new_recently_viewed)
@@ -58,7 +59,7 @@ export const addToRecentlyViewed = (id: number) => {
         payload: new_recently_viewed,
       });
     } else {
-      const new_recently_viewed = [...recently_viewed, id];
+      const new_recently_viewed = [...recently_viewed, data];
       localStorage.setItem(
         "recently_viewed",
         JSON.stringify(new_recently_viewed)
@@ -75,7 +76,7 @@ export const removeFromRecentlyViewed = (id: number) => {
   return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
     const recently_viewed = getState().product.recently_viewed;
 
-    const new_recently_viewed = recently_viewed.filter(item => item !== id);
+    const new_recently_viewed = recently_viewed.filter(item => item.id !== id);
     localStorage.setItem(
       "recently_viewed",
       JSON.stringify(new_recently_viewed)
@@ -100,5 +101,13 @@ export const clearRecentlyViewed = () => {
     dispatch({
       type: actionTypes.CLEAR_RECENTLY_VIED,
     });
+  };
+};
+
+export const addToBag = (id: number) => {
+  return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
+    const bag = getState().product.bag;
+
+    const new_bag = bag;
   };
 };

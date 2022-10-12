@@ -1,8 +1,9 @@
 import {actionTypes} from "../action-types/product";
+import {recentlyViewed, savedItem} from "../../assets/types";
 
 interface saveProduct {
   type: actionTypes.SAVE_PRODUCT;
-  payload: number;
+  payload: savedItem;
 }
 
 interface unsaveProduct {
@@ -10,9 +11,9 @@ interface unsaveProduct {
   payload: number;
 }
 
-interface addToRecentlyViewed {
+export interface addToRecentlyViewed {
   type: actionTypes.ADD_PRODUCT_TO_RECENT;
-  payload: number[];
+  payload: recentlyViewed[];
 }
 
 interface removeFromRecentlyViewed {
@@ -25,8 +26,9 @@ interface clearRecentlyViewed {
 }
 
 export type stateType = {
-  saved: number[];
-  recently_viewed: number[];
+  saved: savedItem[];
+  recently_viewed: recentlyViewed[];
+  bag: number[];
 };
 
 export type actionType =

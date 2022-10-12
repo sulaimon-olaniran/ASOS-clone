@@ -137,5 +137,32 @@
         display: block;
       }
     }
+
+    .product-is-selling-fast {
+      position: absolute;
+      text-transform: uppercase;
+      height: 28px;
+      border-radius: 16px;
+      background-color: #2d2d2d;
+      position: absolute;
+      bottom: 39px;
+      right: -14px;
+      display: inline-block;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+
+      span {
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 4px 28px 4px 20px;
+        line-height: 28px;
+        letter-spacing: 0.8px;
+        user-select: text;
+      }
+    }
   }
 }

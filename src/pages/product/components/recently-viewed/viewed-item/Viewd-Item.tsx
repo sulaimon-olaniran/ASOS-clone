@@ -1,4 +1,5 @@
-import {useEffect, useState} from "react";
+//import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import {IconButton} from "@mui/material";
 
@@ -9,68 +10,51 @@ import {
   unsaveProduct,
 } from "../../../../../state/actions-creator/product";
 import {removeFromRecentlyViewed} from "../../../../../state/actions-creator/product";
-import {rapid_api_key} from "../../../../../assets/keys";
+import {recentlyViewed} from "../../../../../assets/types";
+import {returnSavedItem} from "../../../../../assets/functions";
 
 interface componentProps {
   //item: string;
   http?: any;
-  id: number;
+  item: recentlyViewed;
+  cat_id: string;
 }
 
-type item = {
-  [key: string]: any;
-  media?: {
-    images: {
-      url: string;
-    }[];
-  };
-};
-
-const ViewedItem = ({id, http}: componentProps) => {
-  const [item, setItem] = useState<item>({});
+const ViewedItem = ({item, cat_id}: componentProps) => {
+  //const [item, setItem] = useState<productType>({});
 
   const saved_products = useAppSelector(state => state.product.saved);
+  const gender = useAppSelector(state => state.app.gender);
   const dispatch = useAppDispatch();
 
   const handleRemoveItemFromRecentlyViewed = () => {
-    dispatch(removeFromRecentlyViewed(id));
+    dispatch(removeFromRecentlyViewed(item.id));
   };
 
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://asos2.p.rapidapi.com/products/v3/detail",
-      params: {id: `${id}`, lang: "en-US", currency: "USD"},
-      headers: {
-        "X-RapidAPI-Key": rapid_api_key,
-        "X-RapidAPI-Host": "asos2.p.rapidapi.com",
-      },
-    };
+  const link_product_name =
+    item.name &&
+    item.name
+      .replace(" - ", " ")
+      .replace(new RegExp(" ", "g"), "-")
+      .toLocaleLowerCase();
 
-    setTimeout(() => {
-      http
-        .request(options)
-        .then(function (response: any) {
-          //console.log(response.data);
-          setItem(response.data);
-        })
-        .catch(function (error: any) {
-          console.error(error);
-        });
-    }, 1000);
-  }, [id, http]);
+  const link_path = `/${gender}/product/${link_product_name}/${item.id}/${cat_id}`;
 
   const toggleSaveProduct = () => {
-    if (saved_products.includes(id)) {
-      dispatch(unsaveProduct(id));
+    const isSaved = saved_products.some(product => item.id === product.id);
+    const saved_item = returnSavedItem(item, "");
+    if (isSaved) {
+      dispatch(unsaveProduct(item.id || 0));
     } else {
-      dispatch(saveProduct(id));
+      dispatch(saveProduct(saved_item));
     }
   };
 
   return (
     <div className="recently-viewed-item-container">
-      <img src={`https://${item?.media?.images[0].url}`} alt="" />
+      <Link to={link_path} className="recently-viewed-item-link-container">
+        <img src={`https://${item.image}`} alt="" />
+      </Link>
 
       <IconButton onClick={handleRemoveItemFromRecentlyViewed}>
         <CloseIcon />
@@ -79,7 +63,7 @@ const ViewedItem = ({id, http}: componentProps) => {
       <div className="add-to-favorite-button-container">
         <LikeButton
           buttonAction={toggleSaveProduct}
-          isLiked={saved_products.includes(id)}
+          isLiked={saved_products.some(product => item.id === product.id)}
         />
       </div>
     </div>

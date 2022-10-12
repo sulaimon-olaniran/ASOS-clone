@@ -1,14 +1,14 @@
 .product-information-container {
   width: 100%;
   max-width: 960px;
-  height: 300px;
-  //max-height: 120px;
+  //height: 300px;
+  // max-height: 280px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   position: relative;
   overflow: hidden;
-  transition: height 0.4s ease-in-out;
+  transition: height 1s ease-out;
   padding-bottom: 120px;
 
   .each-information-container {
@@ -86,6 +86,7 @@
 
     .product-brand {
       width: 100%;
+      padding-right: 5px;
 
       p {
         font-style: normal;
@@ -175,6 +176,7 @@
   }
 }
 
-.show-more-product-information {
-  height: 500px;
-}
+// .show-more-product-information {
+//   //height: 500px;
+//   //height: inherit;
+// }

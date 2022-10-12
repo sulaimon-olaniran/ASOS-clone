@@ -108,13 +108,17 @@ const ProductGalary = ({media}: componentProps) => {
           </>
         )}
 
-        <div className="product-saved-count">
-          <span>2k</span>
+        <div className="product-is-selling-fast">
+          <span>Selling Fast</span>
+        </div>
+
+        {/* <div className="product-saved-count">
+          <span>SELLING FAST</span>
           <img
             src="https://cdn.optimizely.com/img/19065870423/3c221ba74acf47969022b74bb9b1ffd0.svg"
             alt=""
           />
-        </div>
+        </div> */}
 
         {mediaType === "image" ? (
           media?.images.map((image, index) => {

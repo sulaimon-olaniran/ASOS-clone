@@ -4,7 +4,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 import {useParams} from "react-router-dom";
 
 import EachProdcut from "./each-product/Each-Product";
-import {productType, categoryType} from "./interface";
+import {categoryType} from "./interface";
+import {productType} from "../../pages/product/types";
 import {rapid_api_key} from "../../assets/keys";
 import {useAppSelector} from "../../assets/hooks";
 
@@ -151,20 +152,10 @@ const ProductsComponent = () => {
           <div className="products-listing-each-product-container">
             {products.length > 0 &&
               products.map((item: productType) => {
-                const product = {
-                  id: item.id,
-                  name: item.name,
-                  imageUrl: item.imageUrl,
-                  price: {
-                    current: item.price.current,
-                    previous: item.price.previous,
-                    currency: item.price.currency,
-                  },
-                };
                 return (
                   <EachProdcut
                     key={item.id}
-                    product={product}
+                    product={item}
                     category_id={category_id || ""}
                   />
                 );

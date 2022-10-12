@@ -27,8 +27,6 @@ const ProductPage = () => {
     state => state.product.recently_viewed
   );
 
-  const handleAddToRecentlyViewed = () => {};
-
   useEffect(() => {
     const options = {
       method: "GET",
@@ -50,6 +48,17 @@ const ProductPage = () => {
         console.error(error);
       });
   }, [product_id]);
+
+  useEffect(() => {
+    const converted_product_id = parseInt(product_id || "");
+    const data = {
+      id: converted_product_id,
+      image: (product.media && product.media.images[0].url) || "",
+      name: product.name || "",
+    };
+
+    dispatch(addToRecentlyViewed(data));
+  }, [product_id, dispatch, product]);
 
   return (
     <div className="product-page-container">
@@ -73,7 +82,7 @@ const ProductPage = () => {
 
         {recently_viewed.length > 0 && (
           <section className="product-recently-viewd-section">
-            <RecentlyViewed />
+            <RecentlyViewed cat_id={category_id || ""} />
           </section>
         )}
       </div>

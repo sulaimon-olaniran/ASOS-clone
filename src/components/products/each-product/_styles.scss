@@ -1,73 +1,78 @@
 .each-product-container {
   width: 317px;
-  height: auto;
+  height: inherit;
   margin-bottom: 25px;
   position: relative;
 
-  .product-image-container {
-    img {
-      display: block;
+  .each-product-link-container {
+    width: 100%;
+    height: inherit;
+
+    .product-image-container {
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .product-name-container {
       width: 100%;
-      height: auto;
+      color: #2d2d2d;
+      display: block;
+      font-size: 11.5px;
+      letter-spacing: 0.2px;
+      line-height: 22px;
+      margin: 10px 0;
+      width: 100%;
+      height: 40px;
+      overflow: hidden;
     }
-  }
 
-  .product-name-container {
-    width: 100%;
-    color: #2d2d2d;
-    display: block;
-    font-size: 11.5px;
-    letter-spacing: 0.2px;
-    line-height: 22px;
-    margin: 10px 0;
-    width: 100%;
-    height: 40px;
-    overflow: hidden;
-  }
+    .product-price-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
 
-  .product-price-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
+      span {
+        color: #666;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        line-height: 20px;
+      }
 
-    span {
-      color: #666;
-      font-size: 14px;
-      font-weight: 700;
+      .previous-price {
+        display: none;
+        font-weight: normal;
+        text-decoration: line-through;
+        margin-right: 4px;
+        letter-spacing: 0.8px;
+        line-height: 20px;
+        font-size: 14px;
+      }
+    }
+
+    .has-previous-price {
+      span {
+        color: #d01345;
+      }
+      .previous-price {
+        display: block;
+        color: #666;
+      }
+    }
+
+    .each-product-discount-percentage {
+      position: absolute;
+      top: 16px;
+      background: hsla(0, 0%, 100%, 0.8);
+      font-size: 12px;
       letter-spacing: 0.8px;
-      line-height: 20px;
-    }
-
-    .previous-price {
-      display: none;
-      font-weight: normal;
-      text-decoration: line-through;
-      margin-right: 4px;
-      letter-spacing: 0.8px;
-      line-height: 20px;
-      font-size: 14px;
-    }
-  }
-
-  .has-previous-price {
-    span {
+      line-height: 16px;
+      padding: 2px 4px;
       color: #d01345;
     }
-    .previous-price {
-      display: block;
-      color: #666;
-    }
-  }
-
-  .each-product-discount-percentage {
-    position: absolute;
-    top: 16px;
-    background: hsla(0, 0%, 100%, 0.8);
-    font-size: 12px;
-    letter-spacing: 0.8px;
-    line-height: 16px;
-    padding: 2px 4px;
-    color: #d01345;
   }
 
   .each-product-like-button {

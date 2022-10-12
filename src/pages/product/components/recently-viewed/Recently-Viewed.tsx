@@ -9,8 +9,9 @@ import ViewedItem from "./viewed-item/Viewd-Item";
 
 import {useAppDispatch, useAppSelector} from "../../../../assets/hooks";
 import {clearRecentlyViewed} from "../../../../state/actions-creator/product";
+import {recentlyViewed} from "../../../../assets/types";
 
-const sliceIntoChunks = (arr: number[], chunkSize: number) => {
+const sliceIntoChunks = (arr: recentlyViewed[], chunkSize: number) => {
   const res = [];
   for (let i = 0; i < arr.length; i += chunkSize) {
     const chunk = arr.slice(i, i + chunkSize);
@@ -19,7 +20,11 @@ const sliceIntoChunks = (arr: number[], chunkSize: number) => {
   return res;
 };
 
-const RecentlyViewed = () => {
+interface componentProps {
+  cat_id: string;
+}
+
+const RecentlyViewed = ({cat_id}: componentProps) => {
   const [transform, setTransform] = useState(0);
   const [index, setIndex] = useState(0);
 
@@ -36,11 +41,7 @@ const RecentlyViewed = () => {
   };
 
   const handleNextButton = () => {
-    if (
-      transform === (recently_viewed.length - 1) * -100 ||
-      recently_viewed.length <= 4
-    )
-      return;
+    if (transform === (sliced_recently_viewed.length - 1) * -100) return;
     setTransform(prev => prev - 100);
     setIndex(prev => prev + 1);
   };
@@ -81,8 +82,8 @@ const RecentlyViewed = () => {
 
         <div
           className={`contents-slider-button right-button ${
-            transform === (recently_viewed.length - 1) * -100 ||
-            (recently_viewed.length <= 4 && "is-disabled")
+            transform === (sliced_recently_viewed.length - 1) * -100 &&
+            "is-disabled"
           }`}
         >
           <ArrowForwardIosIcon onClick={handleNextButton} />
@@ -96,14 +97,14 @@ const RecentlyViewed = () => {
               style={{transform: `translateX(${transform}%)`}}
             >
               {items.map((item, i) => (
-                <ViewedItem key={i} id={item} http={http} />
+                <ViewedItem key={i} item={item} http={http} cat_id={cat_id} />
               ))}
             </div>
           ))}
         </div>
 
         <div className="recently-viewed-carousel-buttons">
-          {recently_viewed.map((item, i) => (
+          {sliced_recently_viewed.map((item, i) => (
             <div
               key={i}
               className={`${index === i && "is-current"}`}
