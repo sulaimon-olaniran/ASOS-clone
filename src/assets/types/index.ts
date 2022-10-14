@@ -8,7 +8,16 @@ export type savedItem = {
   [key: string]: any;
   id?: number;
   name?: string;
+  image?: string;
+  media?: {
+    images: {
+      url: string;
+    }[];
 
+    catwalk: {
+      url: string;
+    }[];
+  };
   variants?:
     | {
         [key: string]: any;

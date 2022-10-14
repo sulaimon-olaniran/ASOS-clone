@@ -7,9 +7,7 @@ import {stateType, actionType} from "../types/product";
 
 const initState = {
   saved: JSON.parse(localStorage.getItem("saved_products") || "[]"),
-  recently_viewed: JSON.parse(
-    localStorage.getItem("recently_viewed_products") || "[]"
-  ),
+  recently_viewed: JSON.parse(localStorage.getItem("recently_viewed") || "[]"),
   bag: JSON.parse(localStorage.getItem("asos_shopping_bag") || "[]"),
 
   //recently_viewed: recents,
@@ -27,6 +25,14 @@ const appReducer = (state: stateType = initState, action: actionType) => {
       return {
         ...state,
         saved: state.saved.filter(item => item.id !== action.payload),
+      };
+
+    case actionTypes.UPDATE_SAVED_PRODUCT_SIZE:
+      return {
+        ...state,
+        saved: action.payload,
+
+        // saved : state.saved.forEach((item, index) =>{ if(item.id === action.payload.id) return state.saved[index] = action.payload })
       };
 
     case actionTypes.ADD_PRODUCT_TO_RECENT:

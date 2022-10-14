@@ -5,6 +5,7 @@ import {useParams} from "react-router-dom";
 
 import EachProdcut from "./each-product/Each-Product";
 import {categoryType} from "./interface";
+//import {} from "../../assets/types"
 import {productType} from "../../pages/product/types";
 import {rapid_api_key} from "../../assets/keys";
 import {useAppSelector} from "../../assets/hooks";
@@ -151,11 +152,11 @@ const ProductsComponent = () => {
           </div>
           <div className="products-listing-each-product-container">
             {products.length > 0 &&
-              products.map((item: productType) => {
+              products.map((product: productType) => {
                 return (
                   <EachProdcut
-                    key={item.id}
-                    product={item}
+                    key={product.id}
+                    product={product}
                     category_id={category_id || ""}
                   />
                 );

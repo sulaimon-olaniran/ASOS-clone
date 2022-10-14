@@ -37,6 +37,23 @@ export const unsaveProduct = (id: number) => {
   };
 };
 
+export const updateSavedProductSize = (new_size: string, id: number) => {
+  return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
+    const saved_products = getState().product.saved;
+    const product_to_update = saved_products.find(product => product.id === id);
+
+    const updated_product = {...product_to_update, selected_size: new_size};
+
+    Object.assign(product_to_update || {}, updated_product);
+
+    localStorage.setItem("saved_products", JSON.stringify(saved_products));
+    dispatch({
+      type: actionTypes.UPDATE_SAVED_PRODUCT_SIZE,
+      payload: saved_products,
+    });
+  };
+};
+
 export const addToRecentlyViewed = (data: recentlyViewed) => {
   return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
     const recently_viewed = getState().product.recently_viewed;

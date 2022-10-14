@@ -25,6 +25,11 @@ interface clearRecentlyViewed {
   type: actionTypes.CLEAR_RECENTLY_VIED;
 }
 
+interface updateSavedProductSize {
+  type: actionTypes.UPDATE_SAVED_PRODUCT_SIZE;
+  payload: savedItem[];
+}
+
 export type stateType = {
   saved: savedItem[];
   recently_viewed: recentlyViewed[];
@@ -36,4 +41,5 @@ export type actionType =
   | unsaveProduct
   | addToRecentlyViewed
   | removeFromRecentlyViewed
-  | clearRecentlyViewed;
+  | clearRecentlyViewed
+  | updateSavedProductSize;

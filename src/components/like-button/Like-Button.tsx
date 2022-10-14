@@ -3,13 +3,23 @@ import "./styles.scss";
 interface componentProps {
   buttonAction: () => any;
   isLiked: boolean;
+  isLoading?: boolean;
 }
 
-const LikeButtonComponent = ({buttonAction, isLiked}: componentProps) => {
+const LikeButtonComponent = ({
+  buttonAction,
+  isLiked,
+  isLoading,
+}: componentProps) => {
+  const handleButtonAction = () => {
+    //PREVENT MULTIPLE CLICKS....
+    if (isLoading) return;
+    buttonAction();
+  };
   return (
     <div
       className={`heartbutton ${isLiked && "heartbutton-liked"}`}
-      onClick={buttonAction}
+      onClick={handleButtonAction}
     >
       <svg
         className={`heart-icon-outline heartsize ${isLiked ? "liked" : ""}`}

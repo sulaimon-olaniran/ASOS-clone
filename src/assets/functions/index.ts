@@ -11,10 +11,12 @@ export const getPercentage = (prev: number, current: number) => {
 };
 
 export const returnSavedItem = (product: savedItem, selected_size: string) => {
+  // console.log("product", product);
   const item = {
     id: product.id || 0,
     name: product.name || "",
     selected_size: selected_size,
+    image: (product.media && product.media.images[0].url) || "",
     price: {
       previous: {
         text: (product.price && product.price.previous.text) || "",

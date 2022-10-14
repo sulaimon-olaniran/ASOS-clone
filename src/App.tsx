@@ -9,6 +9,7 @@ import {
   WomenShoppingPage,
   MenShoppingPage,
   ProductPage,
+  SavedListPage,
 } from "./pages";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
               path="/women/product/:name/:product_id/:category_id"
               element={<ProductPage />}
             />
+            <Route path="/saved-list" element={<SavedListPage />} />
           </Routes>
         </ScrollToTop>
         <FooterDesktopScreen />
