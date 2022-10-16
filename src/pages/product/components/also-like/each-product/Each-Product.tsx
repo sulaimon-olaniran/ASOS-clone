@@ -57,7 +57,7 @@ const AlsoLikeEachProduct = ({item, cat_id}: componentProps) => {
       axios
         .request(options)
         .then(function (response) {
-          const saved_item = returnSavedItem(response.data, "");
+          const saved_item = returnSavedItem(response.data, "", cat_id);
           setSavingProduct(false);
 
           dispatch(saveProduct(saved_item));

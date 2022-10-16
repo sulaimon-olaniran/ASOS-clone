@@ -65,7 +65,7 @@ const ProductPage = () => {
       <div className="product-page-inner-container">
         <section className="product-page-top-section">
           <ProductGallary media={product?.media} />
-          <ProductAside product={product} />
+          <ProductAside product={product} cat_id={category_id || ""} />
         </section>
 
         <section className="product-information-section">

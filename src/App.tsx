@@ -10,6 +10,7 @@ import {
   MenShoppingPage,
   ProductPage,
   SavedListPage,
+  BagPage,
 } from "./pages";
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
               element={<ProductPage />}
             />
             <Route path="/saved-list" element={<SavedListPage />} />
+            <Route path="/shopping-bag" element={<BagPage />} />
           </Routes>
         </ScrollToTop>
         <FooterDesktopScreen />

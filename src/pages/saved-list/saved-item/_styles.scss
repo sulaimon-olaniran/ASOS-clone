@@ -25,10 +25,38 @@
 
     .image-container {
       width: 100%;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 10px;
+
+      .saved-item-low-in-stock {
+        position: absolute;
+        height: 30px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #ffebcc;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        line-height: 14px;
+        text-transform: uppercase;
+        transition: transform 0.4s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(30px);
+        //overflow: hidden;
+      }
+
+      .low-in-stock-active {
+        transform: translateY(0);
+      }
 
       img {
         width: 100%;
         height: auto;
+        display: block;
       }
     }
   }

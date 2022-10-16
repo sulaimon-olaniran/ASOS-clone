@@ -1,5 +1,5 @@
 import {actionTypes} from "../action-types/product";
-import {recentlyViewed, savedItem} from "../../assets/types";
+import {recentlyViewed, savedItem, bagItem} from "../../assets/types";
 
 interface saveProduct {
   type: actionTypes.SAVE_PRODUCT;
@@ -9,6 +9,11 @@ interface saveProduct {
 interface unsaveProduct {
   type: actionTypes.UNSAVE_PRODUCT;
   payload: number;
+}
+
+interface updateSavedProductSize {
+  type: actionTypes.UPDATE_SAVED_PRODUCT_SIZE;
+  payload: savedItem[];
 }
 
 export interface addToRecentlyViewed {
@@ -25,15 +30,25 @@ interface clearRecentlyViewed {
   type: actionTypes.CLEAR_RECENTLY_VIED;
 }
 
-interface updateSavedProductSize {
-  type: actionTypes.UPDATE_SAVED_PRODUCT_SIZE;
-  payload: savedItem[];
+interface addProductToBag {
+  type: actionTypes.ADD_PRODUCT_TO_BAG;
+  payload: bagItem;
+}
+
+interface removeProductFromBag {
+  type: actionTypes.REMOVE_PRODUCT_FROM_BAG;
+  payload: number; // PRODUCT ID TO REMOVE IT FROM BAG
+}
+
+interface updateProductInBag {
+  type: actionTypes.UPDATE_PRODUCT_IN_BAG;
+  payload: bagItem[];
 }
 
 export type stateType = {
   saved: savedItem[];
   recently_viewed: recentlyViewed[];
-  bag: number[];
+  bag: bagItem[];
 };
 
 export type actionType =
@@ -42,4 +57,7 @@ export type actionType =
   | addToRecentlyViewed
   | removeFromRecentlyViewed
   | clearRecentlyViewed
-  | updateSavedProductSize;
+  | updateSavedProductSize
+  | addProductToBag
+  | removeProductFromBag
+  | updateProductInBag;

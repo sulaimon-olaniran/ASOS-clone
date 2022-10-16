@@ -52,7 +52,7 @@ const EachProdcut = ({product, category_id}: componentType) => {
         .request(options)
         .then(function (response) {
           //console.log(response.data);
-          const saved_item = returnSavedItem(response.data, "");
+          const saved_item = returnSavedItem(response.data, "", category_id);
           setSavingProduct(false);
 
           dispatch(saveProduct(saved_item));

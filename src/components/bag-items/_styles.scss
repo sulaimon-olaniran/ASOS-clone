@@ -1,0 +1,127 @@
+.bag-component-container {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  padding: 0 25px;
+  //padding-top: 20px;
+
+  .each-bag-item-container {
+    padding-top: 20px;
+    padding-bottom: 25px;
+    display: flex;
+    border-top: 1px solid #eee;
+
+    .bag-item-image-container {
+      height: 140px;
+      width: 110px;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .bag-item-right-section {
+      margin-left: 15px;
+      padding-right: 25px;
+
+      .bag-item-price-container {
+        margin-bottom: 10px;
+        span {
+          color: #2d2d2d;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 0.9rem;
+          padding-right: 0.3em;
+          letter-spacing: 1.7px;
+        }
+      }
+
+      .bag-item-name-container {
+        color: #2d2d2d;
+        letter-spacing: 0.5px;
+        opacity: 0.9;
+        overflow: hidden;
+        padding: 0 25px 8px 0;
+        font-size: 0.82em;
+        line-height: 1.5em;
+        max-height: 3.1em;
+        margin-bottom: 10px;
+      }
+
+      .bag-item-details-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .each-detail {
+          border-right: 1px solid #eee;
+          margin: 0 3px 0 0;
+          padding: 0 8px 0 0;
+          margin-right: 10px;
+
+          span {
+            display: inline-block;
+            color: #666;
+            font-size: 0.75em;
+            letter-spacing: 0.6px;
+            font-style: normal;
+            font-weight: 400;
+          }
+
+          select {
+            min-width: 40px;
+            height: 20px;
+            border: none;
+            padding: 0;
+            font-size: 0.75rem;
+            color: #666;
+            font-weight: 300;
+          }
+
+          select:focus {
+            outline: none;
+          }
+        }
+
+        :nth-child(3) {
+          border: none;
+        }
+      }
+
+      .save-for-later-button {
+        max-width: 130px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+
+        .heart-icon {
+          background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%3Csvg%20width%3D%2214px%22%20height%3D%2213px%22%20viewBox%3D%22-1%20-1%2015%2015%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%20%20%20%20%3Cg%20id%3D%22Desktop%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Desktop_bag%22%20transform%3D%22translate(-302.000000%2C%20-716.000000)%22%20stroke%3D%22%232D2D2D%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22M02_your_items%22%20transform%3D%22translate(132.000000%2C%20315.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22product_2%22%20transform%3D%22translate(30.000000%2C%20280.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Save%22%20transform%3D%22translate(130.000000%2C%20112.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M16.4971144%2C10.1751535%20C15.8069078%2C9.45246798%2014.8600012%2C9.0058477%2013.8150562%2C9.00719656%20C11.7057556%2C9.00959452%209.99817292%2C10.8348926%2010.0000015%2C13.0823817%20C10.0060497%2C18.2466909%2016.5093516%2C21%2016.5093516%2C21%20C16.5093516%2C21%2023.0070272%2C18.2300551%2022.9999943%2C13.064397%20C22.9973218%2C10.816758%2021.2855194%2C8.99745484%2019.1756561%2C9.00000267%20C18.1318365%2C9.00075204%2017.1856331%2C9.44992014%2016.4971144%2C10.1751535%20Z%22%20id%3D%22Shape-Copy-7%22%3E%3C%2Fpath%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%3C%2Fg%3E%3C%2Fsvg%3E");
+          background-repeat: no-repeat;
+          //background-color: #fff;
+          background-position: 8px center;
+          height: 22px;
+          min-width: 22px;
+          margin-right: 10px;
+        }
+
+        border: 1px px solid #eee;
+        color: #2d2d2d;
+        cursor: pointer;
+        font-size: 0.72em;
+        letter-spacing: 0.4px;
+        margin-top: 4px;
+        font-weight: 400;
+        //padding: 6px 13px 6px 30px;
+        position: relative;
+        border: 1px solid #eee;
+      }
+    }
+  }
+
+  :nth-child(1) {
+    border: none;
+  }
+}

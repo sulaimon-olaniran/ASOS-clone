@@ -1,0 +1,322 @@
+.bag-page-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  //align-items: center;
+  justify-content: center;
+  background-color: #eee;
+
+  .bag-page-inner-container {
+    width: 960px;
+    //min-width: 500px;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    .bag-page-bag-information-section {
+      width: 60.6382978723%;
+
+      .bag-information-header {
+        width: 100%;
+        padding: 24px 30px;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        h1 {
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 2.5px;
+          line-height: 22px;
+          color: #2d2d2d;
+        }
+
+        p {
+          line-height: 20px;
+          font-size: 0.7rem;
+          letter-spacing: 0.6px;
+          font-style: normal;
+          font-weight: 400;
+          color: #2d2d2d;
+        }
+      }
+
+      .bag-items-list-container {
+        width: 100%;
+        height: 40rem;
+        background-color: #fff;
+        margin-bottom: 10px;
+      }
+
+      .bag-information-sub-total {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        background-color: #fff;
+        margin-bottom: 10px;
+
+        span {
+          letter-spacing: 2px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 1.375em;
+          text-transform: uppercase;
+          font-size: 0.9em;
+          text-align: right;
+          margin: 8px 0 0;
+          padding: 0px 30px;
+          color: #2d2d2d;
+        }
+      }
+
+      .free-delivery-information {
+        width: 100%;
+        padding: 20px 30px;
+        padding-left: 100px;
+        margin-bottom: 10px;
+        background-color: #fff;
+        position: relative;
+
+        .truck-icon {
+          background-size: 36px;
+          background-position: center top;
+          height: 36px;
+          width: 36px;
+          background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%3Csvg%20viewBox%3D%220%200%2040%2021%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%20%20%20%20%3Cdefs%3E%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22path-1%22%20points%3D%2232%206%2037%206%2039%2010%2032%2010%22%3E%3C%2Fpolygon%3E%20%20%20%20%20%20%20%20%3Cmask%20id%3D%22mask-2%22%20maskContentUnits%3D%22userSpaceOnUse%22%20maskUnits%3D%22objectBoundingBox%22%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%224%22%20fill%3D%22white%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20xlink%3Ahref%3D%22%23path-1%22%3E%3C%2Fuse%3E%20%20%20%20%20%20%20%20%3C%2Fmask%3E%20%20%20%20%20%20%20%20%3Ccircle%20id%3D%22path-3%22%20cx%3D%2214.5%22%20cy%3D%2217.5%22%20r%3D%223.5%22%3E%3C%2Fcircle%3E%20%20%20%20%20%20%20%20%3Cmask%20id%3D%22mask-4%22%20maskContentUnits%3D%22userSpaceOnUse%22%20maskUnits%3D%22objectBoundingBox%22%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22white%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20xlink%3Ahref%3D%22%23path-3%22%3E%3C%2Fuse%3E%20%20%20%20%20%20%20%20%3C%2Fmask%3E%20%20%20%20%20%20%20%20%3Ccircle%20id%3D%22path-5%22%20cx%3D%2233.5%22%20cy%3D%2217.5%22%20r%3D%223.5%22%3E%3C%2Fcircle%3E%20%20%20%20%20%20%20%20%3Cmask%20id%3D%22mask-6%22%20maskContentUnits%3D%22userSpaceOnUse%22%20maskUnits%3D%22objectBoundingBox%22%20x%3D%220%22%20y%3D%220%22%20width%3D%227%22%20height%3D%227%22%20fill%3D%22white%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20xlink%3Ahref%3D%22%23path-5%22%3E%3C%2Fuse%3E%20%20%20%20%20%20%20%20%3C%2Fmask%3E%20%20%20%20%3C%2Fdefs%3E%20%20%20%20%3Cg%20id%3D%22Symbols%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%20%20%20%20%20%20%20%3Cg%20id%3D%22M05_delivery_info%22%20transform%3D%22translate(-36.000000%2C%20-31.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon_fastdelivery_normal%22%20transform%3D%22translate(34.000000%2C%2019.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22Dev-Guide%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2244%22%20height%3D%2244%22%3E%3C%2Frect%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22Visual-Guide%22%20x%3D%2212%22%20y%3D%2212%22%20width%3D%2220%22%20height%3D%2220%22%3E%3C%2Frect%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Shape%22%20transform%3D%22translate(2.000000%2C%2012.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M12%2C18%20C12.1947494%2C19.7341297%2016.8052506%2C19.7341297%2017%2C18%20L28.3150358%2C18.1274463%20L29.2887828%2C18.1274463%20L30.1651551%2C18.1274463%20C30.3599045%2C19.7341289%2031.7718377%2C21%2033.4272076%2C21%20C35.0825776%2C21%2036.4945107%2C19.7341289%2036.6892601%2C18.1274463%20L40%2C18.1274463%20L40%2C8.99999998%20C40%2C8.99999998%2036.6666667%2C4.65680189%2035%2C1.99999998%20L30.1651554%2C1.99999998%20L29.1651554%2C-2.38433131e-08%20L7%2C-2.38433131e-08%20L8%2C18%20L12%2C18%20Z%20M14.2593079%2C19.2883055%20C13.2268447%2C19.2883055%2012.353222%2C18.4543929%2012.353222%2C17.3822196%20C12.353222%2C16.3100462%2013.1871345%2C15.4761337%2014.2593079%2C15.4761337%20C15.3314812%2C15.4761337%2016.1653938%2C16.3100462%2016.1653938%2C17.3822196%20C16.1653938%2C18.4543929%2015.2917711%2C19.2883055%2014.2593079%2C19.2883055%20L14.2593079%2C19.2883055%20Z%20M33.4272076%2C19.8207637%20C32.2726432%2C19.8207637%2031.2957041%2C18.8882309%2031.2957041%2C17.6892601%20C31.2957041%2C16.4902894%2032.2282369%2C15.5577566%2033.4272076%2C15.5577566%20C34.6261784%2C15.5577566%2035.5587112%2C16.4902894%2035.5587112%2C17.6892601%20C35.5587112%2C18.8882309%2034.5817721%2C19.8207637%2033.4272076%2C19.8207637%20L33.4272076%2C19.8207637%20Z%20M38%2C10%20L38%2C13.1954023%20L38%2C16%20L35%2C16%20C34.8%2C14.5287356%2034.32%2C15%2033%2C15%20C31.7103092%2C15%2031.2187806%2C14.6045949%2031%2C16%20C30.9948584%2C16.0327936%2030.7645923%2C15.9662175%2030.76%2C16%20L30%2C16%20L30%2C4%20L33.8%2C4%20L38%2C10%20Z%20M28%2C2%20L28%2C3.75%20L28%2C16%20L17%2C16%20C16.7692308%2C14.6%2016.5230769%2C15%2015%2C15%20C13.4769231%2C15%2012.2307692%2C14.6%2012%2C16%20L10%2C16%20L9%2C2%20L28%2C2%20Z%22%20fill%3D%22%232D2D2D%22%3E%3C%2Fpath%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22Rectangle-1564%22%20fill%3D%22%232D2D2D%22%20x%3D%220%22%20y%3D%225%22%20width%3D%2215%22%20height%3D%222%22%3E%3C%2Frect%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22Rectangle-1564%22%20fill%3D%22%232D2D2D%22%20x%3D%226%22%20y%3D%229%22%20width%3D%228%22%20height%3D%222%22%3E%3C%2Frect%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22Rectangle-1564%22%20fill%3D%22%232D2D2D%22%20x%3D%223%22%20y%3D%229%22%20width%3D%222%22%20height%3D%222%22%3E%3C%2Frect%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20id%3D%22Rectangle-1564%22%20fill%3D%22%232D2D2D%22%20x%3D%225%22%20y%3D%2213%22%20width%3D%227%22%20height%3D%222%22%3E%3C%2Frect%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20id%3D%22Rectangle-581%22%20stroke%3D%22%232D2D2D%22%20mask%3D%22url(%23mask-2)%22%20stroke-width%3D%222%22%20xlink%3Ahref%3D%22%23path-1%22%3E%3C%2Fuse%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20id%3D%22Oval-71%22%20stroke%3D%22%232D2D2D%22%20mask%3D%22url(%23mask-4)%22%20stroke-width%3D%224%22%20xlink%3Ahref%3D%22%23path-3%22%3E%3C%2Fuse%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cuse%20id%3D%22Oval-71%22%20stroke%3D%22%232D2D2D%22%20mask%3D%22url(%23mask-6)%22%20stroke-width%3D%224%22%20xlink%3Ahref%3D%22%23path-5%22%3E%3C%2Fuse%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%3C%2Fg%3E%3C%2Fsvg%3E");
+          background-repeat: no-repeat;
+          position: absolute;
+          left: 25px;
+          top: 24px;
+        }
+
+        .free-delivery-header {
+          width: 100%;
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 5px;
+
+          span {
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #2d2d2d;
+          }
+        }
+
+        p {
+          display: block;
+          color: #2d2d2d;
+          width: 100%;
+          text-align: left;
+          font-size: 0.78rem;
+          margin-bottom: 5px;
+        }
+
+        :nth-child(4) {
+          text-decoration: underline;
+        }
+      }
+
+      .moved-items-information {
+        width: 100%;
+        padding: 30px 0;
+
+        h1 {
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          text-transform: uppercase;
+          color: #2d2d2d;
+          border-bottom: solid 1px #ddd;
+          width: 100%;
+          max-width: 510px;
+          text-align: left;
+          padding-bottom: 20px;
+          margin-bottom: 20px;
+          letter-spacing: 2.5px;
+          line-height: 22px;
+        }
+
+        p {
+          font-size: 12px;
+          line-height: 24px;
+          letter-spacing: 0.4px;
+          color: #2d2d2d;
+          max-width: 570px;
+          margin-bottom: 15px;
+        }
+
+        span {
+          font-style: normal;
+          font-weight: 600;
+          text-transform: uppercase;
+          font-size: 0.85em;
+          letter-spacing: 1.6px;
+          text-align: center;
+          border: 2px solid silver;
+          color: #2d2d2d;
+          background: #eee;
+          display: inline-block;
+          text-decoration: none;
+          padding: 17px 30px 15px;
+          line-height: 1em;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .bag-page-checkout-section {
+      width: 39.3617021277%;
+      height: 23rem;
+      background-color: #fff;
+      //position: sticky;
+      margin-left: 10px;
+      padding: 24px 30px;
+
+      .bag-checkout-header {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        // align-items: center;
+        margin-bottom: 14px;
+        border-bottom: 1px solid #eee;
+
+        h1 {
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 2.5px;
+          line-height: 22px;
+          color: #2d2d2d;
+        }
+      }
+
+      .bag-checkout-body {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        .sub-total-container,
+        .delivery-information-container {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          h3 {
+            font-size: 0.9rem;
+            font-style: normal;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-top: 6px;
+            color: #2d2d2d;
+          }
+
+          span {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            font-weight: 400;
+            color: #2d2d2d;
+          }
+
+          .info-icon {
+            border: 2px solid #999;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20viewBox%3D%220%200%202%208%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%20%20%20%20%3Cg%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(-7.000000%2C%20-4.000000)%22%20fill%3D%22%23979797%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20transform%3D%22translate(7.000000%2C%204.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ccircle%20cx%3D%221%22%20cy%3D%221%22%20r%3D%221%22%3E%3C%2Fcircle%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Crect%20x%3D%220%22%20y%3D%223%22%20width%3D%222%22%20height%3D%225%22%3E%3C%2Frect%3E%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%3C%2Fg%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-size: 2px 8px;
+            background-position: center;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+          }
+        }
+
+        .delivery-type-container {
+          width: 100%;
+
+          .delivery-type-select {
+            width: 100%;
+            height: 50px;
+            border: none;
+            padding: 0;
+            border-bottom: 1px solid #999;
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 300;
+          }
+
+          .delivery-type-select:focus {
+            outline: none;
+          }
+        }
+      }
+
+      .bag-checkout-checkout-button {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #018849;
+        color: #fff;
+        margin-bottom: 15px;
+
+        span {
+          font-style: normal;
+          font-weight: 700;
+          border: none;
+          border-radius: 0;
+          cursor: pointer;
+          display: block;
+          font-size: 0.875em;
+          letter-spacing: 0.0857142857em;
+          line-height: 1em;
+          margin: 0 auto;
+          text-align: center;
+          text-decoration: none;
+          text-transform: uppercase;
+        }
+      }
+
+      .checkout-accepted-cards {
+        width: 100%;
+
+        h3 {
+          text-transform: uppercase;
+          font-size: 0.875em;
+          font-style: normal;
+          font-weight: 700;
+          letter-spacing: 2px;
+          margin-bottom: 7px;
+        }
+
+        .accepted-cards-image-container {
+          width: 192px;
+          margin-bottom: 7px;
+
+          img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        span {
+          font-style: normal;
+          font-weight: 400;
+          letter-spacing: 0.4px;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

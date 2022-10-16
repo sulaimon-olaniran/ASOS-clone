@@ -66,9 +66,12 @@ const DesktopNavbar = () => {
           <div className="second-section-right-side">
             <NavbarAccountComponent />
 
-            <div className="second-section-right-side-button-container">
+            <Link
+              to="/saved-list"
+              className="second-section-right-side-button-container"
+            >
               <div className="saved-icon" />
-            </div>
+            </Link>
 
             <div className="second-section-right-side-button-container">
               <div className="bag-icon" />

@@ -10,7 +10,11 @@ export const getPercentage = (prev: number, current: number) => {
   return percentage;
 };
 
-export const returnSavedItem = (product: savedItem, selected_size: string) => {
+export const returnSavedItem = (
+  product: savedItem,
+  selected_size: string,
+  category_id: string
+) => {
   // console.log("product", product);
   const item = {
     id: product.id || 0,
@@ -34,6 +38,7 @@ export const returnSavedItem = (product: savedItem, selected_size: string) => {
 
     isNoSize: product.isNoSize || false,
     isOneSize: product.isOneSize || false,
+    category_id: category_id,
   };
 
   return item;

@@ -42,7 +42,7 @@ const ViewedItem = ({item, cat_id}: componentProps) => {
 
   const toggleSaveProduct = () => {
     const isSaved = saved_products.some(product => item.id === product.id);
-    const saved_item = returnSavedItem(item, "");
+    const saved_item = returnSavedItem(item, "", cat_id);
     if (isSaved) {
       dispatch(unsaveProduct(item.id || 0));
     } else {

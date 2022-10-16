@@ -18,7 +18,7 @@ const appReducer = (state: stateType = initState, action: actionType) => {
     case actionTypes.SAVE_PRODUCT:
       return {
         ...state,
-        saved: [...state.saved, action.payload],
+        saved: [action.payload, ...state.saved],
       };
 
     case actionTypes.UNSAVE_PRODUCT:
@@ -53,6 +53,23 @@ const appReducer = (state: stateType = initState, action: actionType) => {
       return {
         ...state,
         recently_viewed: [],
+      };
+
+    case actionTypes.ADD_PRODUCT_TO_BAG:
+      return {
+        ...state,
+        bag: [action.payload, ...state.bag],
+      };
+
+    case actionTypes.REMOVE_PRODUCT_FROM_BAG:
+      return {
+        ...state,
+        bag: state.bag.filter(item => item.id !== action.payload),
+      };
+    case actionTypes.UPDATE_PRODUCT_IN_BAG:
+      return {
+        ...state,
+        bag: action.payload,
       };
     default:
       return state;

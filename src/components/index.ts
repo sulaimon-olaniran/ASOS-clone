@@ -4,3 +4,4 @@ export {default as ShopPageComponent} from "./shop-page/ShopPage";
 export {default as VideoJsPlayer} from "./video-player/Video-Player";
 export {default as LikeButton} from "./like-button/Like-Button";
 export {default as ScrollToTop} from "./scroll-top/Scroll-Top";
+export {default as BagItemsComponent} from "./bag-items/Bag-Items";

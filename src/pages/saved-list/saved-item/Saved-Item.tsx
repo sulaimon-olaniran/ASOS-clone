@@ -5,6 +5,7 @@ import {savedItem} from "../../../assets/types";
 import {useAppDispatch} from "../../../assets/hooks";
 import {unsaveProduct} from "../../../state/actions-creator/product";
 import {updateSavedProductSize} from "../../../state/actions-creator/product";
+import {productVariant} from "../../product/types";
 
 interface componentProps {
   item: savedItem;
@@ -12,13 +13,18 @@ interface componentProps {
 
 const SavedItem = ({item}: componentProps) => {
   const [size, setSize] = useState(item.selected_size);
+  const [variant, setVariant] = useState<productVariant>({});
 
   const dispatch = useAppDispatch();
 
   const handleSizeChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const value = e.target.value;
+    const selected_variant =
+      item.variants && item.variants.find(item => item.brandSize === value);
 
     setSize(value);
+    setVariant(selected_variant || {});
+
     dispatch(updateSavedProductSize(value, item.id || 0));
   };
 
@@ -35,6 +41,14 @@ const SavedItem = ({item}: componentProps) => {
 
         <div className="image-container">
           <img src={`https://${item.image}`} alt="" />
+
+          <div
+            className={`saved-item-low-in-stock ${
+              variant.isLowInStock && "low-in-stock-active"
+            }`}
+          >
+            <span>Low in stock</span>
+          </div>
         </div>
       </div>
 
@@ -51,7 +65,7 @@ const SavedItem = ({item}: componentProps) => {
       </div>
 
       <div className="saved-item-size-selection-container">
-        {item.isNoSize ? (
+        {item.isNoSize || item.isOneSize ? (
           <div className="no-size-container">
             <span>No size</span>
           </div>
@@ -74,7 +88,7 @@ const SavedItem = ({item}: componentProps) => {
 
       <div
         className={`saved-item-add-to-bag-button ${
-          !item.isNoSize && size === "" && "disable-button"
+          !item.isNoSize && size === "" && !item.isOneSize && "disable-button"
         }`}
       >
         <span>Move to bag</span>

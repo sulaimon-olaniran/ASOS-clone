@@ -3,15 +3,13 @@ import {Dispatch} from "redux";
 import {actionTypes} from "../action-types/product";
 import {actionType} from "../types/product";
 import {AppStateType} from "../reducers/_root";
-import {recentlyViewed, savedItem} from "../../assets/types";
+import {recentlyViewed, savedItem, bagItem} from "../../assets/types";
 
 export const saveProduct = (product: savedItem) => {
-  return (dispatch: Dispatch<actionType>) => {
-    const saved_products = JSON.parse(
-      localStorage.getItem("saved_products") || "[]"
-    );
+  return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
+    const saved_products = getState().product.saved;
 
-    const new_saved_products = [...saved_products, product];
+    const new_saved_products = [product, ...saved_products];
 
     localStorage.setItem("saved_products", JSON.stringify(new_saved_products));
 
@@ -126,5 +124,45 @@ export const addToBag = (id: number) => {
     const bag = getState().product.bag;
 
     const new_bag = bag;
+  };
+};
+
+export const addProductToBag = (item: bagItem) => {
+  return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
+    const bag = getState().product.bag;
+
+    const new_bag = [item, ...bag];
+
+    localStorage.setItem("saved_products", JSON.stringify(new_bag));
+
+    dispatch({
+      type: actionTypes.ADD_PRODUCT_TO_BAG,
+      payload: item,
+    });
+  };
+};
+
+export const removeProductFromBag = (id: number) => {
+  return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
+    const bag = getState().product.bag;
+
+    const new_bag = bag.filter(item => item.id !== id);
+
+    localStorage.setItem("saved_products", JSON.stringify(new_bag));
+
+    dispatch({
+      type: actionTypes.REMOVE_PRODUCT_FROM_BAG,
+      payload: id,
+    });
+  };
+};
+
+export const updateProductInBag = (update: {}) => {
+  return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
+    const bag = getState().product.bag;
+
+    const new_bag = bag;
+
+    localStorage.setItem("saved_products", JSON.stringify(new_bag));
   };
 };

@@ -14,9 +14,10 @@ import {productType, productVariant} from "../../types";
 
 interface componentProps {
   product: productType;
+  cat_id: string;
 }
 
-const ProductAside = ({product}: componentProps) => {
+const ProductAside = ({product, cat_id}: componentProps) => {
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedVariant, setSelectedVariant] = useState<productVariant>({});
 
@@ -27,7 +28,7 @@ const ProductAside = ({product}: componentProps) => {
     //const saved_item = returnSavedItem(product, selectedSize);
     const isSaved = saved_products.some(item => item.id === product.id);
 
-    const saved_item = returnSavedItem(product, selectedSize);
+    const saved_item = returnSavedItem(product, selectedSize, cat_id);
 
     if (isSaved) {
       dispatch(unsaveProduct(product.id || 0));
