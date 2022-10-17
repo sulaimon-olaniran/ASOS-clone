@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Rating from "@mui/material/Rating";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
+//import {v4 as uuidv4} from "uuid";
 
 import {LikeButton} from "../../../../components/";
 
@@ -8,8 +9,14 @@ import {useAppDispatch, useAppSelector} from "../../../../assets/hooks";
 import {
   saveProduct,
   unsaveProduct,
+  addProductToBag,
+  updateProductInBag,
 } from "../../../../state/actions-creator/product";
-import {getPercentage, returnSavedItem} from "../../../../assets/functions";
+import {
+  getPercentage,
+  returnSavedItem,
+  returnBagItem,
+} from "../../../../assets/functions";
 import {productType, productVariant} from "../../types";
 
 interface componentProps {
@@ -22,6 +29,7 @@ const ProductAside = ({product, cat_id}: componentProps) => {
   const [selectedVariant, setSelectedVariant] = useState<productVariant>({});
 
   const saved_products = useAppSelector(state => state.product.saved);
+  const bag_items = useAppSelector(state => state.product.bag);
   const dispatch = useAppDispatch();
 
   const toggleSaveProduct = () => {
@@ -55,6 +63,34 @@ const ProductAside = ({product, cat_id}: componentProps) => {
   const curPrice = product.price && product.price.current;
 
   const hasPrevPrice = prevPrice?.value && prevPrice?.value !== curPrice?.value;
+
+  const handleAddProductToBag = () => {
+    //CHECK IF ITEM ALREADY EXISTS IN BAG
+    const isInBag = bag_items.find(item => item.id === product.id);
+    if (isInBag) {
+      //CHECK IF SIZE IS THE SAME
+      const sameSize = isInBag.selected_size === selectedSize;
+      if (sameSize) {
+        //update item in bag by increasing the quantity by 1
+        const bag_update = {
+          sub_id: isInBag.sub_id || "",
+          quantity: isInBag.quantity && isInBag.quantity + 1,
+        };
+
+        dispatch(updateProductInBag(bag_update || 0));
+      } else {
+        //add the same item to bag with different size
+        const item = returnBagItem(product, selectedSize, "");
+
+        dispatch(addProductToBag(item));
+      }
+    } else {
+      const item = returnBagItem(product, selectedSize, "");
+
+      dispatch(addProductToBag(item));
+      //just add item to bag
+    }
+  };
 
   return (
     <div className="product-aside-container">
@@ -135,7 +171,7 @@ const ProductAside = ({product, cat_id}: componentProps) => {
       )}
 
       <div className="product-actions-container">
-        <div className="add-to-bag-button">
+        <div className="add-to-bag-button" onClick={handleAddProductToBag}>
           <span>Add to bag</span>
         </div>
 

@@ -119,13 +119,13 @@ export const clearRecentlyViewed = () => {
   };
 };
 
-export const addToBag = (id: number) => {
-  return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
-    const bag = getState().product.bag;
+// export const addToBag = (id: number) => {
+//   return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
+//     const bag = getState().product.bag;
 
-    const new_bag = bag;
-  };
-};
+//     const new_bag = bag;
+//   };
+// };
 
 export const addProductToBag = (item: bagItem) => {
   return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
@@ -133,7 +133,7 @@ export const addProductToBag = (item: bagItem) => {
 
     const new_bag = [item, ...bag];
 
-    localStorage.setItem("saved_products", JSON.stringify(new_bag));
+    localStorage.setItem("asos_shopping_bag", JSON.stringify(new_bag));
 
     dispatch({
       type: actionTypes.ADD_PRODUCT_TO_BAG,
@@ -148,7 +148,7 @@ export const removeProductFromBag = (id: number) => {
 
     const new_bag = bag.filter(item => item.id !== id);
 
-    localStorage.setItem("saved_products", JSON.stringify(new_bag));
+    localStorage.setItem("asos_shopping_bag", JSON.stringify(new_bag));
 
     dispatch({
       type: actionTypes.REMOVE_PRODUCT_FROM_BAG,
@@ -157,12 +157,30 @@ export const removeProductFromBag = (id: number) => {
   };
 };
 
-export const updateProductInBag = (update: {}) => {
+type bag_update = {
+  //id: number;
+  sub_id: string;
+  size?: string;
+  quantity?: number;
+};
+
+export const updateProductInBag = (update: bag_update) => {
   return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
     const bag = getState().product.bag;
 
-    const new_bag = bag;
+    const updated_bag = bag.map(item => {
+      if (item.sub_id === update.sub_id) {
+        return {...item, ...update};
+      } else {
+        return item;
+      }
+    });
 
-    localStorage.setItem("saved_products", JSON.stringify(new_bag));
+    localStorage.setItem("asos_shopping_bag", JSON.stringify(updated_bag));
+
+    dispatch({
+      type: actionTypes.UPDATE_PRODUCT_IN_BAG,
+      payload: updated_bag,
+    });
   };
 };

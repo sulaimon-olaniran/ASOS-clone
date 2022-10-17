@@ -1,0 +1,40 @@
+.no-bag-items-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0 60px;
+
+  .bag-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%3Csvg%20width%3D%2220px%22%20height%3D%2220px%22%20viewBox%3D%220%200%2020%2020%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%20%20%20%20%3Cg%20id%3D%22Mobile%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Mobile_bag_empty_recognised_with_saved%22%20transform%3D%22translate(-150.000000%2C%20-164.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22M02B_empty_bag_signed_in%22%20transform%3D%22translate(0.000000%2C%20131.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon_bag_selected%22%20transform%3D%22translate(138.000000%2C%2021.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Shape%22%20transform%3D%22translate(13.000000%2C%2012.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpolygon%20id%3D%22Rectangle-1176%22%20stroke%3D%22%232D2D2D%22%20stroke-width%3D%222%22%20points%3D%220%2019%201.9793691e-08%206%2017.9999995%206%2018%2018.9866501%22%3E%3C%2Fpolygon%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M5.12601749%2C7%20L3.08295844%2C7%20C3.0283988%2C6.67479153%203%2C6.34071221%203%2C6%20C3%2C2.6862915%205.6862915%2C0%209%2C0%20C12.3137085%2C0%2015%2C2.6862915%2015%2C6%20C15%2C6.34071221%2014.9716012%2C6.67479153%2014.9170416%2C7%20L12.8739825%2C7%20C12.956247%2C6.68038008%2013%2C6.34529957%2013%2C6%20C13%2C3.790861%2011.209139%2C2%209%2C2%20C6.790861%2C2%205%2C3.790861%205%2C6%20C5%2C6.34529957%205.043753%2C6.68038008%205.12601749%2C7%20Z%22%20id%3D%22Oval-146%22%20fill%3D%22%232D2D2D%22%3E%3C%2Fpath%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: top center;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 22px;
+    letter-spacing: 2.5px;
+    color: #2d2d2d;
+    margin-bottom: 24px;
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 24px;
+    color: #2d2d2d;
+    letter-spacing: 0.4px;
+    text-align: center;
+
+    span {
+      color: #2d2d2d;
+      text-decoration: underline;
+    }
+  }
+}

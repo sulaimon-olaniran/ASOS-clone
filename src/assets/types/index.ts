@@ -48,6 +48,7 @@ export type savedItem = {
 export type bagItem = {
   [key: string]: any;
   id?: number;
+  sub_id?: string;
   name?: string;
   image?: string;
   quantity?: number;
