@@ -1,6 +1,23 @@
 import {BagItemsComponent} from "../../components";
+import {useAppSelector} from "../../assets/hooks";
+
+const addZeroes = (num: string) => {
+  const dec = num.split(".")[1];
+  const len = dec && dec.length > 2 ? dec.length : 2;
+  return Number(num).toFixed(len);
+};
 
 const BagPage = () => {
+  const bag_items = useAppSelector(state => state.product.bag);
+
+  const bag_amount = bag_items.reduce((n, item) => {
+    const item_quantity: number = item.quantity || 1;
+    const price = item.price && item.price.current.value * item_quantity;
+    return n + (price || 0);
+  }, 0);
+
+  const final_bag_amount = addZeroes(bag_amount.toString());
+
   return (
     <div className="bag-page-container">
       <div className="bag-page-inner-container">
@@ -16,7 +33,7 @@ const BagPage = () => {
 
           <div className="bag-information-sub-total">
             <span>Sub-Total</span>
-            <span>£70.50</span>
+            <span>${final_bag_amount}</span>
           </div>
 
           <div className="free-delivery-information">
@@ -46,7 +63,7 @@ const BagPage = () => {
           <div className="bag-checkout-body">
             <div className="sub-total-container">
               <h3>Sub-total</h3>
-              <span>£70.50</span>
+              <span>${final_bag_amount}</span>
             </div>
 
             <div className="delivery-information-container">

@@ -3,10 +3,16 @@
   height: auto;
   background-color: #fff;
   padding: 0 25px;
+  transition: all 0.5s ease-in-out;
   //padding-top: 20px;
 
   :nth-child(1) {
     border: none;
+  }
+
+  .item-exit-active {
+    opacity: 0;
+    transition: opacity 700ms ease-out;
   }
 }
 

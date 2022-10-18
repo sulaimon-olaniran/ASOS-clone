@@ -2,23 +2,48 @@
   padding-top: 20px;
   padding-bottom: 25px;
   display: flex;
+  flex-direction: column;
   border-top: 1px solid #eee;
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  margin-bottom: 25px;
+  transition: all 0.5s ease-in-out;
 
-  .bag-item-image-container {
-    height: 140px;
-    width: 110px;
+  .update-is-happening {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    background-color: #ffffff;
+    opacity: 0.7;
+  }
 
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+  .each-bag-item-contents-container {
+    width: 100%;
+    display: flex;
+    background-color: #ffffff;
+    z-index: 5;
+
+    .bag-item-image-container {
+      height: 140px;
+      width: 110px;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 
   .bag-item-right-section {
     margin-left: 15px;
     padding-right: 25px;
+    width: calc(100% - 100px);
 
     .bag-item-price-container {
       margin-bottom: 10px;
@@ -33,15 +58,17 @@
     }
 
     .bag-item-name-container {
-      color: #2d2d2d;
-      letter-spacing: 0.5px;
-      opacity: 0.9;
-      overflow: hidden;
       padding: 0 25px 8px 0;
-      font-size: 0.82em;
-      line-height: 1.5em;
-      max-height: 3.1em;
-      margin-bottom: 10px;
+      span {
+        color: #2d2d2d;
+        letter-spacing: 0.5px;
+        opacity: 0.9;
+        overflow: hidden;
+        font-size: 0.75em;
+        line-height: 1.5rem;
+        max-height: 3.1rem;
+        margin-bottom: 10px;
+      }
     }
 
     .bag-item-details-container {
@@ -112,4 +139,77 @@
       border: 1px solid #eee;
     }
   }
+
+  .bag-item-update-actions {
+    width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    display: none;
+    height: 80px;
+    transition: transform 0.5s ease-in-out;
+
+    .cancel-button {
+      cursor: pointer;
+      font-size: 0.835em;
+      letter-spacing: 0.4px;
+      margin: 0 10px;
+      text-decoration: underline;
+      border: none;
+      padding: 0;
+      background: 0 0;
+      font-weight: 400;
+      color: #000000;
+    }
+
+    .update-button {
+      font-style: normal;
+      font-size: 0.875em;
+      font-weight: 600;
+      background-color: #2d2d2d;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 0.6em;
+      padding: 5px 15px;
+      letter-spacing: 1.5px;
+      line-height: 1.7em;
+      text-transform: uppercase;
+    }
+  }
+
+  .remove-bag-item-button {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%3Csvg%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%22-1%20-1%2017%2017%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%20%20%20%20%3Cg%20id%3D%22Desktop%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%20%20%20%20%20%20%20%20%3Cg%20id%3D%22Desktop_bag%22%20transform%3D%22translate(-636.000000%2C%20-429.000000)%22%20fill%3D%22%232D2D2D%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22M02_your_items%22%20transform%3D%22translate(132.000000%2C%20315.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22product_1%22%20transform%3D%22translate(30.000000%2C%20100.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cg%20id%3D%22icon_close_normal%22%20transform%3D%22translate(458.000000%2C%200.000000)%22%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M23%2C21%20L14%2C21%20L14%2C23%20L23%2C23%20L23%2C32%20L25%2C32%20L25%2C23%20L34%2C23%20L34%2C21%20L25%2C21%20L25%2C12%20L23%2C12%20L23%2C21%20Z%22%20id%3D%22Rectangle-920-Copy%22%20transform%3D%22translate(24.000000%2C%2022.000000)%20rotate(-315.000000)%20translate(-24.000000%2C%20-22.000000)%20%22%3E%3C%2Fpath%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%20%20%20%20%3C%2Fg%3E%20%20%20%20%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center center;
+    border: none;
+    cursor: pointer;
+    height: 16px;
+    overflow: hidden;
+    text-indent: 32px;
+    width: 16px;
+    padding: 0;
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    width: 24px;
+    height: 24px;
+    z-index: 99;
+  }
+}
+
+.updating-current-item {
+  height: 290px;
+  margin-bottom: 0;
+  .bag-item-update-actions {
+    display: flex;
+  }
+}
+
+.update-is-active {
+  border: none;
 }

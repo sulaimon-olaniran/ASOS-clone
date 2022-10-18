@@ -142,17 +142,17 @@ export const addProductToBag = (item: bagItem) => {
   };
 };
 
-export const removeProductFromBag = (id: number) => {
+export const removeProductFromBag = (sub_id: string) => {
   return (dispatch: Dispatch<actionType>, getState: () => AppStateType) => {
     const bag = getState().product.bag;
 
-    const new_bag = bag.filter(item => item.id !== id);
+    const new_bag = bag.filter(item => item.sub_id !== sub_id);
 
     localStorage.setItem("asos_shopping_bag", JSON.stringify(new_bag));
 
     dispatch({
       type: actionTypes.REMOVE_PRODUCT_FROM_BAG,
-      payload: id,
+      payload: sub_id,
     });
   };
 };

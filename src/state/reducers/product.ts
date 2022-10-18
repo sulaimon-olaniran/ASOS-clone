@@ -64,7 +64,7 @@ const appReducer = (state: stateType = initState, action: actionType) => {
     case actionTypes.REMOVE_PRODUCT_FROM_BAG:
       return {
         ...state,
-        bag: state.bag.filter(item => item.id !== action.payload),
+        bag: state.bag.filter(item => item.sub_id !== action.payload),
       };
     case actionTypes.UPDATE_PRODUCT_IN_BAG:
       return {
