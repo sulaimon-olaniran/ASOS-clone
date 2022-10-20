@@ -2,7 +2,7 @@
   width: 100%;
   height: auto;
   background-color: #fff;
-  padding: 0 25px;
+  // padding: 0 25px;
   transition: all 0.5s ease-in-out;
   //padding-top: 20px;
 
@@ -12,9 +12,21 @@
 
   .item-exit-active {
     opacity: 0;
-    transition: opacity 700ms ease-out;
+    transition: opacity 1000ms ease-out;
+  }
+}
+
+@-webkit-keyframes slide {
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes slide {
+  100% {
+    right: 0;
   }
 }
 
 @import "./item/styles";
-@import "./no-items/styles";
+//@import "./no-items/styles";

@@ -21,7 +21,7 @@ const LikeButtonComponent = ({
       className={`heartbutton ${isLiked && "heartbutton-liked"}`}
       onClick={handleButtonAction}
     >
-      <svg
+      {/* <svg
         className={`heart-icon-outline heartsize ${isLiked ? "liked" : ""}`}
         version="1.1"
         id="Layer_1"
@@ -42,7 +42,7 @@ const LikeButtonComponent = ({
           stroke="#2d2d2d"
           strokeWidth="4px"
         />
-      </svg>
+      </svg> */}
 
       <svg
         className={`heart-icon-filled heartsize ${

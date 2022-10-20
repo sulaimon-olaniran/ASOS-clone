@@ -6,6 +6,7 @@ import NavbarSearchComponent from "./components/search/Search";
 import ShopLinksNavbarComponent from "./components/shop-links/ShopLinks";
 import {useAppDispatch} from "../../../assets/hooks";
 import {toggleGender} from "../../../state/actions-creator/app";
+import NavbarBagComponent from "./components/bag/Bag";
 
 const DesktopNavbar = () => {
   const dispatch = useAppDispatch();
@@ -74,12 +75,14 @@ const DesktopNavbar = () => {
             </Link>
 
             <div className="second-section-right-side-button-container">
-              <div className="bag-icon" />
+              <NavbarBagComponent />
             </div>
           </div>
         </div>
       </section>
+
       <ShopLinksNavbarComponent />
+
       <section className="third-section">
         <div className="section-inner-container">
           <Link to="/women" className="third-section-button">

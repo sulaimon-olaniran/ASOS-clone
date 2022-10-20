@@ -1,10 +1,12 @@
 import {useState} from "react";
+import Zoom from "@mui/material/Zoom";
 
 import {bagItem} from "../../../assets/types";
 import {useAppDispatch} from "../../../assets/hooks";
 import {
   updateProductInBag,
   removeProductFromBag,
+  saveProduct,
 } from "../../../state/actions-creator/product";
 
 interface componentProps {
@@ -16,6 +18,10 @@ interface componentProps {
 const EachBagItem = ({item, updateItem, setUpdateItem}: componentProps) => {
   const [size, setSize] = useState(item.selected_size);
   const [quantity, setQuantity] = useState(item.quantity);
+  const [isRemoved, setIsRemoved] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [saveLater, setSaveLater] = useState(false);
+
   const quantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const dispatch = useAppDispatch();
@@ -60,91 +66,131 @@ const EachBagItem = ({item, updateItem, setUpdateItem}: componentProps) => {
   };
 
   const handleRemoveItemFromBag = () => {
-    dispatch(removeProductFromBag(item.sub_id || ""));
+    setIsRemoved(true);
+
+    setTimeout(() => {
+      dispatch(removeProductFromBag(item.sub_id || ""));
+    }, 1500);
+  };
+
+  const handleSaveForLater = () => {
+    setIsSaved(true);
+
+    setTimeout(() => {
+      setSaveLater(true);
+
+      setTimeout(() => {
+        dispatch(saveProduct(item));
+        dispatch(removeProductFromBag(item.sub_id || ""));
+      }, 2500);
+    }, 800);
   };
 
   const updatingCurrent = updateItem !== null && updateItem === item.sub_id;
   const updateIsHappening = updateItem !== null && updateItem !== item.sub_id;
 
+  if (saveLater)
+    return (
+      <Zoom in={true}>
+        <div className="save-later-notification">
+          <span>Item saved for later</span>
+
+          <div className="heart-animation-container">
+            <div className="heart1"></div>
+            <div className="heart2"></div>
+            <div className="heart3"></div>
+            <div className="heart4"></div>
+          </div>
+        </div>
+      </Zoom>
+    );
   return (
-    <div
-      className={`each-bag-item-container ${
-        updatingCurrent && "updating-current-item"
-      } ${updateIsHappening && "update-is-active"}`}
-    >
-      {updateIsHappening && <div className="update-is-happening" />}
-      <div className="each-bag-item-contents-container">
-        <div className="bag-item-image-container">
-          <img src={`https://${item.image}`} alt="" />
+    <Zoom in={isSaved === false} timeout={700}>
+      <div
+        className={`each-bag-item-container ${
+          updatingCurrent && "updating-current-item"
+        } ${updateIsHappening && "update-is-active"}`}
+      >
+        <div
+          className={`item-removed-animation ${isRemoved && "animate-item"}`}
+        >
+          <span>Item Deleted</span>
         </div>
 
-        <div className="bag-item-right-section">
-          <div className="bag-item-price-container">
-            <span>{item.price?.current.text}</span>
+        {updateIsHappening && <div className="update-is-happening" />}
+        <div className="each-bag-item-contents-container">
+          <div className="bag-item-image-container">
+            <img src={`https://${item.image}`} alt="" />
           </div>
 
-          <div className="bag-item-name-container">
-            <span>{item.name}</span>
-          </div>
-
-          <div className="bag-item-details-container">
-            <div className="each-detail">
-              <span>{item.colour}</span>
+          <div className="bag-item-right-section">
+            <div className="bag-item-price-container">
+              <span>{item.price?.current.text}</span>
             </div>
 
-            <div className="each-detail">
-              <select onChange={handleItemSizeChange} value={size}>
-                {item.isNoSize && <option value="">No Size</option>}
+            <div className="bag-item-name-container">
+              <span>{item.name}</span>
+            </div>
 
-                {item.isOneSize && <option value="">One Size</option>}
+            <div className="bag-item-details-container">
+              <div className="each-detail">
+                <span>{item.colour}</span>
+              </div>
 
-                {!item.isNoSize &&
-                  !item.isOneSize &&
-                  item.variants &&
-                  item.variants.map(variant => (
-                    <option
-                      value={variant.brandSize}
-                      disabled={!variant.isAvailable}
-                    >
-                      {variant.brandSize}
+              <div className="each-detail">
+                <select onChange={handleItemSizeChange} value={size}>
+                  {item.isNoSize && <option value="">No Size</option>}
+
+                  {item.isOneSize && <option value="">One Size</option>}
+
+                  {!item.isNoSize &&
+                    !item.isOneSize &&
+                    item.variants &&
+                    item.variants.map(variant => (
+                      <option
+                        value={variant.brandSize}
+                        disabled={!variant.isAvailable}
+                      >
+                        {variant.brandSize}
+                      </option>
+                    ))}
+                </select>
+              </div>
+
+              <div className="each-detail">
+                <select value={quantity} onChange={handleItemQuantityChange}>
+                  {quantities.map(quantity => (
+                    <option key={quantity} value={quantity}>
+                      {quantity}
                     </option>
                   ))}
-              </select>
+                </select>
+              </div>
             </div>
 
-            <div className="each-detail">
-              <select value={quantity} onChange={handleItemQuantityChange}>
-                {quantities.map(quantity => (
-                  <option key={quantity} value={quantity}>
-                    {quantity}
-                  </option>
-                ))}
-              </select>
+            <div className="save-for-later-button" onClick={handleSaveForLater}>
+              <div className="heart-icon" />
+              Save for later
             </div>
-          </div>
-
-          <div className="save-for-later-button">
-            <div className="heart-icon" />
-            Save for later
           </div>
         </div>
+
+        <div className="bag-item-update-actions">
+          <button className="cancel-button" onClick={handleCancelUpdate}>
+            Cancel
+          </button>
+
+          <button className="update-button" onClick={handleUpdateItem}>
+            Update
+          </button>
+        </div>
+
+        <div
+          className="remove-bag-item-button"
+          onClick={handleRemoveItemFromBag}
+        />
       </div>
-
-      <div className="bag-item-update-actions">
-        <button className="cancel-button" onClick={handleCancelUpdate}>
-          Cancel
-        </button>
-
-        <button className="update-button" onClick={handleUpdateItem}>
-          Update
-        </button>
-      </div>
-
-      <div
-        className="remove-bag-item-button"
-        onClick={handleRemoveItemFromBag}
-      />
-    </div>
+    </Zoom>
   );
 };
 

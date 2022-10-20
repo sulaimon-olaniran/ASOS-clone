@@ -1,0 +1,64 @@
+.navbar-bag-component {
+  position: relative;
+  touch-action: none;
+  z-index: 99;
+  outline: none;
+
+  button {
+    position: relative;
+    padding: 12px 15px;
+    font-family: inherit;
+    display: block;
+    background-color: transparent;
+    border: none;
+    color: currentcolor;
+    max-height: 30px;
+    line-height: 30px;
+
+    span {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M4.083 5a6.002 6.002 0 0111.834 0H20v14.986L0 20V5h4.083zM14 5c0-1.001-1.06-3.274-4-3.274S6 4.006 6 5c0 0 8 .012 8 0z' fill='%23FFF'/%3E%3C/svg%3E");
+      display: inline-block;
+      color: currentcolor;
+      width: 24px;
+      height: 24px;
+      box-sizing: border-box;
+      background-repeat: no-repeat;
+      background-size: auto;
+      background-position: 50%;
+    }
+
+    .number-of-items {
+      top: 7%;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      font-size: 0.625rem;
+      font-weight: 900;
+      position: absolute;
+      color: #2d2d2d;
+      text-align: center;
+    }
+  }
+
+  .navbar-bag-contents {
+    left: -275px;
+    position: absolute;
+    overflow: hidden;
+    top: 45px;
+    width: 325px;
+    z-index: 10;
+
+    .navbar-bag-contents-inner {
+      width: 100%;
+      min-height: 400px;
+      max-height: 400px;
+      background-color: #2d2d2d;
+      transition: transform 0.5s ease-out;
+      transform: translateY(-100%);
+    }
+
+    .show-bag-items {
+      transform: translateY(0);
+    }
+  }
+}
