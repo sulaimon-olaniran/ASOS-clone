@@ -6,7 +6,11 @@ import {useAppDispatch, useAppSelector} from "../../assets/hooks";
 
 import EachBagItem from "./item/Item";
 
-const BagItemsComponent = () => {
+interface componentProps {
+  used_in?: string;
+}
+
+const BagItemsComponent = ({used_in}: componentProps) => {
   const [updateItem, setUpdateItem] = useState<null | string>(null);
   const [animate, setAnimate] = useState(false);
   const dispatch = useAppDispatch();
@@ -19,13 +23,15 @@ const BagItemsComponent = () => {
   return (
     <TransitionGroup component="div" className="bag-component-container">
       {bag_items.length > 0 &&
-        bag_items.map((item, key) => (
-          <Collapse key={item.sub_id || key} timeout={500}>
+        bag_items.map((item, index) => (
+          <Collapse key={item.sub_id || index} timeout={500}>
             <CSSTransition timeout={700} classNames="item">
               <EachBagItem
                 item={item}
                 updateItem={updateItem}
                 setUpdateItem={setUpdateItem}
+                used_in={used_in}
+                index={index}
               />
             </CSSTransition>
           </Collapse>

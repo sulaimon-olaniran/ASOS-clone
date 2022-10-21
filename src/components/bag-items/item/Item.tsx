@@ -10,12 +10,20 @@ import {
 } from "../../../state/actions-creator/product";
 
 interface componentProps {
+  used_in?: string;
+  index?: number;
   item: bagItem;
   updateItem: null | string;
   setUpdateItem: (value: null | string) => void;
 }
 
-const EachBagItem = ({item, updateItem, setUpdateItem}: componentProps) => {
+const EachBagItem = ({
+  item,
+  updateItem,
+  setUpdateItem,
+  used_in,
+  index,
+}: componentProps) => {
   const [size, setSize] = useState(item.selected_size);
   const [quantity, setQuantity] = useState(item.quantity);
   const [isRemoved, setIsRemoved] = useState(false);
@@ -109,7 +117,9 @@ const EachBagItem = ({item, updateItem, setUpdateItem}: componentProps) => {
       <div
         className={`each-bag-item-container ${
           updatingCurrent && "updating-current-item"
-        } ${updateIsHappening && "update-is-active"}`}
+        } ${updateIsHappening && "update-is-active"} ${
+          used_in === "drop-down" && "used-in-drop-down"
+        }`}
       >
         <div
           className={`item-removed-animation ${isRemoved && "animate-item"}`}
@@ -118,7 +128,12 @@ const EachBagItem = ({item, updateItem, setUpdateItem}: componentProps) => {
         </div>
 
         {updateIsHappening && <div className="update-is-happening" />}
-        <div className="each-bag-item-contents-container">
+
+        <div
+          className={`each-bag-item-contents-container ${
+            index === 0 && "is-first-item"
+          }`}
+        >
           <div className="bag-item-image-container">
             <img src={`https://${item.image}`} alt="" />
           </div>
@@ -129,10 +144,18 @@ const EachBagItem = ({item, updateItem, setUpdateItem}: componentProps) => {
             </div>
 
             <div className="bag-item-name-container">
-              <span>{item.name}</span>
+              <p>{item.name}</p>
             </div>
 
             <div className="bag-item-details-container">
+              <div className="details-for-drop-down">
+                <span>{item.colour}</span>
+                <span>
+                  {item.selected_size !== "" ? item.selected_size : "No Size"}
+                </span>
+                <span>Qty : {item.quantity}</span>
+              </div>
+
               <div className="each-detail">
                 <span>{item.colour}</span>
               </div>

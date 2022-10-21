@@ -11,3 +11,12 @@ export const toggleGender = (gender: string) => {
     });
   };
 };
+
+export const toggleNavBagDrawer = (open: boolean) => {
+  return (dispatch: Dispatch<actionType>) => {
+    dispatch({
+      type: actionTypes.TOGGLE_NAV_BAG_DRAWER,
+      payload: open,
+    });
+  };
+};

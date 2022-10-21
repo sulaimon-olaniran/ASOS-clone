@@ -5,8 +5,14 @@ export interface toggleGender {
   payload: string;
 }
 
+export interface toggleNavBagDrawer {
+  type: actionTypes.TOGGLE_NAV_BAG_DRAWER;
+  payload: boolean;
+}
+
 export type stateType = {
   gender: string | null;
+  nav_bag_drawer: boolean;
 };
 
-export type actionType = toggleGender;
+export type actionType = toggleGender | toggleNavBagDrawer;

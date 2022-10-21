@@ -12,6 +12,8 @@ import {
   addProductToBag,
   updateProductInBag,
 } from "../../../../state/actions-creator/product";
+import {toggleNavBagDrawer} from "../../../../state/actions-creator/app";
+
 import {
   getPercentage,
   returnSavedItem,
@@ -64,6 +66,14 @@ const ProductAside = ({product, cat_id}: componentProps) => {
 
   const hasPrevPrice = prevPrice?.value && prevPrice?.value !== curPrice?.value;
 
+  const handleShowItemInNavDrawer = () => {
+    dispatch(toggleNavBagDrawer(true));
+
+    setTimeout(() => {
+      dispatch(toggleNavBagDrawer(false));
+    }, 2000);
+  };
+
   const handleAddProductToBag = () => {
     //CHECK IF ITEM ALREADY EXISTS IN BAG
     const isInBag = bag_items.find(item => item.id === product.id);
@@ -78,16 +88,19 @@ const ProductAside = ({product, cat_id}: componentProps) => {
         };
 
         dispatch(updateProductInBag(bag_update || 0));
+        handleShowItemInNavDrawer();
       } else {
         //add the same item to bag with different size
         const item = returnBagItem(product, selectedSize, "");
 
         dispatch(addProductToBag(item));
+        handleShowItemInNavDrawer();
       }
     } else {
       const item = returnBagItem(product, selectedSize, "");
 
       dispatch(addProductToBag(item));
+      handleShowItemInNavDrawer();
       //just add item to bag
     }
   };

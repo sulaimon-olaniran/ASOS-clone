@@ -3,6 +3,7 @@ import {stateType} from "../types/app";
 
 const initState = {
   gender: "men" || null,
+  nav_bag_drawer: false,
 };
 
 const appReducer = (state: stateType = initState, action: any) => {
@@ -11,6 +12,12 @@ const appReducer = (state: stateType = initState, action: any) => {
       return {
         ...state,
         gender: action.payload,
+      };
+
+    case actionTypes.TOGGLE_NAV_BAG_DRAWER:
+      return {
+        ...state,
+        nav_bag_drawer: action.payload,
       };
     default:
       return state;
