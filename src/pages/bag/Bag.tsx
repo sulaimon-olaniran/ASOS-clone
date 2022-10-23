@@ -2,23 +2,12 @@ import {BagItemsComponent} from "../../components";
 import {useAppSelector} from "../../assets/hooks";
 
 import NoBagItems from "./no-items/No-items";
-
-const addZeroes = (num: string) => {
-  const dec = num.split(".")[1];
-  const len = dec && dec.length > 2 ? dec.length : 2;
-  return Number(num).toFixed(len);
-};
+import {getBagTotalAmount} from "../../assets/functions";
 
 const BagPage = () => {
   const bag_items = useAppSelector(state => state.product.bag);
 
-  const bag_amount = bag_items.reduce((n, item) => {
-    const item_quantity: number = item.quantity || 1;
-    const price = item.price && item.price.current.value * item_quantity;
-    return n + (price || 0);
-  }, 0);
-
-  const final_bag_amount = addZeroes(bag_amount.toString());
+  const final_bag_amount = getBagTotalAmount(bag_items);
 
   return (
     <div className="bag-page-container">

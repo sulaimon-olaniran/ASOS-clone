@@ -80,3 +80,21 @@ export const returnBagItem = (
 
   return item;
 };
+
+export const getBagTotalAmount = (bag_items: bagItem[]) => {
+  const bag_amount = bag_items.reduce((n, item) => {
+    const item_quantity: number = item.quantity || 1;
+    const price = item.price && item.price.current.value * item_quantity;
+    return n + (price || 0);
+  }, 0);
+
+  const addZeroes = (num: string) => {
+    const dec = num.split(".")[1];
+    const len = dec && dec.length > 2 ? dec.length : 2;
+    return Number(num).toFixed(len);
+  };
+
+  const final_bag_amount = addZeroes(bag_amount.toString());
+
+  return final_bag_amount;
+};

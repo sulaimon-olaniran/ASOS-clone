@@ -1,6 +1,8 @@
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import {useNavigate, useLocation} from "react-router-dom";
 
 import {BagItemsComponent} from "../../../../";
+import {getBagTotalAmount} from "../../../../../assets/functions";
 import {useAppDispatch, useAppSelector} from "../../../../../assets/hooks";
 import {toggleNavBagDrawer} from "../../../../../state/actions-creator/app";
 
@@ -10,12 +12,26 @@ const NavbarBagComponent = () => {
   const show_drawer = useAppSelector(state => state.app.nav_bag_drawer);
   const bag_items = useAppSelector(state => state.product.bag);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location);
+
   const handleShowDrawer = () => {
+    // DISABLE BAG ITEMS DROP DOWN IF THERE ARE NO ITEMS OR USER IS CURRENTLY ON THE BAG PAGE
+
+    if (bag_items.length === 0 || location.pathname === "/shopping-bag") return;
     dispatch(toggleNavBagDrawer(true));
   };
 
   const handleHideDrawer = () => {
     dispatch(toggleNavBagDrawer(false));
+  };
+
+  const handleGoToBagRoute = () => {
+    if (bag_items.length > 0) return;
+
+    navigate("/shopping-bag");
   };
 
   return (
@@ -24,7 +40,7 @@ const NavbarBagComponent = () => {
       onMouseEnter={handleShowDrawer}
       onMouseLeave={handleHideDrawer}
     >
-      <button>
+      <button onClick={handleGoToBagRoute}>
         <span className="bag-filled-up" />
         <span className="number-of-items">3</span>
       </button>
@@ -52,7 +68,7 @@ const NavbarBagComponent = () => {
           <div className="navbar-bag-sub-total-container">
             <p>Sub-total</p>
 
-            <p>£53.50</p>
+            <p>{getBagTotalAmount(bag_items)}</p>
           </div>
 
           <div className="navbar-bag-checkout-container">
