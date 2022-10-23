@@ -1,10 +1,22 @@
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import {useNavigate, useLocation} from "react-router-dom";
+import {useNavigate, useLocation, Link} from "react-router-dom";
+import WorkOutlineRoundedIcon from "@mui/icons-material/WorkOutlineRounded";
+import Badge from "@mui/material/Badge";
+import WorkRoundedIcon from "@mui/icons-material/WorkRounded";
+import {styled} from "@mui/material/styles";
 
 import {BagItemsComponent} from "../../../../";
 import {getBagTotalAmount} from "../../../../../assets/functions";
 import {useAppDispatch, useAppSelector} from "../../../../../assets/hooks";
 import {toggleNavBagDrawer} from "../../../../../state/actions-creator/app";
+
+const StyledBadge = styled(Badge)(({theme}) => ({
+  "& .MuiBadge-badge": {
+    right: "50%",
+    top: "55%",
+    color: "#2d2d2d",
+  },
+}));
 
 const NavbarBagComponent = () => {
   const dispatch = useAppDispatch();
@@ -14,8 +26,6 @@ const NavbarBagComponent = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-
-  console.log(location);
 
   const handleShowDrawer = () => {
     // DISABLE BAG ITEMS DROP DOWN IF THERE ARE NO ITEMS OR USER IS CURRENTLY ON THE BAG PAGE
@@ -40,10 +50,17 @@ const NavbarBagComponent = () => {
       onMouseEnter={handleShowDrawer}
       onMouseLeave={handleHideDrawer}
     >
-      <button onClick={handleGoToBagRoute}>
-        <span className="bag-filled-up" />
-        <span className="number-of-items">3</span>
-      </button>
+      {bag_items.length > 0 ? (
+        <button>
+          <StyledBadge badgeContent={bag_items.length}>
+            <WorkRoundedIcon fontSize="medium" />
+          </StyledBadge>
+        </button>
+      ) : (
+        <Link to="" className="bag-is-empty-button">
+          <WorkOutlineRoundedIcon />
+        </Link>
+      )}
 
       <div className={`navbar-bag-contents`}>
         <div
