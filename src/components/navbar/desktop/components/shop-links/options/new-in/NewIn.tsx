@@ -5,11 +5,13 @@ import {
 } from "../components";
 
 import {menNewInData, womenNewInData} from "./assets/data";
+import {useAppSelector} from "../../../../../../../assets/hooks";
 
 const NewInOptionType = () => {
-  const page = "men";
+  const page = useAppSelector(state => state.app.gender);
+  // const page = "men";
 
-  const newInData = menNewInData;
+  const newInData = page === "men" ? menNewInData : womenNewInData;
 
   return (
     <div className="new-in-option-type-container">
@@ -24,7 +26,11 @@ const NewInOptionType = () => {
 
       {page !== "men" && (
         <section className="new-in-body-fit-section">
-          <BodyFitComponent header="Body Fits" fits={womenNewInData.bodyFits} />
+          <BodyFitComponent
+            header="Body Fits"
+            fits={womenNewInData.bodyFits}
+            type="new-in"
+          />
         </section>
       )}
 
@@ -36,7 +42,11 @@ const NewInOptionType = () => {
         </div>
 
         <div className="new-edit-contents-container">
-          <ImageLinksComponent links={newInData.newEdits} flexDirection="row" />
+          <ImageLinksComponent
+            links={newInData.newEdits}
+            flexDirection="row"
+            type="new-in"
+          />
         </div>
       </section>
     </div>

@@ -1,5 +1,6 @@
 import {TextLinksComponent, BodyFitComponent} from "../components";
 
+import {useAppSelector} from "../../../../../../../assets/hooks";
 import {menSalesLink, womenSalesLink} from "./assets/data/data";
 
 interface Product {
@@ -8,7 +9,9 @@ interface Product {
 }
 
 const SaleOptionType = () => {
-  const salesLink = womenSalesLink;
+  const page = useAppSelector(state => state.app.gender);
+
+  const salesLink = page === "women" ? womenSalesLink : menSalesLink;
 
   return (
     <div className="sale-option-type-container">

@@ -38,6 +38,7 @@ const ProductsComponent = () => {
   const [viewMore, setViewMore] = useState(false);
   const [category, setCategory] = useState<categoryType>({});
   const [products, setProducts] = useState<productType[]>([]);
+  const [fetching, setFetching] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
 
   const gender = useAppSelector(state => state.app.gender);
@@ -52,16 +53,18 @@ const ProductsComponent = () => {
 
   useEffect(() => {
     const options = getOptions("0", category_id || "");
-
+    setFetching(true);
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
+        //console.log(response.data);
         setCategory(response.data);
         setProducts(response.data.products);
+        setFetching(false);
       })
       .catch(function (error) {
         console.error(error);
+        setFetching(false);
       });
   }, [category_id]);
 
@@ -82,6 +85,8 @@ const ProductsComponent = () => {
       });
   };
 
+  if (fetching)
+    return <div className="products-loading-container">Loading...</div>;
   return (
     <div className="products-component-container">
       <nav className="products-component-nav-links-container">

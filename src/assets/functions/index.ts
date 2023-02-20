@@ -98,3 +98,15 @@ export const getBagTotalAmount = (bag_items: bagItem[]) => {
 
   return final_bag_amount;
 };
+
+export const returnSubType = (link: string) => {
+  if (link.includes("+")) {
+    return link.replace("+", "-");
+  } else if (link.includes(" & ")) {
+    return link.replace(" & ", "-");
+  } else if (link.includes(" ")) {
+    return link.replace(" ", "-");
+  } else {
+    return link;
+  }
+};

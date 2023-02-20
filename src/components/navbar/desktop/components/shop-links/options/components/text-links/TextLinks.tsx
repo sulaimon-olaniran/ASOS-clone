@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import {returnSubType} from "../../../../../../../../assets/functions";
 
 import {useAppSelector} from "../../../../../../../../assets/hooks";
 
@@ -27,9 +28,7 @@ const TextLinksComponent = ({links, title, column, type}: iProps) => {
 
       <div className={`text-links-component-links-container-${column}`}>
         {links.map((link, index: number) => {
-          const sub_type = link.link.includes("+")
-            ? link.link.replace(" + ", "-")
-            : link.link.replace(" ", "-");
+          const sub_type = returnSubType(link.link);
 
           const products_link = `/${shop_gender}/category/${type}/${sub_type}/${link.cat_id}`;
           return (
