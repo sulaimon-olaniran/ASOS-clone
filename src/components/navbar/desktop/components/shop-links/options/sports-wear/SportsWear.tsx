@@ -5,9 +5,13 @@ import {
 } from "../components";
 
 import {menSportsWearData, womenSportsWearData} from "./data";
+import {useAppSelector} from "../../../../../../../assets/hooks";
 
 export const SportsWearOptionType = () => {
-  const sportsWearData = womenSportsWearData;
+  const page = useAppSelector(state => state.app.gender);
+
+  const sportsWearData =
+    page === "women" ? womenSportsWearData : menSportsWearData;
 
   return (
     <div className="sportswear-option-type-container">
@@ -16,6 +20,7 @@ export const SportsWearOptionType = () => {
           column={1}
           title="Shop by product"
           links={sportsWearData.productLinks}
+          type="sportswear"
         />
       </div>
 
@@ -23,6 +28,7 @@ export const SportsWearOptionType = () => {
         <TextAvatarComponent
           header="Shop by activity"
           avatarLinks={sportsWearData.activityLinks}
+          type="sportswear"
         />
       </div>
 
@@ -30,6 +36,7 @@ export const SportsWearOptionType = () => {
         <TextAvatarComponent
           header="Shop by brand"
           avatarLinks={sportsWearData.brandLinks}
+          type="sportswear"
         />
       </div>
 
@@ -37,6 +44,7 @@ export const SportsWearOptionType = () => {
         <ImageLinksComponent
           links={sportsWearData.imageLinks}
           flexDirection="column"
+          type="sportswear"
         />
       </div>
     </div>

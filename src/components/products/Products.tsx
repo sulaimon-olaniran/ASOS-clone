@@ -9,6 +9,8 @@ import {categoryType} from "./interface";
 import {productType} from "../../pages/product/types";
 import {rapid_api_key} from "../../assets/keys";
 import {useAppSelector} from "../../assets/hooks";
+import {SortFilterSelectComponent} from "../index";
+import CategoryFilterSelect from "../filters-select/category/category";
 
 const getOptions = (offset: string, category_id: string) => {
   const options = {
@@ -53,11 +55,13 @@ const ProductsComponent = () => {
 
   useEffect(() => {
     const options = getOptions("0", category_id || "");
+    return;
     setFetching(true);
+
     axios
       .request(options)
       .then(function (response) {
-        //console.log(response.data);
+        console.log(response.data);
         setCategory(response.data);
         setProducts(response.data.products);
         setFetching(false);
@@ -147,7 +151,14 @@ const ProductsComponent = () => {
       <div className="products-other-links-container"></div>
 
       <div className="products-component-filter-container">
-        <div className="products-filter-inner-container"></div>
+        <div className="products-filter-inner-container">
+          <SortFilterSelectComponent />
+          <CategoryFilterSelect />
+          <SortFilterSelectComponent />
+          <CategoryFilterSelect />
+          <SortFilterSelectComponent />
+          <CategoryFilterSelect />
+        </div>
       </div>
 
       <div className="products-component-products-listing-container">

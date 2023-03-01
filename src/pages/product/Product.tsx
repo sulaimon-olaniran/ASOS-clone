@@ -73,7 +73,7 @@ const ProductPage = () => {
         </section>
 
         <section className="product-also-like-section">
-          <ProductAlsoLike cat_id={category_id || ""} />
+          <ProductAlsoLike cat_id={category_id || ""} product_id={product_id} />
         </section>
 
         <section className="product-reviews-section">

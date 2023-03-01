@@ -9,7 +9,6 @@ import {useAppSelector} from "../../../../../../../assets/hooks";
 
 const NewInOptionType = () => {
   const page = useAppSelector(state => state.app.gender);
-  // const page = "men";
 
   const newInData = page === "men" ? menNewInData : womenNewInData;
 

@@ -7,6 +7,7 @@ import AlsoLikeEachProduct from "./each-product/Each-Product";
 
 interface componentProps {
   cat_id: string;
+  product_id?: string;
 }
 
 const ProductAlsoLike = ({cat_id}: componentProps) => {

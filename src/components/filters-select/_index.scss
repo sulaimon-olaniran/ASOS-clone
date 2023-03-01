@@ -1,0 +1,39 @@
+@import "./sort/styles";
+
+.filter-select-container {
+  width: calc(16.666667% - 17.5px);
+
+  .filter-select-button-container {
+    cursor: pointer;
+    width: 100%;
+    background-color: transparent;
+    padding: 3px 20px 3px 6px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    border-top: 1px solid #ddd;
+    color: #666;
+    font-family: futura-pt, sans-serif;
+    font-size: 14.5px;
+    font-weight: 400;
+    height: 42px;
+    letter-spacing: 0.3px;
+    line-height: 1.12;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .filter-select-button-container:hover {
+    color: #0770cf;
+  }
+
+  .filter-select-show-menu {
+    border-color: #0770cf;
+    color: #0770cf;
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #ffffff;
+  }
+}
