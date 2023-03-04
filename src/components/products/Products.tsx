@@ -9,8 +9,8 @@ import {categoryType} from "./interface";
 import {productType} from "../../pages/product/types";
 import {rapid_api_key} from "../../assets/keys";
 import {useAppSelector} from "../../assets/hooks";
-import {SortFilterSelectComponent} from "../index";
-import CategoryFilterSelect from "../filters-select/category/category";
+import {FilterSelectComponent, FilterSelectMultipleComponent} from "../index";
+import {TestIcon} from "../../assets/icons";
 
 const getOptions = (offset: string, category_id: string) => {
   const options = {
@@ -57,7 +57,7 @@ const ProductsComponent = () => {
     const options = getOptions("0", category_id || "");
     return;
     setFetching(true);
-
+    return;
     axios
       .request(options)
       .then(function (response) {
@@ -152,12 +152,40 @@ const ProductsComponent = () => {
 
       <div className="products-component-filter-container">
         <div className="products-filter-inner-container">
-          <SortFilterSelectComponent />
-          <CategoryFilterSelect />
-          <SortFilterSelectComponent />
-          <CategoryFilterSelect />
-          <SortFilterSelectComponent />
-          <CategoryFilterSelect />
+          <FilterSelectComponent
+            title="Sort"
+            options={[
+              "Recommended",
+              "What's new",
+              "Price high to low",
+              "Price low to high",
+            ]}
+            defaultOption="Recommended"
+          />
+
+          <FilterSelectComponent
+            title="Category"
+            options={[
+              "Jeans & Trousers (345)",
+              "Suits & Tailoring (25)",
+              "Tops & Bottoms (3)",
+            ]}
+            defaultOption="Jeans & Trousers (345)"
+          />
+
+          <FilterSelectMultipleComponent
+            title="Multiple"
+            options={[
+              "Trousers (405)",
+              "Leggings (83)",
+              "Suit Trousers (53)",
+              "Ski Pants (5)",
+              "Blazers (41)",
+              "Skirts (24)",
+            ]}
+            defaultOption="Jeans & Trousers (345)"
+            searchable
+          />
         </div>
       </div>
 

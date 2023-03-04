@@ -3,8 +3,15 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-const CategoryFilterSelect = () => {
+interface componentProps {
+  title: string;
+  options: string[];
+  defaultOption: string;
+}
+
+const FilterSelect = ({title, options, defaultOption}: componentProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [selectedOption, setSelectedOption] = useState(defaultOption);
 
   const open = Boolean(anchorEl);
 
@@ -25,7 +32,7 @@ const CategoryFilterSelect = () => {
         }`}
         onClick={handleShowMenu}
       >
-        <span>Category</span>
+        <span>{title}</span>
         <KeyboardArrowDownIcon />
       </button>
 
@@ -38,12 +45,25 @@ const CategoryFilterSelect = () => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={handleHideMenu}>Profile</MenuItem>
-        <MenuItem onClick={handleHideMenu}>My account</MenuItem>
-        <MenuItem onClick={handleHideMenu}>Logout</MenuItem>
+        <div className="menu-items-container">
+          {options.map((item: string) => {
+            return (
+              <MenuItem
+                onClick={() => {
+                  setSelectedOption(item);
+                }}
+                className={`${
+                  item === selectedOption ? "mui-menu-item-active" : ""
+                }`}
+              >
+                {item}
+              </MenuItem>
+            );
+          })}
+        </div>
       </Menu>
     </div>
   );
 };
 
-export default CategoryFilterSelect;
+export default FilterSelect;

@@ -5,6 +5,14 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const SortFilterSelect = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [selectedItem, setSelectedItem] = useState("Recommended");
+
+  const items = [
+    "Recommended",
+    "What's new",
+    "Price high to low",
+    "Price low to high",
+  ];
 
   const open = Boolean(anchorEl);
 
@@ -38,9 +46,20 @@ const SortFilterSelect = () => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={handleHideMenu}>Profile</MenuItem>
-        <MenuItem onClick={handleHideMenu}>My account</MenuItem>
-        <MenuItem onClick={handleHideMenu}>Logout</MenuItem>
+        {items.map((item: string) => {
+          return (
+            <MenuItem
+              onClick={() => {
+                setSelectedItem(item);
+              }}
+              className={`${
+                item === selectedItem ? "mui-menu-item-active" : ""
+              }`}
+            >
+              {item}
+            </MenuItem>
+          );
+        })}
       </Menu>
     </div>
   );
