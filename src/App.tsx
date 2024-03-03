@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles/styles.scss";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {isBrowser} from "react-device-detect";
 
 import {NavbarComponent, ProductsComponent, ScrollToTop} from "./components";
 import {FooterDesktopScreen} from "./components/footer";
@@ -14,7 +15,27 @@ import {
 } from "./pages";
 
 function App() {
-  console.log(NavbarComponent);
+  if (!isBrowser)
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <h1
+          style={{
+            width: "90%",
+            textAlign: "center",
+          }}
+        >
+          App only available on desktop screens
+        </h1>
+      </div>
+    );
   return (
     <Router>
       <div className="application-container">
