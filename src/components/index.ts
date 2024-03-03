@@ -8,3 +8,4 @@ export {default as BagItemsComponent} from "./bag-items/Bag-Items";
 export {default as FilterSelectComponent} from "./filters-select/Filter-Select";
 export {default as SortFilterSelectComponent} from "./filters-select/sort/Sort";
 export {default as FilterSelectMultipleComponent} from "./filters-select/Filter-Select-Multiple";
+export {default as FilterSelectColorComponent} from "./filters-select/Filter-Select-Color";

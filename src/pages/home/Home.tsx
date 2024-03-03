@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 const Homepage = () => {
   return (
     <div className="homepage-container">
@@ -8,8 +10,13 @@ const Homepage = () => {
           <h1>This is ASOS</h1>
           <p>ASOS DESIGN and 850+ brands</p>
           <div className="introduction-buttons-container">
-            <div>Shop Women</div>
-            <div>Shop Men</div>
+            <Link to="/women">
+              <div>Shop Women</div>
+            </Link>
+
+            <Link to="/men">
+              <div>Shop Men</div>
+            </Link>
           </div>
         </div>
 

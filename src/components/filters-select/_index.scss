@@ -1,5 +1,7 @@
 .filter-select-container {
   width: calc(16.666667% - 17.5px);
+  margin: 5px 0;
+  margin-right: 17.5px;
 
   .filter-select-button-container {
     cursor: pointer;
@@ -37,7 +39,9 @@
 }
 
 .MuiMenu-root {
+  overflow: hidden;
   .MuiMenu-paper {
+    overflow: hidden;
     .MuiList-padding {
       padding: 0;
     }
@@ -141,11 +145,17 @@
           background: none;
         }
       }
+
+      .search-input-active {
+        border: 2px solid #1862a5;
+      }
     }
 
     .menu-items-container {
       padding: 10px;
       width: 100%;
+      overflow-y: auto;
+      max-height: 400px;
       .MuiMenuItem-root {
         background-color: #ffffff;
         margin-bottom: 10px;
@@ -153,11 +163,10 @@
         box-sizing: border-box;
         color: #2d2d2d;
         cursor: pointer;
-        display: block;
+        display: flex;
         font-family: futura-pt, sans-serif;
         font-size: 14.5px;
         font-weight: 400;
-        height: 100%;
         height: 44px;
         line-height: 1.12;
         list-style-type: none;
@@ -166,12 +175,23 @@
         position: relative;
         text-align: left;
         text-decoration: none;
+        overflow: hidden;
+
+        .menu-item-color {
+          height: 44px;
+          width: 44px;
+          margin-right: 15px;
+        }
       }
 
       .mui-menu-item-active {
         background-color: #0770cf;
         font-weight: 700;
         color: #fff;
+      }
+
+      .color-menu-item-filter-select {
+        padding: 0;
       }
     }
   }

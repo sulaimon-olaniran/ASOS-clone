@@ -46,9 +46,10 @@ const FilterSelect = ({title, options, defaultOption}: componentProps) => {
         }}
       >
         <div className="menu-items-container">
-          {options.map((item: string) => {
+          {options.map((item: string, i: number) => {
             return (
               <MenuItem
+                key={i}
                 onClick={() => {
                   setSelectedOption(item);
                 }}

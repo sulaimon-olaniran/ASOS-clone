@@ -92,7 +92,7 @@ const FooterDesktopScreen = () => {
 
       <div className="footer-bottom-container">
         <div className="footer-bottom-inner-container">
-          <span>© 2022 ASOS</span>
+          <span>© 2023 ASOS CLONE-SULAIMON OLANIRAN</span>
 
           <section>
             <span>Privacy & cookies</span>

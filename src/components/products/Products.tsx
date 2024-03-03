@@ -4,15 +4,30 @@ import CircularProgress from "@mui/material/CircularProgress";
 import {useParams} from "react-router-dom";
 
 import EachProdcut from "./each-product/Each-Product";
-import {categoryType} from "./interface";
+import {categoryType, facetType, productType} from "./interface";
 //import {} from "../../assets/types"
-import {productType} from "../../pages/product/types";
+import {facetFilterType} from "../../assets/types";
 import {rapid_api_key} from "../../assets/keys";
 import {useAppSelector} from "../../assets/hooks";
-import {FilterSelectComponent, FilterSelectMultipleComponent} from "../index";
+import {
+  FilterSelectComponent,
+  FilterSelectMultipleComponent,
+  FilterSelectColorComponent,
+} from "../index";
 import {TestIcon} from "../../assets/icons";
 
-const getOptions = (offset: string, category_id: string) => {
+import data from "./products.json";
+
+//TAKES ALL VALUES FROM EACH FILTER TYPE IN THE ARRAY AND COVERTS THEM INTO A SINGLE STRING FOR PARAMS OF THE API
+const handleJoinIds = (obj: facetFilterType) =>
+  Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, v.join()]));
+
+const getOptions = (
+  offset: string,
+  category_id: string,
+  filters: facetFilterType
+) => {
+  const filterOptions = handleJoinIds(filters);
   const options = {
     method: "GET",
     url: "https://asos2.p.rapidapi.com/products/v2/list",
@@ -20,9 +35,9 @@ const getOptions = (offset: string, category_id: string) => {
       store: "US",
       offset: offset,
       categoryId: category_id,
+      ...filterOptions,
       limit: "48",
       country: "US",
-      sort: "freshness",
       currency: "USD",
       sizeSchema: "US",
       lang: "en-US",
@@ -40,8 +55,13 @@ const ProductsComponent = () => {
   const [viewMore, setViewMore] = useState(false);
   const [category, setCategory] = useState<categoryType>({});
   const [products, setProducts] = useState<productType[]>([]);
+  const [productsFacets, setProductFacets] = useState<facetType[]>([]);
   const [fetching, setFetching] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
+
+  const [filters, setFilters] = useState<facetFilterType>({
+    sort: ["freshness"],
+  });
 
   const gender = useAppSelector(state => state.app.gender);
 
@@ -54,28 +74,46 @@ const ProductsComponent = () => {
   };
 
   useEffect(() => {
-    const options = getOptions("0", category_id || "");
+    setFilters({
+      sort: ["freshness"],
+    });
+  }, [category_id]);
+
+  useEffect(() => {
+    const options = getOptions("0", category_id || "", filters);
+    // console.log(filters);
+
+    setCategory(data);
+    setProducts(data.products);
+    setProductFacets(data.facets);
+
     return;
     setFetching(true);
-    return;
+
     axios
       .request(options)
       .then(function (response) {
         console.log(response.data);
+
         setCategory(response.data);
         setProducts(response.data.products);
+        setProductFacets(response.data.facets);
         setFetching(false);
       })
       .catch(function (error) {
         console.error(error);
         setFetching(false);
       });
-  }, [category_id]);
+  }, [category_id, filters]);
 
   const handleLoadMoreProducts = () => {
     setLoadingMore(true);
 
-    const options = getOptions(`${products.length}`, category_id || "");
+    const options = getOptions(
+      `${products.length}`,
+      category_id || "",
+      filters
+    );
 
     axios
       .request(options)
@@ -87,6 +125,10 @@ const ProductsComponent = () => {
       .catch(function (error) {
         console.error(error);
       });
+  };
+
+  const handleFilter = () => {
+    console.log(filters);
   };
 
   if (fetching)
@@ -163,7 +205,32 @@ const ProductsComponent = () => {
             defaultOption="Recommended"
           />
 
-          <FilterSelectComponent
+          {productsFacets.map((item, index) => {
+            return (
+              <>
+                {item.id === "base_colour" && (
+                  <FilterSelectColorComponent
+                    key={index}
+                    title={item.name || ""}
+                    options={item.facetValues}
+                  />
+                )}
+
+                {item.id !== "base_colour" && (
+                  <FilterSelectMultipleComponent
+                    facetId={item.id || ""}
+                    prevOptions={filters[item.id as keyof facetFilterType]}
+                    key={index}
+                    title={item.name || ""}
+                    options={item.facetValues}
+                    handleSelect={setFilters}
+                  />
+                )}
+              </>
+            );
+          })}
+
+          {/* <FilterSelectComponent
             title="Category"
             options={[
               "Jeans & Trousers (345)",
@@ -186,6 +253,8 @@ const ProductsComponent = () => {
             defaultOption="Jeans & Trousers (345)"
             searchable
           />
+
+*/}
         </div>
       </div>
 
@@ -222,7 +291,11 @@ const ProductsComponent = () => {
       </div>
 
       <div className="products-component-load-more-button-container">
-        <div className="load-more-button" onClick={handleLoadMoreProducts}>
+        <div
+          className="load-more-button"
+          //onClick={handleLoadMoreProducts}
+          onClick={handleFilter}
+        >
           <span>
             {loadingMore ? (
               <CircularProgress color="inherit" size={24} />

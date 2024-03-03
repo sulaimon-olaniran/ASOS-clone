@@ -1,70 +1,27 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, {useState, useRef} from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import DoneIcon from "@mui/icons-material/Done";
 import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
-import {facetFilterType} from "../../assets/types";
-
-// handleSelect: React.Dispatch<
-//   React.SetStateAction<{
-//     attribute_1046: string[];
-//     priceMin: string[];
-//     priceMax: string[];
-//     attribute_10147: string[];
-//     sort: string[];
-//     base_colour: string[];
-//     range: string[];
-//     attribute_1047: string[];
-//     attribute_10155: string[];
-//     brand: string[];
-//     size: string[];
-//   }>
-// >;
 
 interface componentProps {
   title: string;
-  facetId: string;
-  prevOptions: string[];
-  handleSelect: React.Dispatch<React.SetStateAction<facetFilterType>>;
-  options: {
-    count: number;
-    id: string;
-    name: string;
-    isSelected: boolean;
-  }[];
+  options: {name: string; id: string; count: number; isSelected: boolean}[];
   searchable?: boolean;
 }
 
-type optionType = {
-  count: number;
-  id: string;
-  name: string;
-  isSelected: boolean;
-};
-
-const FilterSelectMultiple = ({
-  title,
-  options,
-  handleSelect,
-  facetId,
-  prevOptions = [],
-}: componentProps) => {
+const FilterSelectColor = ({title, options, searchable}: componentProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   //const [selectedOption, setSelectedOption] = useState(defaultOption);
-  //const [selectedOptions, setSelectedOptions] = useState<optionType[]>([]);
-  const [selectedOptions, setSelectedOptions] = useState<optionType[]>(
-    options.filter(item => prevOptions.includes(item.id))
-  );
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [searchValue, setSearchValue] = useState("");
   const [inputActive, setInputActive] = useState(false);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const open = Boolean(anchorEl);
-
-  // console.log("previous options", facetId);
 
   const handleShowMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -74,7 +31,7 @@ const FilterSelectMultiple = ({
     setAnchorEl(null);
   };
 
-  const handleSelectOptions = (option: optionType) => {
+  const handleSelectOptions = (option: string) => {
     if (selectedOptions.includes(option)) {
       setSelectedOptions(prev => prev.filter(item => item !== option));
     } else {
@@ -83,42 +40,16 @@ const FilterSelectMultiple = ({
   };
 
   const handleSelectAllOptions = () => {
-    setSelectedOptions(options);
-    handleSelect(prev => ({
-      ...prev,
-      [facetId]: options.map(item => item.id),
-    }));
+    setSelectedOptions(options.map(item => item.name));
   };
 
   const handleClearAllOptions = () => {
     setSelectedOptions([]);
-    handleSelect(prev => ({
-      ...prev,
-      [facetId]: [],
-    }));
   };
 
   const filteredOptions = options.filter(
     item => item.name.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
   );
-
-  const hanndleSelectFilterItem = (item: optionType) => {
-    const value = selectedOptions.join();
-
-    // handleSelect(prev => ({
-    //   ...prev,
-    //   [facetId]: value,
-    // }));
-    console.log(facetId);
-    handleSelect(prev => ({
-      ...prev,
-      [facetId]: prev[facetId as keyof facetFilterType]
-        ? prev[facetId as keyof facetFilterType].includes(item.id)
-          ? prev[facetId as keyof facetFilterType].filter(id => id !== item.id)
-          : [item.id, ...prev[facetId as keyof facetFilterType]]
-        : [item.id],
-    }));
-  };
 
   return (
     <div className="filter-select-container">
@@ -148,7 +79,7 @@ const FilterSelectMultiple = ({
               <p id="list-of-options">
                 {selectedOptions.map(
                   (item, i) =>
-                    `${item.name.replace(/ *\([^)]*\) */g, "")}${
+                    `${item.replace(/ *\([^)]*\) */g, "")}${
                       i !== selectedOptions.length - 1 ? "," : ""
                     } `
                 )}
@@ -174,7 +105,7 @@ const FilterSelectMultiple = ({
               ))}
           </div>
 
-          {options.length > 15 && (
+          {searchable && (
             <div
               className={`search-input-container ${
                 inputActive ? "search-input-active" : ""
@@ -205,9 +136,9 @@ const FilterSelectMultiple = ({
           {filteredOptions.map(
             (
               item: {
-                count: number;
-                id: string;
                 name: string;
+                id: string;
+                count: number;
                 isSelected: boolean;
               },
               i: number
@@ -216,15 +147,23 @@ const FilterSelectMultiple = ({
                 <MenuItem
                   key={i}
                   onClick={() => {
-                    handleSelectOptions(item);
-                    hanndleSelectFilterItem(item);
+                    handleSelectOptions(item.name);
                   }}
-                  className={`${
-                    selectedOptions.includes(item) ? "mui-menu-item-active" : ""
+                  className={`color-menu-item-filter-select ${
+                    selectedOptions.includes(item.name)
+                      ? "mui-menu-item-active"
+                      : ""
                   }`}
                 >
-                  {item.name}
-                  {` (${item.count})`}
+                  <>
+                    <div
+                      style={{
+                        backgroundColor: `${item.name}`,
+                      }}
+                      className="menu-item-color"
+                    ></div>
+                    {item.name} {` (${item.count})`}
+                  </>
                 </MenuItem>
               );
             }
@@ -235,4 +174,4 @@ const FilterSelectMultiple = ({
   );
 };
 
-export default FilterSelectMultiple;
+export default FilterSelectColor;

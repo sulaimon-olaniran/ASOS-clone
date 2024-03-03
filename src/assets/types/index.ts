@@ -78,3 +78,19 @@ export type bagItem = {
     };
   };
 };
+
+export type facetFilterType = {
+  [key: string]: string[];
+  // attribute_1046: string[];
+  // attribute_10992: string[];
+  // priceMin: string[];
+  // priceMax: string[];
+  // attribute_10147: string[];
+  // sort: string[];
+  // base_colour: string[];
+  // range: string[];
+  // attribute_1047: string[];
+  // attribute_10155: string[];
+  // brand: string[];
+  // size: string[];
+};

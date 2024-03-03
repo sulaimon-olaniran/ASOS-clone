@@ -4,7 +4,8 @@ import axios from "axios";
 
 import LikeButtonComponent from "../../like-button/Like-Button";
 //import {productType} from "../interface";
-import {productType} from "../../../pages/product/types";
+//import {productType} from "../../../pages/product/types";
+import {productType} from "../interface";
 import {rapid_api_key} from "../../../assets/keys";
 
 import {
